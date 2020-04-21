@@ -1,9 +1,11 @@
 import json
 import pandas as pd
-
+# creo un dizionario dove ho come chiave un prodotto e come valore tutti i prodotti uguali
 df = pd.read_csv('/Users/luca/PycharmProjects/agiw/venv/dirty_entity_resolution_pictureme.csv')
+
 dict = {}
 valoriUsati=[]
+
 for index, row in df.iterrows():
     if row['left_spec_id'] in dict and row['right_spec_id']  not in valoriUsati:
         dict[row['left_spec_id']].append(row['right_spec_id'])
