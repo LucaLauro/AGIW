@@ -1,3 +1,4 @@
+# creo un dizionario dove la chiave è il nome dell'attributo e il valore è il valore è il numero delle occorrenze in una sorgente
 import json
 import os
 import pandas

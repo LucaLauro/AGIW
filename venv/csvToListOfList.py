@@ -1,6 +1,5 @@
 import json
 import pandas as pd
-from contaAttributiDaLista import contaAttributiUguali
 
 df = pd.read_csv('/Users/luca/PycharmProjects/agiw/venv/dirty_entity_resolution_pictureme.csv')
 
@@ -18,6 +17,8 @@ for index, row in df.iterrows():           # scansiono tutto il csv
         csvToListOfList.append([row['left_spec_id'],row['right_spec_id']])
         valoriUsati.append(row['left_spec_id'])
         valoriUsati.append(row['right_spec_id'])
-print(contaAttributiUguali(csvToListOfList[0]))
 
+with open("csvToListOfList.txt", "w") as file:
+    file.write(str(csvToListOfList))
+#print(type(csvToListOfList), type(csvToListOfList[0]), type(csvToListOfList[0][0]))
 

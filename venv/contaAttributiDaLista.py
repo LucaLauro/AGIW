@@ -1,9 +1,9 @@
+#conto gli attributi uguali in una lista di file che viene passata
 import json
 
 def contaAttributiUguali(listaDiFile):
     dict={}
     for file in listaDiFile:
-        i= file.index("/")
         path = '/Users/luca/PycharmProjects/agiw/venv/data/' + file +".json"  # occhio all' estensione, non è presente nel csv
         f = open(path)
         data = json.load(f)
