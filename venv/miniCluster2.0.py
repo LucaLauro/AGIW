@@ -1,5 +1,5 @@
 import json
-
+#creo dei mini cluster in cui raggruppo solo le coppie di nome e valore attributo uguali nella strutturq  #[[(_,[],[],[]),(_,[],[],[])..],[(_,[],[],[])...]]
 with open("csvToListOfList.txt", "r") as file:
     prodottiUguali = eval(file.readline())
 tupleList = []
@@ -17,8 +17,9 @@ for prodotti in prodottiUguali:
                     bool = True
             if not bool:
                 if type(v)==list:
-                    v=str(v).strip('[]')
+                    v=str(v).strip('[]')# possibile errore forse deve stare fuori dall'if ( forse alla riga 15)
                 clusterListStessiProdotti.append((k, [k], [v], [prodotto + "/" + k]))
+        f.close()
     tupleList.append(clusterListStessiProdotti)
 
 
