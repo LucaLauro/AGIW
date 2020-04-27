@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="012fbdbb-f456-4f50-8821-fdfa796b1747" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/miniCluster2.0.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/miniCluster2.0.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/ragguppamento1.0.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/ragguppamento1.0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/MyFile.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/conta.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/conta.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/miniCluster.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/robbbainutile/miniCluster.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/miniCluster2.0.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/robbbainutile/miniCluster2.0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/ragguppamento1.0.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/robbbainutile/ragguppamento1.0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/ragguppamento2.0.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/ragguppamento2.0.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +80,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/miniCluster2.0.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/robbbainutile/miniCluster2.0.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -118,7 +122,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/ragguppamento1.0.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/robbbainutile/ragguppamento1.0.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -127,7 +131,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="testread" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="ragguppamento2.0" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="agiw" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -139,7 +143,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/testread.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/ragguppamento2.0.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -151,10 +155,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.conta" />
+        <item itemvalue="Python.ragguppamento2.0" />
         <item itemvalue="Python.miniCluster3.0" />
         <item itemvalue="Python.ragguppamento1.0" />
         <item itemvalue="Python.miniCluster2.0" />
-        <item itemvalue="Python.testread" />
       </list>
     </recent_temporary>
   </component>
@@ -172,45 +176,45 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1647" height="181" key="GridCell.Tab.0.bottom" timestamp="1587841152773">
+    <state width="1647" height="181" key="GridCell.Tab.0.bottom" timestamp="1588001736400">
       <screen x="0" y="23" width="1680" height="972" />
     </state>
-    <state width="1647" height="181" key="GridCell.Tab.0.bottom/0.23.1680.972@0.23.1680.972" timestamp="1587841152773" />
+    <state width="1647" height="181" key="GridCell.Tab.0.bottom/0.23.1680.972@0.23.1680.972" timestamp="1588001736400" />
     <state width="1659" height="161" key="GridCell.Tab.0.bottom/0.23.1680.973@0.23.1680.973" timestamp="1587500473603" />
-    <state width="1647" height="181" key="GridCell.Tab.0.center" timestamp="1587841152772">
+    <state width="1647" height="181" key="GridCell.Tab.0.center" timestamp="1588001736400">
       <screen x="0" y="23" width="1680" height="972" />
     </state>
-    <state width="1647" height="181" key="GridCell.Tab.0.center/0.23.1680.972@0.23.1680.972" timestamp="1587841152772" />
+    <state width="1647" height="181" key="GridCell.Tab.0.center/0.23.1680.972@0.23.1680.972" timestamp="1588001736400" />
     <state width="1659" height="161" key="GridCell.Tab.0.center/0.23.1680.973@0.23.1680.973" timestamp="1587500473602" />
-    <state width="1647" height="181" key="GridCell.Tab.0.left" timestamp="1587841152772">
+    <state width="1647" height="181" key="GridCell.Tab.0.left" timestamp="1588001736399">
       <screen x="0" y="23" width="1680" height="972" />
     </state>
-    <state width="1647" height="181" key="GridCell.Tab.0.left/0.23.1680.972@0.23.1680.972" timestamp="1587841152772" />
+    <state width="1647" height="181" key="GridCell.Tab.0.left/0.23.1680.972@0.23.1680.972" timestamp="1588001736399" />
     <state width="1659" height="161" key="GridCell.Tab.0.left/0.23.1680.973@0.23.1680.973" timestamp="1587500473602" />
-    <state width="1647" height="181" key="GridCell.Tab.0.right" timestamp="1587841152773">
+    <state width="1647" height="181" key="GridCell.Tab.0.right" timestamp="1588001736400">
       <screen x="0" y="23" width="1680" height="972" />
     </state>
-    <state width="1647" height="181" key="GridCell.Tab.0.right/0.23.1680.972@0.23.1680.972" timestamp="1587841152773" />
+    <state width="1647" height="181" key="GridCell.Tab.0.right/0.23.1680.972@0.23.1680.972" timestamp="1588001736400" />
     <state width="1659" height="161" key="GridCell.Tab.0.right/0.23.1680.973@0.23.1680.973" timestamp="1587500473603" />
-    <state width="1659" height="324" key="GridCell.Tab.1.bottom" timestamp="1587753433229">
+    <state width="1647" height="323" key="GridCell.Tab.1.bottom" timestamp="1587925516834">
       <screen x="0" y="23" width="1680" height="972" />
     </state>
-    <state width="1659" height="324" key="GridCell.Tab.1.bottom/0.23.1680.972@0.23.1680.972" timestamp="1587753433229" />
+    <state width="1647" height="323" key="GridCell.Tab.1.bottom/0.23.1680.972@0.23.1680.972" timestamp="1587925516834" />
     <state width="1659" height="324" key="GridCell.Tab.1.bottom/0.23.1680.973@0.23.1680.973" timestamp="1587499667177" />
-    <state width="1659" height="324" key="GridCell.Tab.1.center" timestamp="1587753433228">
+    <state width="1647" height="323" key="GridCell.Tab.1.center" timestamp="1587925516833">
       <screen x="0" y="23" width="1680" height="972" />
     </state>
-    <state width="1659" height="324" key="GridCell.Tab.1.center/0.23.1680.972@0.23.1680.972" timestamp="1587753433228" />
+    <state width="1647" height="323" key="GridCell.Tab.1.center/0.23.1680.972@0.23.1680.972" timestamp="1587925516833" />
     <state width="1659" height="324" key="GridCell.Tab.1.center/0.23.1680.973@0.23.1680.973" timestamp="1587499667176" />
-    <state width="1659" height="324" key="GridCell.Tab.1.left" timestamp="1587753433228">
+    <state width="1647" height="323" key="GridCell.Tab.1.left" timestamp="1587925516833">
       <screen x="0" y="23" width="1680" height="972" />
     </state>
-    <state width="1659" height="324" key="GridCell.Tab.1.left/0.23.1680.972@0.23.1680.972" timestamp="1587753433228" />
+    <state width="1647" height="323" key="GridCell.Tab.1.left/0.23.1680.972@0.23.1680.972" timestamp="1587925516833" />
     <state width="1659" height="324" key="GridCell.Tab.1.left/0.23.1680.973@0.23.1680.973" timestamp="1587499667176" />
-    <state width="1659" height="324" key="GridCell.Tab.1.right" timestamp="1587753433228">
+    <state width="1647" height="323" key="GridCell.Tab.1.right" timestamp="1587925516833">
       <screen x="0" y="23" width="1680" height="972" />
     </state>
-    <state width="1659" height="324" key="GridCell.Tab.1.right/0.23.1680.972@0.23.1680.972" timestamp="1587753433228" />
+    <state width="1647" height="323" key="GridCell.Tab.1.right/0.23.1680.972@0.23.1680.972" timestamp="1587925516833" />
     <state width="1659" height="324" key="GridCell.Tab.1.right/0.23.1680.973@0.23.1680.973" timestamp="1587499667177" />
     <state x="396" y="251" key="SettingsEditor" timestamp="1587661906160">
       <screen x="0" y="23" width="1680" height="972" />
@@ -220,9 +224,9 @@
       <screen x="0" y="23" width="1680" height="972" />
     </state>
     <state x="540" y="105" width="600" height="807" key="find.popup/0.23.1680.972@0.23.1680.972" timestamp="1587750089031" />
-    <state x="505" y="237" width="670" height="676" key="search.everywhere.popup" timestamp="1587752479278">
+    <state x="505" y="237" width="670" height="676" key="search.everywhere.popup" timestamp="1587948789322">
       <screen x="0" y="23" width="1680" height="972" />
     </state>
-    <state x="505" y="237" width="670" height="676" key="search.everywhere.popup/0.23.1680.972@0.23.1680.972" timestamp="1587752479278" />
+    <state x="505" y="237" width="670" height="676" key="search.everywhere.popup/0.23.1680.972@0.23.1680.972" timestamp="1587948789322" />
   </component>
 </project>
