@@ -1,6 +1,6 @@
-#da usare con miniCluster2.txt
+#da usare con miniClusterIniziale.txt
 
-with open("miniCluster2.txt", "r") as file:
+with open("../miniClusterIniziale.txt", "r") as file:
     miniCluster = eval(file.readline())
 
 indexDaRimuovere=[]
@@ -33,7 +33,7 @@ print(miniCluster[1])
 for indexListaAttributiProdottiUguali in range(len(miniCluster)):
     miniCluster[indexListaAttributiProdottiUguali]=list(filter(lambda x : x!=0,miniCluster[indexListaAttributiProdottiUguali]))
 print(miniCluster[1])
-with open("miniClusterRaggruppato.txt", "w") as file:
+with open("../miniClusterRaggruppato.txt", "w") as file:
     file.write(str(miniCluster))
 
 

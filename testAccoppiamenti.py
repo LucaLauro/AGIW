@@ -16,7 +16,6 @@ for tuple in miniCluster[188][:-1]:
     for tupleSuccessive in miniCluster[188][miniCluster[188].index(tuple):]:
         valoriDaVerificare=tupleSuccessive[1][0][1].lower()
         nomeAttibuto2=tupleSuccessive[0]
-
         #if fuzz.token_set_ratio(valoriDaVerificare,'(more than') ==100:
         #    posizione=valoriDaVerificare.index('(')
         #    valoriDaVerificare=valoriDaVerificare[:posizione]
@@ -46,3 +45,13 @@ for tuple in miniCluster[188][:-1]:
             print(i3)"""
 print(int,int2,len(miniCluster[188]))
 print(miniCluster[188])
+
+listaIndexDaRaggruppare=[(indiceProdotto,indiceClusterProdottoPrincipale,indiceClusterProdottoDaRaggruppare)]
+for tupla in listaIndexDaRaggruppare:
+    clusterPrincipale=tupla[2]
+    for tupleSuccessive in listaIndexDaRaggruppare[listaIndexDaRaggruppare.index(tupla):]:
+        if tupleSuccessive[1]==clusterPrincipale:
+            tupleSuccessive=(tupleSuccessive[0],clusterPrincipale[1],tupleSuccessive[2])
+for tupla inlistaIndexDaRaggruppare:
+
+    miniCluster[tupla[0]][tupla[1]]
