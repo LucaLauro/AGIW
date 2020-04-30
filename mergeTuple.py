@@ -6,6 +6,7 @@
 
 def mergeTuple(miniCluster,indexProdotto,indexClusterPrincipale,indexClusterDaRaggruppare):
     listClusterPrinciale = miniCluster[indexProdotto][indexClusterPrincipale][1]
+    print(miniCluster[indexProdotto][indexClusterDaRaggruppare][1])
     listClusterDaRaggruppare = miniCluster[indexProdotto][indexClusterDaRaggruppare][1]
     nuovaListaCluster = listClusterPrinciale + listClusterDaRaggruppare
     listaAppoggio = list(miniCluster[indexProdotto][indexClusterPrincipale])

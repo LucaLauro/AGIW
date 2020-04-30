@@ -1,57 +1,46 @@
 from fuzzywuzzy import fuzz
+from mergeTuple import mergeTuple
 
 with open("miniClusterRaggruppato.txt", "r") as file:
     miniCluster = eval(file.readline())
 
-#for tuple in miniCluster[190]:
- #   if tuple!=0:
-  #      print(tuple)
+listaIndexDaRaggruppare = []
+for listaProdotti in miniCluster:
+    for tuple in listaProdotti[:-1]:
+        nomeAttibuto1 = tuple[0]
+        tuplaValueMinuscolo = tuple[1][0][1].lower()
+        index1 = listaProdotti.index(tuple)
+        for tupleSuccessive in listaProdotti[listaProdotti.index(tuple):]:
+            index2 = listaProdotti.index(tupleSuccessive)
+            valoriDaVerificare = tupleSuccessive[1][0][1].lower()
+            nomeAttibuto2 = tupleSuccessive[0]
+            i = fuzz.token_sort_ratio(tuplaValueMinuscolo, valoriDaVerificare)
+            i2 = fuzz.ratio(tuplaValueMinuscolo, valoriDaVerificare)
+            # i3 = fuzz.token_set_ratio(tuplaValueMinuscolo, valoriDaVerificare)
+            if i > 84 and i < 100 and index1 != index2 and nomeAttibuto1 != '<page title>' and not (
+                    len(tuplaValueMinuscolo) < 7 and i2 < 50):
+                listaIndexDaRaggruppare.append((miniCluster.index(listaProdotti), listaProdotti.index(tuple),
+                                                listaProdotti.index(tupleSuccessive)))
+                # print(i3)
+    print(miniCluster.index(listaProdotti), '/191')
 
-int=0
-int2=0
-for tuple in miniCluster[188][:-1]:
-    nomeAttibuto1=tuple[0]
-    tuplaValueMinuscolo=tuple[1][0][1].lower()
-    index1=miniCluster[188].index(tuple)
-    for tupleSuccessive in miniCluster[188][miniCluster[188].index(tuple):]:
-        valoriDaVerificare=tupleSuccessive[1][0][1].lower()
-        nomeAttibuto2=tupleSuccessive[0]
-        #if fuzz.token_set_ratio(valoriDaVerificare,'(more than') ==100:
-        #    posizione=valoriDaVerificare.index('(')
-        #    valoriDaVerificare=valoriDaVerificare[:posizione]
-        #if fuzz.token_set_ratio(tuplaValueMinuscolo,'(more than') ==100:
-        #    posizione2 = tuplaValueMinuscolo.index('(')
-        #    tuplaValueMinuscolo = tuplaValueMinuscolo[:posizione2]
+print(listaIndexDaRaggruppare)
+# listaIndexDaRaggruppare=[(indiceProdotto,indiceClusterProdottoPrincipale,indiceClusterProdottoDaRaggruppare)]
+for indexTupla in range(len(listaIndexDaRaggruppare) - 1):
+    clusterPrincipale = listaIndexDaRaggruppare[indexTupla][2]
+    for indexTupleSuccessive in range(indexTupla + 1, len(listaIndexDaRaggruppare)):
+        if listaIndexDaRaggruppare[indexTupleSuccessive][1] == clusterPrincipale:
+            listaIndexDaRaggruppare[indexTupleSuccessive] = (listaIndexDaRaggruppare[indexTupleSuccessive][0], listaIndexDaRaggruppare[indexTupla][1],listaIndexDaRaggruppare[indexTupleSuccessive][2])
 
-        i = fuzz.token_sort_ratio(tuplaValueMinuscolo, valoriDaVerificare)
-        i2 = fuzz.ratio(tuplaValueMinuscolo, valoriDaVerificare)
-        i3 = fuzz.token_set_ratio(tuplaValueMinuscolo, valoriDaVerificare)
-        index2 = miniCluster[188].index(tupleSuccessive)
+listaIndexDaRaggruppare=list( dict.fromkeys(listaIndexDaRaggruppare))
 
-        if i>84 and i<100 and index1!=index2 and nomeAttibuto1!='<page title>' and not (len(tuplaValueMinuscolo)<7 and i2<50):
-            print(tuplaValueMinuscolo+'---'+nomeAttibuto1,index1)
-            print(valoriDaVerificare+'---'+nomeAttibuto2,index2)
-            print(i)
-            print(i2)
-            print(i3)
-            int=int+1
-
-        """if i > 70 and i < 80 and index1 != index2 and nomeAttibuto1 != '<page title>':
-            int2=int2+1
-            print(tuplaValueMinuscolo+'---'+ nomeAttibuto1, index1)
-            print(valoriDaVerificare+'---'+nomeAttibuto2, index2)
-            print(i)
-            print(i2)
-            print(i3)"""
-print(int,int2,len(miniCluster[188]))
-print(miniCluster[188])
-
-listaIndexDaRaggruppare=[(indiceProdotto,indiceClusterProdottoPrincipale,indiceClusterProdottoDaRaggruppare)]
+for indexTupla in range(len(listaIndexDaRaggruppare) - 1):
+    clusterPrincipale = listaIndexDaRaggruppare[indexTupla][2]
+    for indexTupleSuccessive in range(indexTupla + 1, len(listaIndexDaRaggruppare)):
+        if listaIndexDaRaggruppare[indexTupleSuccessive][2] == clusterPrincipale:
+            listaIndexDaRaggruppare[indexTupleSuccessive] = (listaIndexDaRaggruppare[indexTupleSuccessive][0], listaIndexDaRaggruppare[indexTupla][1],listaIndexDaRaggruppare[indexTupleSuccessive][1])
+listaIndexDaRaggruppare=list( dict.fromkeys(listaIndexDaRaggruppare))
 for tupla in listaIndexDaRaggruppare:
-    clusterPrincipale=tupla[2]
-    for tupleSuccessive in listaIndexDaRaggruppare[listaIndexDaRaggruppare.index(tupla):]:
-        if tupleSuccessive[1]==clusterPrincipale:
-            tupleSuccessive=(tupleSuccessive[0],clusterPrincipale[1],tupleSuccessive[2])
-for tupla inlistaIndexDaRaggruppare:
-
-    miniCluster[tupla[0]][tupla[1]]
+    miniCluster = mergeTuple(miniCluster, tupla[0], tupla[1], tupla[2])
+with open("raggruppato.txt", "w") as file:
+    file.write(str(miniCluster))
