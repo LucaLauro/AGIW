@@ -1,5 +1,21 @@
 import pandas as pd
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 from py_thesaurus import Thesaurus
+
+def checkSimilarity(dictionary, attribute_value, attribute_name):
+    check_similarity = False
+    dictionary = list(dictionary.values())[0]
+    for value in dictionary[1]:
+        if fuzz.ratio(str(attribute_value).lower(), str(value).lower()) > 60:
+            # 'Canon' e 'none' possono finire insieme (ratio 67)
+            check_similarity = True
+        elif fuzz.ratio(str(attribute_value).lower(), str(value).lower()) > 30:
+            #Si controlla l'attribute name
+            if attribute_name in dictionary[0]:
+                check_similarity = True
+             # PER MIGLIORARE I RISULTATI SI PUO' AGGIUNGERE UN THESAURUS??? (DA VALUTARE)
+    return check_similarity
 
 newCluster = [] #Nuovo cluster da costruire e riempire. E' un lista di tuple
 cluster = []
@@ -35,7 +51,7 @@ for index, row in df.iterrows():
                # Uso un set così da scartare i duplicati
                newAttributeNameList = set().union(valori[0], attributeNameList)
                newAttributeValueList = set().union(valori[1], attributeValueList)
-               newfileNameList = valori[2] + fileNameList
+               newfileNameList = set().union(valori[2], fileNameList)
                dictionary[target_attribute] = (newAttributeNameList, newAttributeValueList, newfileNameList)
    else:
        newCluster.append({target_attribute: (attributeNameList, attributeValueList, fileNameList)})
@@ -46,27 +62,27 @@ for product in cluster:
     for attributes in product: #Salto la posizione zero che è solo il nome del cluster
         attribute = attributes[1] # tupla con gli attributi
         for tupla in attribute:
-            print('ciao')
+            findOne = False #Booleano che controlla se è già presente un cluster che può accogliere l'attributo. Se è false si crea un nuovo cluster
+            # Scorro dentro i cluster, prima cerco tra gli attribute name e poi negli attribute value
+            for dictionary in newCluster:
+                if checkSimilarity(dictionary,tupla[1],tupla[0]):
+                    newValori = list(dictionary.values())[0]
+                    valueList = set().union(newValori[1],[tupla[1]])
+                    nameList = set().union(newValori[0], [tupla[0]])
+                    fileList = set().union(newValori[2], [tupla[2]])
+                    key = list(dictionary.keys())[0]
+                    dictionary[key] = (nameList, valueList, fileList)
+                    findOne = True
+            if findOne is False:
+                valueList = set([tupla[1]])
+                nameList = set([tupla[0]])
+                fileList = set([tupla[2]])
+                newCluster.append({tupla[0] : (nameList,valueList,fileList)})
 
-
-
-
-#def sameCluster(target_attribute,left_attribute,right_attribute,*tupla):
-#    ldata = left_attribute.split("/")
-#    lattribute = ldata[2]
-#    rdata = right_attribute.split("/")
-#    rattribute = rdata[2]
- #   if target_attribute == tupla[0] or synonimous(target_attribute, tupla[0]):
-#       #TODO: Da finire da implementare
- #       return True
-
-
-
-#def synonimous(attribute_name, target_atribute):
-#    target_synonims = Thesaurus(target_attribute)
-#    synonims = (target_synonims.get_synonym())
-#    if attribute_name in synonims:
-#        return True
-#    else #Si cerca nel dizionario dei sinonimi
-#    #TODO: Da implementare il dizionario di sinonimi
-#    return True
+print("FATTO")
+with open('ground_truth_output', 'w') as f:
+    #Trasformo i dizionari in una lista per la fase successiva
+    for dictionary in newCluster:
+        fromDictionaryToList = [(k, v) for k, v in dictionary.items()]
+        for item in fromDictionaryToList:
+            f.write("%s\n" % item)
