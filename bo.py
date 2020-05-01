@@ -2,9 +2,12 @@ with open("raggruppato.txt", "r") as file:
     lista = eval(file.readline())
 
 
+
 def group_cluster_in_products(list_binding):
     group_binding = []
     for product, b1, b2 in list_binding:
+        while len(group_binding)-1<product:
+            group_binding += [[]]
         if len(group_binding)>product:
             non_messo = True
             for i in range(len(group_binding[product])):
