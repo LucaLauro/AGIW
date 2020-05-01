@@ -1,13 +1,14 @@
 import pandas as pd
 from fuzzywuzzy import fuzz
-from fuzzywuzzy import process
-from py_thesaurus import Thesaurus
 
-def checkSimilarity(dictionary, attribute_value, attribute_name):
+
+def checkSimilarity(lista, attribute_value):
+    limit = 50
     check_similarity = False
-    dictionary = list(dictionary.values())[0]
-    for value in dictionary[1]:
-        if fuzz.ratio(str(attribute_value).lower(), str(value).lower()) > 60:
+    for value in lista[1]:
+        if len(attribute_value.split()) == 1:
+            limit = 70
+        if fuzz.ratio(str(attribute_value).lower(), str(value).lower()) > limit:
             # 'Canon' e 'none' possono finire insieme (ratio 67)
             check_similarity = True
     return check_similarity
@@ -60,7 +61,9 @@ for product in cluster:
             findOne = False #Booleano che controlla se è già presente un cluster che può accogliere l'attributo. Se è false si crea un nuovo cluster
             # Scorro dentro i cluster, prima cerco tra gli attribute name e poi negli attribute value
             for dictionary in newCluster:
-                if checkSimilarity(dictionary,tupla[1],tupla[0]):
+                valoriDizionario= list(dictionary.values())[0]
+                #Se il controllo non lo faccio su tutti gli attributi ma solo sul primo???
+                if checkSimilarity(valoriDizionario,tupla[1]):
                     newValori = list(dictionary.values())[0]
                     valueList = set().union(newValori[1],[tupla[1]])
                     nameList = set().union(newValori[0], [tupla[0]])
@@ -76,9 +79,3 @@ for product in cluster:
 
 print("FATTO")
 
-with open('ground_truth_output', 'w') as f:
-    #Trasformo i dizionari in una lista per la fase successiva
-    for d in newCluster:
-        fromDictionaryToList = [(k, v) for k, v in d.items()]
-        for item in fromDictionaryToList:
-            f.write("%s\n" % item)
