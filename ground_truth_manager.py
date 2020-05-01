@@ -10,11 +10,6 @@ def checkSimilarity(dictionary, attribute_value, attribute_name):
         if fuzz.ratio(str(attribute_value).lower(), str(value).lower()) > 60:
             # 'Canon' e 'none' possono finire insieme (ratio 67)
             check_similarity = True
-        elif fuzz.ratio(str(attribute_value).lower(), str(value).lower()) > 30:
-            #Si controlla l'attribute name
-            if attribute_name in dictionary[0]:
-                check_similarity = True
-             # PER MIGLIORARE I RISULTATI SI PUO' AGGIUNGERE UN THESAURUS??? (DA VALUTARE)
     return check_similarity
 
 newCluster = [] #Nuovo cluster da costruire e riempire. E' un lista di tuple
@@ -80,9 +75,10 @@ for product in cluster:
                 newCluster.append({tupla[0] : (nameList,valueList,fileList)})
 
 print("FATTO")
+
 with open('ground_truth_output', 'w') as f:
     #Trasformo i dizionari in una lista per la fase successiva
-    for dictionary in newCluster:
-        fromDictionaryToList = [(k, v) for k, v in dictionary.items()]
+    for d in newCluster:
+        fromDictionaryToList = [(k, v) for k, v in d.items()]
         for item in fromDictionaryToList:
             f.write("%s\n" % item)
