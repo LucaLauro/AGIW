@@ -3,15 +3,15 @@ from fuzzywuzzy import fuzz
 
 
 def checkSimilarity(lista, attribute_value):
-    limit = 50
-    check_similarity = False
     for value in lista[1]:
+        limit = 50
         if len(attribute_value.split()) == 1:
             limit = 70
         if fuzz.ratio(str(attribute_value).lower(), str(value).lower()) > limit:
             # 'Canon' e 'none' possono finire insieme (ratio 67)
-            check_similarity = True
-    return check_similarity
+            # Elimino la variabile checkSimilarity. Basta che ne trovo uno e esco dalla funzione. Così aumento lo speed up
+            return True
+    return False
 
 newCluster = [] #Nuovo cluster da costruire e riempire. E' un lista di tuple
 cluster = []
@@ -78,4 +78,5 @@ for product in cluster:
                 newCluster.append({tupla[0] : (nameList,valueList,fileList)})
 
 print("FATTO")
+print(newCluster)
 
