@@ -26,6 +26,7 @@ for indexListaProdotti in range(len(miniCluster)):
 for indexListaProdotti in range(len(miniCluster)):     #filtro i cluster sostituiti con 0(quelli che ho raggruppato)
     miniCluster[indexListaProdotti]=list(filter(lambda x : x != 0, miniCluster[indexListaProdotti]))
 
-
+with open("miniClusterRaggruppato.txt", "w") as file:
+    file.write(str(miniCluster))
 
 
