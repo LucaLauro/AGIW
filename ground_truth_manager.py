@@ -17,7 +17,7 @@ cluster = []
 #Prendo la lista di cluster generata nella fase precedente miniclusterRaggruppato.txt
 # Ogni lista in miniclusterraggruppato rappresenta un prodotto. All'interno di quel prodotto ha una lista di tuple che
 # rappresentano gli attributi di quel prodotto
-with open("miniClusterRaggruppato.txt", "r") as file:
+with open("miniClusterPassata2.txt", "r") as file:
     cluster = eval(file.readline())
 
 df = pd.read_csv("ground_truth/ground_truth_random_reducedx2.csv")

@@ -1,9 +1,9 @@
 #conto gli attibuti per fare controllare la consistenza
-with open("miniClusterRaggruppato.txt", "r") as file:
+with open("miniClusterPassata2.txt", "r") as file:
     minicluster = eval(file.readline())
-with open("miniClusterIniziale.txt", "r") as file:
+with open("miniClusterPassata1.txt", "r") as file:
     minicluster2 = eval(file.readline())
-with open("testUltimoRaggruppamento.txt", "r") as file:
+with open("miniClusterPassata3Part2.txt", "r") as file:
     minicluster3 = eval(file.readline())
 counter=0
 counter2=0

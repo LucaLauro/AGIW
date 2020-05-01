@@ -1,11 +1,11 @@
-#da usare con miniClusterIniziale.txt
+#da usare con miniClusterPassata1.txt
 #prendo come input il primo minicluster con i primi minicluster ragguppati(solo le coppie con attribute value e attribute name uguali sono state
 #raggruppate in questo momento) e aumento i cluster raggruppando anche quelli con le parole degli attribute value con un ordine diverso
 #(vengono presi in esame solo gli attribute value con una parola ma più lunga di 4 caratteri, e quelli con almeno 3 parole)
 
 from mergeTuple import mergeTuple
 
-with open("miniClusterIniziale.txt", "r") as file:
+with open("miniClusterPassata1.txt", "r") as file:
     miniCluster = eval(file.readline())
 
 
@@ -26,7 +26,7 @@ for indexListaProdotti in range(len(miniCluster)):
 for indexListaProdotti in range(len(miniCluster)):     #filtro i cluster sostituiti con 0(quelli che ho raggruppato)
     miniCluster[indexListaProdotti]=list(filter(lambda x : x != 0, miniCluster[indexListaProdotti]))
 
-with open("miniClusterRaggruppato.txt", "w") as file:
+with open("miniClusterPassata2.txt", "w") as file:
     file.write(str(miniCluster))
 
 

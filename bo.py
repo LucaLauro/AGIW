@@ -1,7 +1,7 @@
 # prendo in input una lista di tuple del tipo [(0,2,4),(0,4,6),...] dove il primo elemento specifica il numero del prodotto
 # il secondo numero dellla tupla il cluster principale in cui va raggruppato il terzo elemento della tupla
 # l'out della funzione è una lista di liste dove ogni lista contiene tutti gli indici degli elementi che vanno raggruppati insieme
-with open("raggruppato.txt", "r") as file:
+with open("miniClusterPassata3Part1.txt", "r") as file:
     lista = eval(file.readline())
 
 

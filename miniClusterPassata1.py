@@ -26,5 +26,5 @@ for prodotti in prodottiUguali:
         f.close()
     miniCluster.append(clusterListStessiProdotti)   #inserisco la lista d'appoggio in quella definitiva
 
-with open("miniClusterIniziale.txt", "w") as file:
+with open("miniClusterPassata1.txt", "w") as file:
     file.write(str(miniCluster))

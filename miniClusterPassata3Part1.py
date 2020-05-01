@@ -1,7 +1,7 @@
 from fuzzywuzzy import fuzz
 from mergeTuple import mergeTuple
 
-with open("miniClusterRaggruppato.txt", "r") as file:
+with open("miniClusterPassata2.txt", "r") as file:
     miniCluster = eval(file.readline())
 
 listaIndexDaRaggruppare = []
@@ -26,5 +26,5 @@ for listaProdotti in miniCluster:
 
 print(listaIndexDaRaggruppare)
 
-with open("raggruppato.txt", "w") as file:
+with open("miniClusterPassata3Part1.txt", "w") as file:
     file.write(str(listaIndexDaRaggruppare))

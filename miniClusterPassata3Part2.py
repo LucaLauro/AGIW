@@ -2,7 +2,7 @@ from bo import group_cluster_in_products
 from mergeTuple import mergeTuple
 with open("raggruppatoDaAndrea.txt", "r") as file:
     listaRaggruppamenti = eval(file.readline())
-with open("miniClusterRaggruppato.txt", "r") as file:
+with open("miniClusterPassata2.txt", "r") as file:
     miniCluster = eval(file.readline())
 
 
@@ -16,5 +16,5 @@ for index in range(len(miniCluster)):
                 miniCluster=mergeTuple(miniCluster,index,elementoPrincipale,elementoDaRaggruppare)
 for indexListaProdotti in range(len(miniCluster)):     #filtro i cluster sostituiti con 0(quelli che ho raggruppato)
     miniCluster[indexListaProdotti]=list(filter(lambda x : x != 0, miniCluster[indexListaProdotti]))
-with open("testUltimoRaggruppamento.txt", "w") as file:
+with open("miniClusterPassata3Part2.txt", "w") as file:
     file.write(str(miniCluster))
