@@ -12,6 +12,9 @@ for prodotti in prodottiUguali:
         data = json.load(f)
         for (k, v) in data.items():   #itero ogni attributo del prodotto
             nonTrovato = True
+            if '(more than' in v:     #elimino i (more than xx%) che danno fastidio
+                i = v.index('(')
+                v = v[:i]
             if type(v) == list:
                 v = str(v).strip('[]')  #elimino i caratteri [ ] che mi farebbero sbagliare in fasi successiva l'elaborazione del tipo del valore(in sostanza lo elaborava come una lista invece che come una stringa
             for cluster in clusterListStessiProdotti:    #itero i cluster nella lista di appoggio(sono tutti dello stesso prodotto)
