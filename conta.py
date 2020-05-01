@@ -3,10 +3,20 @@ with open("miniClusterRaggruppato.txt", "r") as file:
     minicluster = eval(file.readline())
 with open("miniClusterIniziale.txt", "r") as file:
     minicluster2 = eval(file.readline())
+with open("testUltimoRaggruppamento.txt", "r") as file:
+    minicluster3 = eval(file.readline())
 counter=0
 counter2=0
 counter3=0
 counter4=0
+counter5=0
+counter6=0
+for stessiProdotti in minicluster2:
+    for cluster in stessiProdotti:
+        counter3 = counter3+ len(cluster[1])
+        counter4=counter4+1
+print(counter3)
+print(counter4)
 for stessiProdotti in minicluster:
     for cluster in stessiProdotti:
     #print(minicluster[1][index][1], len(minicluster[1][index][1]))
@@ -16,12 +26,13 @@ for stessiProdotti in minicluster:
 print(counter)
 print(counter2)
 
-for stessiProdotti in minicluster2:
+
+for stessiProdotti in minicluster3:
     for cluster in stessiProdotti:
-        counter3 = counter3+ len(cluster[1])
-        counter4=counter4+1
-print(counter3)
-print(counter4)
+        counter5 = counter5+ len(cluster[1])
+        counter6=counter6+1
+print(counter5)
+print(counter6)
 #print(minicluster[1])
 #print(minicluster2[1][180])
 #print(minicluster2[1][170])

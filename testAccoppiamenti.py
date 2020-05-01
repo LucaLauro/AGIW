@@ -25,23 +25,6 @@ for listaProdotti in miniCluster:
     print(miniCluster.index(listaProdotti), '/191')
 
 print(listaIndexDaRaggruppare)
-"""
-# listaIndexDaRaggruppare=[(indiceProdotto,indiceClusterProdottoPrincipale,indiceClusterProdottoDaRaggruppare)]
-for indexTupla in range(len(listaIndexDaRaggruppare) - 1):
-    clusterPrincipale = listaIndexDaRaggruppare[indexTupla][2]
-    for indexTupleSuccessive in range(indexTupla + 1, len(listaIndexDaRaggruppare)):
-        if listaIndexDaRaggruppare[indexTupleSuccessive][1] == clusterPrincipale:
-            listaIndexDaRaggruppare[indexTupleSuccessive] = (listaIndexDaRaggruppare[indexTupleSuccessive][0], listaIndexDaRaggruppare[indexTupla][1],listaIndexDaRaggruppare[indexTupleSuccessive][2])
 
-listaIndexDaRaggruppare=list( dict.fromkeys(listaIndexDaRaggruppare))
-
-for indexTupla in range(len(listaIndexDaRaggruppare) - 1):
-    clusterPrincipale = listaIndexDaRaggruppare[indexTupla][2]
-    for indexTupleSuccessive in range(indexTupla + 1, len(listaIndexDaRaggruppare)):
-        if listaIndexDaRaggruppare[indexTupleSuccessive][2] == clusterPrincipale:
-            listaIndexDaRaggruppare[indexTupleSuccessive] = (listaIndexDaRaggruppare[indexTupleSuccessive][0], listaIndexDaRaggruppare[indexTupla][1],listaIndexDaRaggruppare[indexTupleSuccessive][1])
-listaIndexDaRaggruppare=list( dict.fromkeys(listaIndexDaRaggruppare))
-for tupla in listaIndexDaRaggruppare:
-    miniCluster = mergeTuple(miniCluster, tupla[0], tupla[1], tupla[2])"""
 with open("raggruppato.txt", "w") as file:
     file.write(str(listaIndexDaRaggruppare))
