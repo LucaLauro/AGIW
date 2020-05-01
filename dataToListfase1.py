@@ -18,10 +18,10 @@ def nomes_file_in_directory(path):
 
 """ pulisce le stringhe passate da qualunque carattere brutto (o stringa) """
 def clean_value(value):
-    bad_ch_list = [']','[', '\n', '@'] #aggiungere qui caratteri o stringhe che si vuole eliminare
-    new_value = ""
+    bad_ch_list = [']','[', '@'] #aggiungere qui caratteri o stringhe che si vuole eliminare
+    new_value = value
     for bad_ch in bad_ch_list:
-        new_value = value.replace(bad_ch, " ")
+        new_value = new_value.replace(bad_ch, " ")
     return new_value
 
 """ se è una lista la strasforma in stringa """
