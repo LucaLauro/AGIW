@@ -7,10 +7,14 @@ def checkSimilarity(lista, attribute_value):
         limit = 50
         if len(attribute_value.split()) == 1:
             limit = 80
-        if fuzz.ratio(str(attribute_value).lower(), str(value).lower()) > limit:
+        ratio = fuzz.ratio(str(attribute_value).lower(), str(value).lower())
+        if ratio > limit:
             # 'Canon' e 'none' possono finire insieme (ratio 67)
+            print(attribute_value + "NNNNNN" + value + "NNNNNNN" + str(ratio) + " NON FORMA UN NUOVO CLUSTER\n")
             return True
+    print(attribute_value + "NNNNN" + value + "NNNNNN"+  str(ratio) + " FORMA UN NUOVO CLUSTER\n")
     return False
+
 
 newCluster = [] #Nuovo cluster da costruire e riempire. E' un lista di tuple
 cluster = []
@@ -72,7 +76,6 @@ for product in cluster:
                      keyDictionary = list(dictionary.keys())[0]
                      dictionary[keyDictionary] = (nameClusterList, valueClusterList, fileNameList)
                      break
-
          nameClusterList = set([item[0]]) # prima la conversione in lista perchè il set di una stringa mi restituisce un set di caratteri
          valueClusterList = set([item[1]])
          fileClusterList = set([item[2]])
