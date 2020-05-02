@@ -6,7 +6,7 @@ def checkSimilarity(lista, attribute_value):
     for value in lista:
         limit = 50
         if len(attribute_value.split()) == 1:
-            limit = 70
+            limit = 80
         if fuzz.ratio(str(attribute_value).lower(), str(value).lower()) > limit:
             # 'Canon' e 'none' possono finire insieme (ratio 67)
             return True
@@ -66,9 +66,9 @@ for product in cluster:
                  alist= list(dictionary.values())[0] #i valori di un dizionario non sono iterabili e quindi si fa questo passaggio aggiuntivo
                  attributeListCluster = list(alist[1]) #è la lista di attributi nel cluster
                  if checkSimilarity(attributeListCluster, attributeValue):
-                     nameClusterList = alist[0].union(item[0])
-                     valueClusterList = set(attributeListCluster).union((item[1]))
-                     fileClusterList = set(item[2]).union(alist[2])
+                     nameClusterList = alist[0].union([item[0]])
+                     valueClusterList = set(attributeListCluster).union([item[1]])
+                     fileClusterList = set([item[2]]).union(alist[2])
                      keyDictionary = list(dictionary.keys())[0]
                      dictionary[keyDictionary] = (nameClusterList, valueClusterList, fileNameList)
                      break
