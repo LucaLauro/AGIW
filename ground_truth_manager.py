@@ -3,13 +3,12 @@ from fuzzywuzzy import fuzz
 
 
 def checkSimilarity(lista, attribute_value):
-    for value in lista[1]:
+    for value in lista:
         limit = 50
         if len(attribute_value.split()) == 1:
             limit = 70
         if fuzz.ratio(str(attribute_value).lower(), str(value).lower()) > limit:
             # 'Canon' e 'none' possono finire insieme (ratio 67)
-            # Elimino la variabile checkSimilarity. Basta che ne trovo uno e esco dalla funzione. Così aumento lo speed up
             return True
     return False
 
@@ -55,28 +54,28 @@ for index, row in df.iterrows():
 # Sono stati creati dei cluster con la ground_truth. Adesso possiamo unire questi cluster con quelli creati nella fase precedente
 for product in cluster:
     # product è una lista di tuple con gli attributi del prodotto
-    for attributes in product: #Salto la posizione zero che è solo il nome del cluster
-        attribute = attributes[1] # tupla con gli attributi
-        for tupla in attribute:
-            findOne = False #Booleano che controlla se è già presente un cluster che può accogliere l'attributo. Se è false si crea un nuovo cluster
-            # Scorro dentro i cluster, prima cerco tra gli attribute name e poi negli attribute value
-            for dictionary in newCluster:
-                valoriDizionario= list(dictionary.values())[0]
-                #Se il controllo non lo faccio su tutti gli attributi ma solo sul primo???
-                if checkSimilarity(valoriDizionario,tupla[1]):
-                    newValori = list(dictionary.values())[0]
-                    valueList = set().union(newValori[1],[tupla[1]])
-                    nameList = set().union(newValori[0], [tupla[0]])
-                    fileList = set().union(newValori[2], [tupla[2]])
-                    key = list(dictionary.keys())[0]
-                    dictionary[key] = (nameList, valueList, fileList)
-                    findOne = True
-            if findOne is False:
-                valueList = set([tupla[1]])
-                nameList = set([tupla[0]])
-                fileList = set([tupla[2]])
-                newCluster.append({tupla[0] : (nameList,valueList,fileList)})
+    for tupla in product:
+         #Salto la posizione zero che è solo il nome del cluster
+         # Lo 0 è il nome del cluster e viene saltato
+         clusterItemsList = tupla[1] #Ho una lista di tuple ('nome attributo', 'valore attributo', 'nome file')
+         for item in clusterItemsList: #item è la tupla ('nome attributo', 'valore attributo', 'nome file')
+             attributeValue = item[1] # faccio il check solo sul valore
+             #Scorro adesso il cluster e vedo se ci sono valori simili con cui può essere accoppiato
+             for dictionary in newCluster:
+                 # alist è una lista di tuple
+                 alist= list(dictionary.values())[0] #i valori di un dizionario non sono iterabili e quindi si fa questo passaggio aggiuntivo
+                 attributeListCluster = list(alist[1]) #è la lista di attributi nel cluster
+                 if checkSimilarity(attributeListCluster, attributeValue):
+                     nameClusterList = alist[0].union(item[0])
+                     valueClusterList = set(attributeListCluster).union((item[1]))
+                     fileClusterList = set(item[2]).union(alist[2])
+                     keyDictionary = list(dictionary.keys())[0]
+                     dictionary[keyDictionary] = (nameClusterList, valueClusterList, fileNameList)
+                     break
 
+         nameClusterList = set([item[0]]) # prima la conversione in lista perchè il set di una stringa mi restituisce un set di caratteri
+         valueClusterList = set([item[1]])
+         fileClusterList = set([item[2]])
+         clusterName = [item[0]][0]
+         newCluster.append({clusterName: (nameClusterList,valueClusterList,fileClusterList)})
 print("FATTO")
-print(newCluster)
-
