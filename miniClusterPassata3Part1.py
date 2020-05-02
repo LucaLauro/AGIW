@@ -1,5 +1,5 @@
 from fuzzywuzzy import fuzz
-from mergeTuple import mergeTuple
+
 
 with open("miniClusterPassata2.txt", "r") as file:
     miniCluster = eval(file.readline())
