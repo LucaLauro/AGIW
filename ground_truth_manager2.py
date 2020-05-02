@@ -72,14 +72,20 @@ print(len(newCluster))
 
 #ADESSO SI PROCEDE AL CONFRONTO FRA DIZIONARI: IL DIZIONARIO DELLA GROUND TRUTH E QUELLO DEI PRODOTTI
 for d1 in productCluster:
+    #SCORRO TUTTO IL CLUSTER DEI PRODOTTI
     for key1, value1 in d1.items():
-        # qui controllo la similarità
-        # value è una lista di tupla del tipo (nomeAttributo, valoreAttributo, NomeFile)
+        # value1 è una lista di tuple del tipo (nomeAttributo, valoreAttributo, NomeFile)
         for tupla in value1:
             attribute_to_check = tupla[1]
+            ############################################################
+            # SCORRO IL CLUSTER DELLA GROUD TRUTH
             for d2 in newCluster:
+                findOne = False
+                # newCluster è una lista di dizionari. Li scorro e mi servo della lista di attribute values di ogni dizionario
                 for key2, value2 in d2.items():
                     attribute_list = value2[1]
+                    #CONTROLLO SIMILARITA' DELL'ATTRIBUTO DELLA TUPLA. SE VA BENE LO AGGIUNGO AD UN DIZIONARIO ESISTENTE E
+                    # VADO AVANTI CON LA TUPLA
                     if checkSimilarity(attribute_to_check, attribute_list):
                         if isinstance(value2[0], set):
                             if isinstance(tupla[0], set):
@@ -104,16 +110,23 @@ for d1 in productCluster:
                             v.add(tupla[2])
                             new_filename = v
                         else:
-                            # probabile errore
-                            new_filename = set([value2[2]]).add(tupla[2])
+                            # ci sono dei valori none
+                            if value2[2] is None:
+                                new_filename = set([tupla[2]])
+                            else:
+                                new_filename = set(value2[2]).add(tupla[2])
                         for dictionary in newCluster:
                             if key2 in dictionary:
                                 dictionary[key2] = (new_attribute_name, new_attribute_value, new_filename)
+                                findOne=True
                                 break
-            name_list = tupla[0]
-            if isinstance(tupla[0], set) and isinstance(tupla[1], set) and isinstance(tupla[2], set):
-                newCluster.append({name_list: (tupla[0], tupla[1], tupla[2])})
-            newCluster.append({name_list : ({tupla[0]}, {tupla[1]}, {tupla[2]})})
+                        break
+            if not findOne:
+            # HO EFFETTUATO LO SCORRIMENTO SU TUTTO IL DIZIONARIO E NON HO TROVATO QUELLO CHE CERCAVO. AGGIUNGO
+                name_list = tupla[0]
+                if isinstance(tupla[0], set) and isinstance(tupla[1], set) and isinstance(tupla[2], set):
+                    newCluster.append({name_list: (tupla[0], tupla[1], tupla[2])})
+                newCluster.append({name_list : ({tupla[0]}, {tupla[1]}, {tupla[2]})})
 print("FATTO2")
 print(len(newCluster))
 print(newCluster)
