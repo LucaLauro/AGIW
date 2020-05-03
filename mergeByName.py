@@ -1,0 +1,66 @@
+#[[(brand,{brand:48,manufacturer:2}),(model,{mpn:28,model:39}),...]]
+from provaClusterDict import prova_cluster
+from fuzzywuzzy import fuzz
+
+with open("miniClusterFiltrato.txt", "r") as file:
+        miniCluster = eval(file.readline())
+
+def accettabili(val1, val2):
+    True
+
+def merge_name_product(dict_product, cluster_product):  
+    bind = []
+    for _,dict_name_attribute in dict_product:      
+        for key1 in dict_name_attribute:
+            for _,d in dict_product:
+                for key2 in d:
+                    if (dict_name_attribute[key1]/d[key2])>5 and fuzz.token_set_ratio(key1,key2)>90:
+                        bind += [(key1, key2)]
+    i=0
+    length_cluster_product = len(cluster_product)
+    while i<length_cluster_product:
+        for attribute in cluster_product[i][1]:
+            l = 0
+            fatto = False
+            for l in range(len(bind)):
+                j=i+1
+                key1 = bind[l][0]
+                key2 = bind[l][1]
+                if key1==attribute[0]:
+                    while j<length_cluster_product:
+                        for attribute2 in cluster_product[j][1]:
+                            if key2==attribute2[0]:
+                                print(key1," -- ", key2, " -- ", attribute, " -- ", attribute2)
+                                fatto = True
+                                del bind[l]
+                                break
+                        if fatto:
+                            break
+                        j+=1
+                elif key2==attribute[0]:
+                    while j<length_cluster_product:
+                        for attribute2 in cluster_product[j][1]:
+                            if key1==attribute2[0]:
+                                print(key1," -- ", key2, " -- ", attribute, " -- ", attribute2)
+                                fatto = True
+                                del bind[l]
+                                break
+                        if fatto:
+                            break
+                        j+=1
+                if fatto:
+                    break
+                l+=1
+            if fatto:
+                break
+        i+=1
+
+
+    
+        
+def merge_by_name(dict_products, cluster_products):
+    return 0
+
+
+
+merge_name_product(prova_cluster()[0], miniCluster[0])
