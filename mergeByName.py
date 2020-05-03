@@ -6,7 +6,9 @@ with open("miniClusterFiltrato.txt", "r") as file:
         miniCluster = eval(file.readline())
 
 def accettabili(val1, val2):
-    True
+    sim = fuzz.token_sort_ratio(val1,val2)
+    print(sim)
+    return sim>50
 
 def merge_name_product(dict_product, cluster_product):  
     bind = []
@@ -14,11 +16,13 @@ def merge_name_product(dict_product, cluster_product):
         for key1 in dict_name_attribute:
             for _,d in dict_product:
                 for key2 in d:
-                    if (dict_name_attribute[key1]/d[key2])>5 and fuzz.token_set_ratio(key1,key2)>90:
-                        bind += [(key1, key2)]
+                    if (dict_name_attribute[key1]/d[key2])>0 and fuzz.token_set_ratio(key1,key2)>90:
+                        bind += [(key1, key2)]  #a1-a5, a4
+
     i=0
     length_cluster_product = len(cluster_product)
     while i<length_cluster_product:
+
         for attribute in cluster_product[i][1]:
             l = 0
             fatto = False
@@ -32,6 +36,7 @@ def merge_name_product(dict_product, cluster_product):
                             if key2==attribute2[0]:
                                 print(key1," -- ", key2, " -- ", attribute, " -- ", attribute2)
                                 fatto = True
+                                print(accettabili(attribute[1],attribute2[1]))
                                 del bind[l]
                                 break
                         if fatto:
@@ -43,6 +48,7 @@ def merge_name_product(dict_product, cluster_product):
                             if key1==attribute2[0]:
                                 print(key1," -- ", key2, " -- ", attribute, " -- ", attribute2)
                                 fatto = True
+                                print(accettabili(attribute[1],attribute2[1]))
                                 del bind[l]
                                 break
                         if fatto:
@@ -53,6 +59,7 @@ def merge_name_product(dict_product, cluster_product):
                 l+=1
             if fatto:
                 break
+        
         i+=1
 
 
@@ -62,5 +69,5 @@ def merge_by_name(dict_products, cluster_products):
     return 0
 
 
-
-merge_name_product(prova_cluster()[0], miniCluster[0])
+N=187
+merge_name_product(prova_cluster()[N], miniCluster[N])
