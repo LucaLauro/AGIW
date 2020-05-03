@@ -91,39 +91,33 @@ for d1 in productCluster:
                 #CONTROLLO SIMILARITA' DELL'ATTRIBUTO DELLA TUPLA. SE VA BENE LO AGGIUNGO AD UN DIZIONARIO ESISTENTE E
                 # VADO AVANTI CON LA TUPLA
                 if checkSimilarity(attribute_to_check, attribute_list):
+                    # mi creo il nuovo set di tuple
+                    attribute_name = set()
+                    attribute_value = set()
+                    filename = set()
                     #IL CHECK VA A BUON FINE E AGGIUNGO NON SOLO QUELLA TUPLA MA TUTTE LE TUPLE NEL DIZIONARIO
                     for t in value1:
-                        if isinstance(value2[0], set):
-                            if isinstance(t[0], set):
-                                new_attribute_name = set().union(value2[0], t[0])
-                            tu = value2[0]
-                            tu.add(t[0])
-                            new_attribute_name = tu
+                        if isinstance(t[0], str):
+                            attribute_name.add(t[0])
                         else:
-                            new_attribute_name = set([value2[0]]).add(t[0])
-                        if isinstance(value2[1], set):
-                            if isinstance(t[1], set):
-                                new_attribute_values = set().union(value2[1], t[1])
-                            at = value2[1]
-                            at.add(t[1])
-                            new_attribute_values = at
+                            attribute_name.union(t[0])
+                        if isinstance(t[1], str):
+                            attribute_value.add(t[1])
                         else:
-                            new_attribute_values = set([value2[1]]).add(t[1])
-                        if isinstance(value2[2], set):
-                            if isinstance(t[2], set):
-                                new_attribute_values = set().union(value2[2], t[2])
-                            fn = value2[2]
-                            fn.add(t[2])
-                            new_filename = fn
+                            attribute_value.union(t[1])
+                        if isinstance(t[2], str):
+                            filename.add(t[2])
                         else:
-                            set1 = set(value2[2])
-                            set2 = set([t[2]])
-                            new_filename = set().union(set1, set2) #t[2] è una stringa e value2[2 è una lista
-                        for dictionary in newCluster:
-                            if key2 in dictionary:
-                                dictionary[key2] = (new_attribute_name, new_attribute_values, new_filename)
-                                findOne = True
-                                break
+                           filename.union(t[2])
+                    new_attribute_name = attribute_name.union(value2[0])
+                    new_attribute_value = attribute_value.union(value2[1])
+                    new_filename = filename.union(value2[2])
+                    # poi fondo con i valori del cluster
+                    for dictionary in newCluster:
+                        if key2 in dictionary:
+                            dictionary[key2] = (new_attribute_name, new_attribute_value, new_filename)
+                            findOne = True
+                            break
                     #HO TROVATO UN DIZIONARIO CHE PUO' ACCOGLIERE LA MIA TUPLA. ESCO DAL CICLO
                     break
         if not findOne:
