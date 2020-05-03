@@ -5,12 +5,16 @@ with open("miniClusterPassata1.txt", "r") as file:
     minicluster2 = eval(file.readline())
 with open("miniClusterPassata3Part2.txt", "r") as file:
     minicluster3 = eval(file.readline())
+with open("miniClusterFiltrato.txt", "r") as file:
+    minicluster4 = eval(file.readline())
 counter=0
 counter2=0
 counter3=0
 counter4=0
 counter5=0
 counter6=0
+counter7=0
+counter8=0
 for stessiProdotti in minicluster2:
     for cluster in stessiProdotti:
         counter3 = counter3+ len(cluster[1])
@@ -33,6 +37,12 @@ for stessiProdotti in minicluster3:
         counter6=counter6+1
 print(counter5)
 print(counter6)
+for stessiProdotti in minicluster4:
+    for cluster in stessiProdotti:
+        counter7 = counter7+ len(cluster[1])
+        counter8=counter8+1
+print(counter7)
+print(counter8)
 #print(minicluster[1])
 #print(minicluster2[1][180])
 #print(minicluster2[1][170])
