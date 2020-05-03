@@ -7,15 +7,18 @@ from fuzzywuzzy import fuzz
 def checkSimilarity(attribute_value, lista):
     if isinstance(lista, set):
         for value in lista:
-            limit = 50
+            limit = 60
             if len(attribute_value.split()) == 1 and len(str(value).split()):
-                limit = 80
+                limit = 84
             ratio = fuzz.ratio(str(attribute_value).lower(), str(value).lower())
             if ratio > limit:
                 return True
     else:
+        limit = 60
+        if len(attribute_value.split()) == 1 and len(str(lista).split()):
+            limit = 84
         ratio = fuzz.ratio(str(attribute_value).lower(), str(lista).lower())
-        if ratio > 80:
+        if ratio > limit:
             return True
     return False
 
@@ -25,7 +28,7 @@ cluster = []
 #Prendo la lista di cluster generata nella fase precedente miniclusterRaggruppato.txt
 # Ogni lista in miniclusterraggruppato rappresenta un prodotto. All'interno di quel prodotto ha una lista di tuple che
 # rappresentano gli attributi di quel prodotto
-with open("miniClusterPassata2.txt", "r") as file:
+with open("miniClusterPassata3Part2.txt", "r") as file:
     cluster = eval(file.readline())
 
 df = pd.read_csv("ground_truth/ground_truth_random_reducedx2.csv")
@@ -75,58 +78,66 @@ for d1 in productCluster:
     #SCORRO TUTTO IL CLUSTER DEI PRODOTTI
     for key1, value1 in d1.items():
         # value1 è una lista di tuple del tipo (nomeAttributo, valoreAttributo, NomeFile)
-        for tupla in value1:
-            attribute_to_check = tupla[1]
-            ############################################################
-            # SCORRO IL CLUSTER DELLA GROUD TRUTH
-            for d2 in newCluster:
+        # il controllo viene fatto sulla prima tupla. Se va a buon fine allora viene aggiunto al cluster
+        tupla= value1[0]
+        attribute_to_check = tupla[1]
+        ############################################################
+        # SCORRO IL CLUSTER DELLA GROUD TRUTH
+        for d2 in newCluster:
+            # newCluster è una lista di dizionari. Li scorro e mi servo della lista di attribute values di ogni dizionario
+            for key2, value2 in d2.items():
                 findOne = False
-                # newCluster è una lista di dizionari. Li scorro e mi servo della lista di attribute values di ogni dizionario
-                for key2, value2 in d2.items():
-                    attribute_list = value2[1]
-                    #CONTROLLO SIMILARITA' DELL'ATTRIBUTO DELLA TUPLA. SE VA BENE LO AGGIUNGO AD UN DIZIONARIO ESISTENTE E
-                    # VADO AVANTI CON LA TUPLA
-                    if checkSimilarity(attribute_to_check, attribute_list):
+                attribute_list = value2[1]
+                #CONTROLLO SIMILARITA' DELL'ATTRIBUTO DELLA TUPLA. SE VA BENE LO AGGIUNGO AD UN DIZIONARIO ESISTENTE E
+                # VADO AVANTI CON LA TUPLA
+                if checkSimilarity(attribute_to_check, attribute_list):
+                    #IL CHECK VA A BUON FINE E AGGIUNGO NON SOLO QUELLA TUPLA MA TUTTE LE TUPLE NEL DIZIONARIO
+                    for t in value1:
                         if isinstance(value2[0], set):
-                            if isinstance(tupla[0], set):
-                                new_attribute_name = set().union(value2[0],tupla[0])
-                            t = value2[0]
-                            t.add(tupla[0])
-                            new_attribute_name = t
+                            if isinstance(t[0], set):
+                                new_attribute_name = set().union(value2[0], t[0])
+                            tu = value2[0]
+                            tu.add(t[0])
+                            new_attribute_name = tu
                         else:
-                            new_attribute_name = set([value2[0]]).add(tupla[0])
+                            new_attribute_name = set([value2[0]]).add(t[0])
                         if isinstance(value2[1], set):
-                            if isinstance(tupla[1], set):
-                                new_attribute_value = set().union(value2[1], tupla[1])
-                            u = value2[1]
-                            u.add(tupla[1])
-                            new_attribute_value = u
+                            if isinstance(t[1], set):
+                                new_attribute_values = set().union(value2[1], t[1])
+                            at = value2[1]
+                            at.add(t[1])
+                            new_attribute_values = at
                         else:
-                            new_attribute_value = set([value2[1]]).add(tupla[1])
+                            new_attribute_values = set([value2[1]]).add(t[1])
                         if isinstance(value2[2], set):
-                            if isinstance(tupla[2], set):
-                                new_filename = set().union(value2[2],tupla[2])
-                            v = value2[2]
-                            v.add(tupla[2])
-                            new_filename = v
+                            if isinstance(t[2], set):
+                                new_attribute_values = set().union(value2[2], t[2])
+                            fn = value2[2]
+                            fn.add(t[2])
+                            new_filename = fn
                         else:
-                            # ci sono dei valori none
-                            if value2[2] is None:
-                                new_filename = set([tupla[2]])
-                            else:
-                                new_filename = set(value2[2]).add(tupla[2])
+                            set1 = set(value2[2])
+                            set2 = set([t[2]])
+                            new_filename = set().union(set1, set2) #t[2] è una stringa e value2[2 è una lista
                         for dictionary in newCluster:
                             if key2 in dictionary:
-                                dictionary[key2] = (new_attribute_name, new_attribute_value, new_filename)
-                                findOne=True
+                                dictionary[key2] = (new_attribute_name, new_attribute_values, new_filename)
+                                findOne = True
                                 break
-                        break
-            if not findOne:
-            # HO EFFETTUATO LO SCORRIMENTO SU TUTTO IL DIZIONARIO E NON HO TROVATO QUELLO CHE CERCAVO. AGGIUNGO
-                name_list = tupla[0]
-                if isinstance(tupla[0], set) and isinstance(tupla[1], set) and isinstance(tupla[2], set):
-                    newCluster.append({name_list: (tupla[0], tupla[1], tupla[2])})
-                newCluster.append({name_list : ({tupla[0]}, {tupla[1]}, {tupla[2]})})
+                    #HO TROVATO UN DIZIONARIO CHE PUO' ACCOGLIERE LA MIA TUPLA. ESCO DAL CICLO
+                    break
+        if not findOne:
+            attribute_name = set()
+            attribute_value = set()
+            filename = set()
+            for t in value1:
+                # HO EFFETTUATO LO SCORRIMENTO SU TUTTO IL DIZIONARIO E NON HO TROVATO QUELLO CHE CERCAVO. AGGIUNGO
+                # creo la lista degli attribute name
+                # creo la lista degli attribute value
+                attribute_name.add(t[0])
+                attribute_value.add(t[1])
+                filename.add(t[2])
+            newCluster.append({key1: (attribute_name, attribute_value, filename)})
 print("FATTO2")
 print(len(newCluster))
 print(newCluster)
