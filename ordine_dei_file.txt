@@ -1,0 +1,11 @@
+in questo file viene riportato l'ordine di esecuzione di tutti i file presenti
+1) csvToListOfList.py
+2) miniClusterPassata1.py
+3) miniClusterPassata2.py
+3) miniClusterPassata3Part1.py
+4) bo.py
+5) miniClusterPassata3Part2.py
+6) filtroPageTitple.py
+7) provaClusterDict.py
+8) mergeByName.py
+9) miniClusterPassata4.py
