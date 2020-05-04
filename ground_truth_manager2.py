@@ -1,5 +1,6 @@
 import pandas as pd
 from fuzzywuzzy import fuzz
+import json
 
 #IN QUESTA NUOVA VERSIONE IL CLUSTER DEI PRODOTTI VIENE TRASFORMATO IN UN DIZIONARIO IN MODO DA LAVORARE SULLE CHIAVI
 # E VELOCIZZARE IL PROCESSO
@@ -28,7 +29,7 @@ cluster = []
 #Prendo la lista di cluster generata nella fase precedente miniclusterRaggruppato.txt
 # Ogni lista in miniclusterraggruppato rappresenta un prodotto. All'interno di quel prodotto ha una lista di tuple che
 # rappresentano gli attributi di quel prodotto
-with open("miniClusterPassata3Part2.txt", "r") as file:
+with open("test_files/product_cluster_for_ground_truth", "r") as file:
     cluster = eval(file.readline())
 
 df = pd.read_csv("ground_truth/ground_truth_random_reducedx2.csv")
@@ -135,3 +136,8 @@ for d1 in productCluster:
 print("FATTO2")
 print(len(newCluster))
 print(newCluster)
+
+#crea file di output
+with open('ground_truth/output.txt', 'w') as file:
+    for dictionary in newCluster:
+        print(dictionary, file=file)
