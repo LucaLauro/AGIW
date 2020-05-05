@@ -1,7 +1,7 @@
 #conto gli attibuti per fare controllare la consistenza
 with open("miniClusterPassata2.txt", "r") as file:
     minicluster = eval(file.readline())
-with open("miniClusterPassata1.txt", "r") as file:
+with open("passata2bis.txt", "r") as file:
     minicluster2 = eval(file.readline())
 with open("miniClusterPassata3Part2.txt", "r") as file:
     minicluster3 = eval(file.readline())
@@ -66,6 +66,9 @@ for clusterList in minicluster:
             #print(cluster)
             if 'www.ebay.com/53228/model' in cluster[2]:
                 print('ci sta', minicluster.index(clusterList),clusterList.index(attribute))
+
+
+
 """for list in miniCluster:
     for tupla in list:
         lunghezzaDiAndrea = lunghezzaDiAndrea+ len(tupla[3])
