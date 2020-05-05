@@ -62,6 +62,10 @@ for index, row in df.iterrows():
                dictionary[target_attribute] = (newAttributeNameList, newAttributeValueList, newfileNameList)
    else:
        newCluster.append({target_attribute: (attributeNameList, attributeValueList, fileNameList)})
+       # crea file di output
+   with open('ground_truth/ground_truth_cluster.txt', 'w') as file:
+       for dictionary in newCluster:
+           print(dictionary, file=file)
 
 
 productCluster = []
@@ -73,6 +77,10 @@ for product in cluster:
         productCluster.append({tupla[0]: tupla[1]})
 print("FATTO")
 print(len(newCluster))
+#crea file di output
+with open('ground_truth/product_cluster.txt', 'w') as file:
+    for dictionary in productCluster:
+        print(dictionary, file=file)
 
 #ADESSO SI PROCEDE AL CONFRONTO FRA DIZIONARI: IL DIZIONARIO DELLA GROUND TRUTH E QUELLO DEI PRODOTTI
 for d1 in productCluster:
