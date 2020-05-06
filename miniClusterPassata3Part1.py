@@ -18,7 +18,7 @@ for listaProdotti in miniCluster:
             i2 = fuzz.ratio(tuplaValueMinuscolo, valoriDaVerificare)
             # i3 = fuzz.token_set_ratio(tuplaValueMinuscolo, valoriDaVerificare)
             if i > 84 and i < 100 and index1 != index2 and nomeAttibuto1 != '<page title>' and not (
-                    len(tuplaValueMinuscolo) < 7 and i2 < 50):
+                    len(tuplaValueMinuscolo) < 7 and i2 < 57):
                 listaIndexDaRaggruppare.append((miniCluster.index(listaProdotti), listaProdotti.index(tuple),
                                                 listaProdotti.index(tupleSuccessive)))
                 # print(i3)

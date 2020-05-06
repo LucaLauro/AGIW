@@ -1,6 +1,6 @@
 import pandas as pd
 from fuzzywuzzy import fuzz
-
+from ottimizzazioneClusterName import ottimizzazioneGroundTruh
 #IN QUESTA NUOVA VERSIONE IL CLUSTER DEI PRODOTTI VIENE TRASFORMATO IN UN DIZIONARIO IN MODO DA LAVORARE SULLE CHIAVI
 # IN QUESTA VERSIONE SI LAVORA CON LE CHIAVI DEL DIZIONARIO E SI PRESENTANO TRE CASISTICHE:
 #1. SE LE CHIAVI SONO UGUALI UNISCO I CLUSTER
@@ -56,24 +56,16 @@ for index, row in df.iterrows():
    else:
        newCluster.append({target_attribute: (attributeNameList, attributeValueList, fileNameList)})
 
-productCluster = []
+productCluster = ottimizzazioneGroundTruh(cluster)
+#[{brand:((brand,canon),{brand,manufacturer,...},{canon,...},{www.ebay.com/4274/brand,www.ebay.com/93785/brand...})}]
 # TRASFORMO IL CLUSTER DEI PRODOTTI IN UN DIZIONARIO
 # Sono stati creati dei cluster con la ground_truth. Adesso possiamo unire questi cluster con quelli creati nella fase precedente
-for product in cluster:
-    # product è una lista di tuple con gli attributi del prodotto
-    for tupla in product:
-        # trasformo gli oggetti in tupla in set così da velocizzare le operazioni successive
-        for t in tupla[1]:
-            names = set([t[0]])
-            values = set([t[1]])
-            filename = set([t[2]])
-        productCluster.append({tupla[0].replace(" ", "_"): (names,values,filename)})
-# CONTROLLARE SE I SET SONO CREATI CORRETTAMENTE
+
 print("FATTO")
 print(len(newCluster))
 
 
-
+"""
 #ADESSO SI PROCEDE AL CONFRONTO FRA DIZIONARI: IL DIZIONARIO DELLA GROUND TRUTH E QUELLO DEI PRODOTTI
 for d1 in productCluster:
     #SCORRO TUTTO IL CLUSTER DEI PRODOTTI
@@ -118,7 +110,7 @@ for d1 in productCluster:
         # CASO 4 NON HO TROVATO CIO' CHE VERCATO
         newCluster.append({key1: (value1[0], value1[1], value1[2])})
 
-
+"""
 #crea file di output
 with open('ground_truth/output3.txt', 'w') as file:
     for dictionary in newCluster:
