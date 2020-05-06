@@ -11,7 +11,7 @@ for indexElem in range(len(miniCluster)):
         listAppoggio=list(miniCluster[indexElem][indexTupla])
         listAppoggio[0]=max_key
         miniCluster[indexElem][indexTupla]=tuple(listAppoggio)
-with open("miniClusterOttimizzato.txt", "w") as file:
+with open("product_cluster.txt", "w") as file:
     file.write(str(miniCluster))
 """
 #[{brand:((brand,canon),{brand,manufacturer,...},{canon,...},{www.ebay.com/4274/brand,www.ebay.com/93785/brand...})}]
@@ -35,4 +35,4 @@ def ottimizzazioneGroundTruh(miniCluster):
                 setFile.add(elem[2])
             dictAppoggio.update({tuple[0] : (bestTuplaFix,setName,setValue,setFile)})
             listProduct.append(dictAppoggio)
-   return listProduct
+    return listProduct

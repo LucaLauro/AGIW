@@ -1,11 +1,11 @@
 import pandas as pd
 from fuzzywuzzy import fuzz
 from ottimizzazioneClusterName import ottimizzazioneGroundTruh
-#IN QUESTA NUOVA VERSIONE IL CLUSTER DEI PRODOTTI VIENE TRASFORMATO IN UN DIZIONARIO IN MODO DA LAVORARE SULLE CHIAVI
+
 # IN QUESTA VERSIONE SI LAVORA CON LE CHIAVI DEL DIZIONARIO E SI PRESENTANO TRE CASISTICHE:
 #1. SE LE CHIAVI SONO UGUALI UNISCO I CLUSTER
 #2. SE UNA CHIAVE E' CONTENUTA NELL'ALTRO CLUSTER —> CONTROLLO GLI ATTRIBUTE VALUE
-#3. SE NON C'E' LA CHIAVE FACCIO QUELLO CHE FACEVO PRIMA —> Fai quello che facevi in ground_truth_manager2
+#3. SE NON C'E' LA CHIAVE FACCIO QUELLO CHE FACEVO PRIMA —
 
 def checkSimilarity(attribute_value, lista):
     # CONTROLLARE ADESSO CON LE NUOVE MODIFICHE CHE TIPO SI RICEVE E MODIFICARE LA FUNZIONE
@@ -24,7 +24,7 @@ cluster = []
 #Prendo la lista di cluster generata nella fase precedente miniclusterRaggruppato.txt
 # Ogni lista in miniclusterraggruppato rappresenta un prodotto. All'interno di quel prodotto ha una lista di tuple che
 # rappresentano gli attributi di quel prodotto
-with open("miniClusterPassata4.txt", "r") as file:
+with open("ground_truth/product_cluster.txt", "r") as file:
     cluster = eval(file.readline())
 df = pd.read_csv("ground_truth/ground_truth_random_reducedx2.csv")
 
@@ -58,14 +58,8 @@ for index, row in df.iterrows():
 
 productCluster = ottimizzazioneGroundTruh(cluster)
 #[{brand:((brand,canon),{brand,manufacturer,...},{canon,...},{www.ebay.com/4274/brand,www.ebay.com/93785/brand...})}]
-# TRASFORMO IL CLUSTER DEI PRODOTTI IN UN DIZIONARIO
-# Sono stati creati dei cluster con la ground_truth. Adesso possiamo unire questi cluster con quelli creati nella fase precedente
-
-print("FATTO")
-print(len(newCluster))
 
 
-"""
 #ADESSO SI PROCEDE AL CONFRONTO FRA DIZIONARI: IL DIZIONARIO DELLA GROUND TRUTH E QUELLO DEI PRODOTTI
 for d1 in productCluster:
     #SCORRO TUTTO IL CLUSTER DEI PRODOTTI
@@ -75,42 +69,43 @@ for d1 in productCluster:
             # CASO 1: Esiste già nel cluster della ground truth la chiave. Unisco subito i cluster
                 if key1 == key2:
                     for tupla in value1:
-                        attribute_name = value1[0].union(value2[0])
-                        attribute_value = value1[1].union(value2[1])
-                        filename = value1[2].union(value2[2])
+                        attribute_name = value1[1].union(value2[0])
+                        attribute_value = value1[2].union(value2[1])
+                        filename = value1[3].union(value2[2])
                     d2[key2] = (attribute_name,attribute_value,filename)
                     break
                 # CASO 2: La chiave è contenuta nella chiave es (Battery è contenuta in battery type)
                 elif key1 in key2:
-                    attribute_set = value1[0]
-                    for attribute in attribute_set:
-                        if checkSimilarity(attribute,value2[1]):
-                            # unisci cluster
-                            for tupla in value1:
-                                attribute_name = value1[0].union(value2[0])
-                                attribute_value = value1[1].union(value2[1])
-                                filename = value1[2].union(value2[2])
-                            d2[key2] = (attribute_name, attribute_value, filename)
-                            break
+                    most_comment_values = value1[0]
+                    common_name = most_comment_values[1]
+                    if checkSimilarity(common_name,value2[1]):
+                        # unisci cluster
+                        for tupla in value1:
+                            attribute_name = value1[1].union(value2[0])
+                            attribute_value = value1[2].union(value2[1])
+                            filename = value1[3].union(value2[2])
+                        d2[key2] = (attribute_name, attribute_value, filename)
+                        break
+
                 else:
                     #CASO 3: Cerco tra i valori del dizionario
-                    attribute_set = value1[0]
-                    for attribute in attribute_set:
-                        if checkSimilarity(attribute, value2[1]):
-                            # unisci cluster
-                            for tupla in value1:
-                                attribute_name = value1[0].union(value2[0])
-                                attribute_value = value1[1].union(value2[1])
-                                filename = value1[2].union(value2[2])
-                            d2[key2] = (attribute_name, attribute_value, filename)
-                            break
+                    most_comment_values = value1[0]
+                    common_name = most_comment_values[1]
+                    if checkSimilarity(common_name, value2[1]):
+                        # unisci cluster
+                        for tupla in value1:
+                            attribute_name = value1[0].union(value2[0])
+                            attribute_value = value1[1].union(value2[1])
+                            filename = value1[2].union(value2[2])
+                        d2[key2] = (attribute_name, attribute_value, filename)
+                        break
             else:
                 continue
             break
         # CASO 4 NON HO TROVATO CIO' CHE VERCATO
         newCluster.append({key1: (value1[0], value1[1], value1[2])})
 
-"""
+
 #crea file di output
 with open('ground_truth/output3.txt', 'w') as file:
     for dictionary in newCluster:
