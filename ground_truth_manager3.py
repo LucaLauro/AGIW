@@ -65,6 +65,7 @@ for d1 in productCluster:
     #SCORRO TUTTO IL CLUSTER DEI PRODOTTI
     for key1, value1 in d1.items():
         for d2 in newCluster:
+            findOne = False
             for key2, value2 in d2.items():
             # CASO 1: Esiste già nel cluster della ground truth la chiave. Unisco subito i cluster
                 if key1 == key2:
@@ -73,6 +74,7 @@ for d1 in productCluster:
                         attribute_value = value1[2].union(value2[1])
                         filename = value1[3].union(value2[2])
                     d2[key2] = (attribute_name,attribute_value,filename)
+                    findOne = True
                     break
                 # CASO 2: La chiave è contenuta nella chiave es (Battery è contenuta in battery type)
                 elif key1 in key2:
@@ -85,6 +87,7 @@ for d1 in productCluster:
                             attribute_value = value1[2].union(value2[1])
                             filename = value1[3].union(value2[2])
                         d2[key2] = (attribute_name, attribute_value, filename)
+                        findOne = True
                         break
 
                 else:
@@ -97,13 +100,15 @@ for d1 in productCluster:
                             attribute_name = value1[0].union(value2[0])
                             attribute_value = value1[1].union(value2[1])
                             filename = value1[2].union(value2[2])
+                        findOne = True
                         d2[key2] = (attribute_name, attribute_value, filename)
                         break
             else:
                 continue
             break
         # CASO 4 NON HO TROVATO CIO' CHE VERCATO
-        newCluster.append({key1: (value1[0], value1[1], value1[2])})
+        if not findOne:
+            newCluster.append({key1: (value1[0], value1[1], value1[2])})
 
 
 #crea file di output
