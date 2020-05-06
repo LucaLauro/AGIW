@@ -108,7 +108,7 @@ for d1 in productCluster:
             break
         # CASO 4 NON HO TROVATO CIO' CHE VERCATO
         if not findOne:
-            newCluster.append({key1: (value1[0], value1[1], value1[2])})
+            newCluster.append({key1: (value1[1], value1[2], value1[3])})
 
 
 #crea file di output
