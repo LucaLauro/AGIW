@@ -1,6 +1,7 @@
 import pandas as pd
 from fuzzywuzzy import fuzz
 from ottimizzazioneClusterName import ottimizzazioneGroundTruh
+from nltk.corpus import wordnet
 
 # 1: NON SI CREANO DEI NUOVI CLUSTER - SI USANO SOLO I CLUSTER GIA' CREATI DELLA GROUND TRUTH
 # 2: GLI ATTRIBUTI CHE NON VENGONO ACCOPPIATI VENGONO BUTTATI IN UN NUOVO CLUSTER
@@ -16,6 +17,20 @@ def checkSimilarity(attribute_value, lista):
         if ratio > limit:
             return True
     return False
+
+def checkAttributeName(attribute_name, key):
+    #Creo prima la lista dei sinonimi dell'attribute_name
+        synonyms = []
+        for syn in wordnet.synsets(attribute_name):
+            for lm in syn.lemmas():
+                synonyms.append(lm.name())
+        print(set(synonyms))
+        # Verifico ora se la chiave è un sinonimo.
+        if key in synonyms:
+            return True
+        return False
+
+
 
 
 newCluster = [] #Nuovo cluster
@@ -91,20 +106,19 @@ for d1 in productCluster:
                         findOne = True
                         break
 
-
                 else:
-                    #CASO 3: Cerco tra i valori del dizionario
-                    most_comment_values = value1[0]
-                    common_name = most_comment_values[1]
-                    if checkSimilarity(common_name, value2[1]):
-                        # unisci cluster
-                        for tupla in value1:
-                            attribute_name = value1[1].union(value2[0])
-                            attribute_value = value1[2].union(value2[1])
-                            filename = value1[3].union(value2[2])
-                        findOne = True
-                        d2[key2] = (attribute_name, attribute_value, filename)
-                        break
+                    #CASO 3: Faccio il controllo sull'attribute name ma non basta. Controllo anche l'attributevalue
+                    # Lavoro con i sinonimi
+                    if checkAttributeName(key1,key2):
+                        if checkSimilarity(common_name, value2[1]):
+                            # unisci cluster
+                            for tupla in value1:
+                                attribute_name = value1[1].union(value2[0])
+                                attribute_value = value1[2].union(value2[1])
+                                filename = value1[3].union(value2[2])
+                            findOne = True
+                            d2[key2] = (attribute_name, attribute_value, filename)
+                            break
             else:
                 continue
             break
