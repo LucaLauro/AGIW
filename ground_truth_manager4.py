@@ -38,9 +38,9 @@ cluster = []
 #Prendo la lista di cluster generata nella fase precedente miniclusterRaggruppato.txt
 # Ogni lista in miniclusterraggruppato rappresenta un prodotto. All'interno di quel prodotto ha una lista di tuple che
 # rappresentano gli attributi di quel prodotto
-with open("miniClusterPassata4.txt", "r") as file:
+with open("miniClusterOttimizzato.txt", "r") as file:
     cluster = eval(file.readline())
-df = pd.read_csv("ground_truth/test_no_duplicates.csv")
+df = pd.read_csv("ground_truth/test_no_duplicates2.csv")
 
 # Scorro solo le coppie match
 for index, row in df.iterrows():
@@ -85,10 +85,9 @@ for d1 in productCluster:
             for key2, value2 in d2.items():
             # CASO 1: Esiste già nel cluster della ground truth la chiave. Unisco subito i cluster
                 if key1 == key2:
-                    for tupla in value1:
-                        attribute_name = value1[1].union(value2[0])
-                        attribute_value = value1[2].union(value2[1])
-                        filename = value1[3].union(value2[2])
+                    attribute_name = value1[1].union(value2[0])
+                    attribute_value = value1[2].union(value2[1])
+                    filename = value1[3].union(value2[2])
                     d2[key2] = (attribute_name,attribute_value,filename)
                     findOne = True
                     break
@@ -112,10 +111,9 @@ for d1 in productCluster:
                     if checkAttributeName(key1,key2):
                         if checkSimilarity(common_name, value2[1]):
                             # unisci cluster
-                            for tupla in value1:
-                                attribute_name = value1[1].union(value2[0])
-                                attribute_value = value1[2].union(value2[1])
-                                filename = value1[3].union(value2[2])
+                            attribute_name = value1[1].union(value2[0])
+                            attribute_value = value1[2].union(value2[1])
+                            filename = value1[3].union(value2[2])
                             findOne = True
                             d2[key2] = (attribute_name, attribute_value, filename)
                             break
@@ -132,10 +130,9 @@ for d1 in productCluster:
                     for key3, value3 in d3.items():
                     #CONTROLLO SE ESISTE GIA' UN DIZIONARIO CON QUELLA CHIAVE
                         if key1 == key3:
-                            for tupla1 in value1:
-                                attribute_name = value1[1].union(value3[0])
-                                attribute_value = value1[2].union(value3[1])
-                                filename = value1[3].union(value3[2])
+                            attribute_name = value1[1].union(value3[0])
+                            attribute_value = value1[2].union(value3[1])
+                            filename = value1[3].union(value3[2])
                             d3[key1] = (attribute_name,attribute_value,filename)
                             findTwo = True
                             break
@@ -144,10 +141,9 @@ for d1 in productCluster:
                             common_name = most_comment_values[1]
                             if checkSimilarity(common_name, value3[1]):
                                 # unisci cluster
-                                for tupla in value1:
-                                    attribute_name = value1[1].union(value3[0])
-                                    attribute_value = value1[2].union(value3[1])
-                                    filename = value1[3].union(value3[2])
+                                attribute_name = value1[1].union(value3[0])
+                                attribute_value = value1[2].union(value3[1])
+                                filename = value1[3].union(value3[2])
                                 d3[key3] = (attribute_name, attribute_value, filename)
                                 findTwo = True
                                 break
@@ -161,7 +157,7 @@ for d1 in productCluster:
 
 
 #crea file di output
-with open('ground_truth/final_output4.txt', 'w') as file:
+with open('ground_truth/final_output4.1.txt', 'w') as file:
     for dictionary in newCluster:
         print(dictionary, file=file)
 print("FATTO2")
@@ -170,7 +166,7 @@ print(newCluster)
 
 
 #crea file per il pozzo
-with open('ground_truth/pozzo4.txt', 'w') as file:
+with open('ground_truth/pozzo4.1.txt', 'w') as file:
     for dictionary in pozzo:
         print(dictionary, file=file)
 print("FATTO3")
