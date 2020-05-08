@@ -40,7 +40,7 @@ cluster = []
 # rappresentano gli attributi di quel prodotto
 with open("miniClusterPassata4.txt", "r") as file:
     cluster = eval(file.readline())
-df = pd.read_csv("ground_truth/ground_truth_random_reducedx2.csv")
+df = pd.read_csv("ground_truth/test_no_duplicates.csv")
 
 # Scorro solo le coppie match
 for index, row in df.iterrows():
@@ -122,9 +122,42 @@ for d1 in productCluster:
             else:
                 continue
             break
-        # CASO 4 NON HO TROVATO CIO' CHE VERCATO
+
+
+        # CASO 4 NON HO TROVATO CIO' CHE VERCATO. Adesso aggiungo nel dizionario pozzo
         if not findOne:
-            pozzo.append({key1: (value1[1], value1[2], value1[3])})
+            if pozzo:
+                findTwo = False
+                for d3 in pozzo:
+                    for key3, value3 in d3.items():
+                    #CONTROLLO SE ESISTE GIA' UN DIZIONARIO CON QUELLA CHIAVE
+                        if key1 == key3:
+                            for tupla1 in value1:
+                                attribute_name = value1[1].union(value3[0])
+                                attribute_value = value1[2].union(value3[1])
+                                filename = value1[3].union(value3[2])
+                            d3[key1] = (attribute_name,attribute_value,filename)
+                            findTwo = True
+                            break
+                        elif key1 in key3:
+                            most_comment_values = value1[0]
+                            common_name = most_comment_values[1]
+                            if checkSimilarity(common_name, value3[1]):
+                                # unisci cluster
+                                for tupla in value1:
+                                    attribute_name = value1[1].union(value3[0])
+                                    attribute_value = value1[2].union(value3[1])
+                                    filename = value1[3].union(value3[2])
+                                d3[key3] = (attribute_name, attribute_value, filename)
+                                findTwo = True
+                                break
+                    else:
+                        continue
+                    break
+                if not findTwo:
+                    pozzo.append({key1: (value1[1], value1[2], value1[3])})
+            else:
+                pozzo.append({key1: (value1[1], value1[2], value1[3])})
 
 
 #crea file di output
