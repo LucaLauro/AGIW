@@ -16,14 +16,22 @@ import pandas as pd
 
 #Secondo approccio più veloce
 # The data to load
-f = "ground_truth/instance_attributes_gt.csv"
+#f = "ground_truth/instance_attributes_gt.csv"
 # Considero ogni 20000 righe
-n = 20000
-num_lines = sum(1 for l in open(f))
+#n = 20000
+#num_lines = sum(1 for l in open(f))
 # Salto l'header
-skip_idx = [x for x in range(1, num_lines) if x % n != 0]
+#skip_idx = [x for x in range(1, num_lines) if x % n != 0]
 # Leggo i dati e prendo solo quelli con label=1
-data = pd.read_csv(f, skiprows=skip_idx)
+#data = pd.read_csv(f, skiprows=skip_idx)
+#dati = data[data['label'] == 1]
+#dati.to_csv(r'ground_truth/ground_truth_random_reducedx2.csv', index=False, header=True)
+#print("FATTO")
+
+
+#Test che prende tutte le colonne e ne elimina i duplicati
+f = "ground_truth/instance_attributes_gt.csv"
+data = pd.read_csv(f)
 dati = data[data['label'] == 1]
-dati.to_csv(r'ground_truth/ground_truth_random_reducedx2.csv', index=False, header=True)
-print("FATTO")
+dati = dati.drop_duplicates(subset=['left_target_attribute'], keep='first')
+dati.to_csv(r'ground_truth/test_no_duplicates.csv', index=False, header=True)

@@ -1,0 +1,55 @@
+left_target_attribute,right_target_attribute,left_instance_attribute,right_instance_attribute,left_instance_value,right_instance_value,label
+auto_focus_beam,auto_focus_beam,www.shopmania.in//1547//af illuminator,www.shopmania.in//1066//af illuminator,yes,yes,1
+auto_focus_mode,auto_focus_mode,www.mypriceindia.com//66//auto focus,www.mypriceindia.com//699//auto focus,"yes, contrast detect, phase detect, multi-area, selective single point, single, continuous, face detection, live view.","yes, ttl phase detection,11 focus points",1
+auto_focus_points,auto_focus_points,www.mypriceindia.com//213//other focus features,www.shopmania.in//1555//number of focus points,"focal length multiplier (1.5x), no. of focus points (39)",49,1
+battery_type,battery_type,www.eglobalcentral.co.uk//136//battery,www.henrys.com//123//battery,en-el14a lithium-ion battery and charger,en-el23,1
+battery_chemistry,battery_chemistry,www.shopmania.in//1019//battery,www.price-hunt.com//929//battery type,li-ion,lithium battery,1
+camera_height,camera_height,www.ilgs.net//48//height,www.buzzillions.com//2973//height inches,6.8 cm,2.2,1
+camera_width,camera_width,www.shopbot.com.au//1217//dimensions,cammarkt.com//110//width,125 x 96 x 77 mm,5.88 in.,1
+camera_type,camera_type,buy.net//5803//camera type,www.henrys.com//123//camera type,digital slr camera,super zoom,1
+color,color,cammarkt.com//310//color,www.wexphotographic.com//190//colour,black,black,1
+color_filter,color_filter,www.price-hunt.com//737//color filter,www.mypriceindia.com//211//color filter,primary (rgb) color filter,"yes, primary (rgb) color filter",1
+exposure_compensation,exposure_compensation,www.price-hunt.com//737//exposure compensation,www.cambuy.com.au//136//exposure compensation,"still images: +/- 5.0 ev (0.3 ev, 0.5 ev steps selectable)",+/- 3 ev in 1/3 stop increments manual and automatic dynamic range correction automatic shadow correction,1
+exposure_mode,exposure_mode,www.camerafarm.com.au//802//exposure modes,buy.net//6689//exposure control,programmed auto with flexible program (p) shutter-priority auto (s) aperture-priority auto (a) aperture-priority (a) manual (m) scene auto selector,program aeshutter priorityaperture prioritymanual,1
+external_memory_type,external_memory_type,buy.net//6425//memory card support,www.eglobalcentral.co.uk//144//storage type,secure digital high capacity (sdhc) card|secure digital extended capacity (sdxc)|secure digital (sd) card,"type i cf card (udma -compatible), xqd",1
+file_system,file_system,www.camerafarm.com.au//819//file system,www.ebay.com//43606//file system,compliant with dcf (design rule for camera file system) 2.0 dpof (digital print order format) exif 2.3 (exchangeable image file format for digital still cameras) pictbridge,"compliant with dcf (design rule for camera file system) 2.0
+dpof (digital print order format)
+exif 2.3 (exchangeable image file format for digital still cameras",1
+focal_length_max,focal_length_max,www.pcconnection.com//12393//35mm equivalent focal length max,www.wexphotographic.com//207//focal length tele,450 mm,100,1
+focal_length_min,focal_length_min,www.mypriceindia.com//211//focal length,www.ilgs.net//24//minimum focal length 35mm film equiv,18 - 55 mm,2.8 cm,1
+image_format,image_format,www.price-hunt.com//747//image format,www.mypriceindia.com//18//image format,"exif 2.3, raw (14bit, cr2 canon original), jpeg","jpeg ( fine, normal & basic quality )",1
+image_resolution,image_resolution,www.priceme.co.nz//2043//max image resolution,www.ebay.com//48736//megapixels,6000x4000,12.3 mp,1
+video_format,video_format,www.cambuy.com.au//14//file format,www.mypriceindia.com//164//video format,"mov nef (raw): 12- or 14 bit, compressed jpeg: jpeg-baseline compliant with fine (approx. 1 : 4), normal (approx. 1 : 8), or basic (approx. 1 : 16) compression nef (raw)+jpeg: single photograph recorded in both nef (raw) and jpeg formats",mov/h.264,1
+video_resolution,video_resolution,cammarkt.com//324//video format,www.mypriceindia.com//710//video resolution,"hd (1280 x 720)
+1920 x 1080
+quicktime
+many digital cameras let you record short clips of highly compressed, low-resolution video, either as an mpeg movie or a motion jpeg movie. this number shows the actual optimal size for a movie captured on your camera.",1920 x 1080 pixels at 30 fps,1
+internal_memory_capacity,internal_memory_capacity,buy.net//6110//installed memory,www.shopmania.in//634//installed memory,37 mb,23 mb,1
+iso_sensitivity_max,iso_sensitivity_max,buy.net//4293//iso sensitivity,www.wexphotographic.com//193//iso max,iso 3200,6400,1
+iso_sensitivity_min,iso_sensitivity_min,www.priceme.co.nz//1691//light sensitivity,www.ilgs.net//134//iso sensitivity,"100 - 25,600 iso","100, 125, 160, 200, 250, 320, 400, 500, 640, 800, 1000, 1250, 1600, 2000, 2250, 2500, 3200, 4000, 5000, 6400 auto(100-6400) 100-6400 in 1-stop increments iso can be expanded to h: 12800 during movie shooting: auto (100-6400) 100-6400 (whole stop increments)",1
+lens_mount_type,lens_mount_type,www.eglobalcentral.co.uk//535//lens mount,www.shopmania.in//926//lens mount,ef mount,canon ef / canon ef-s,1
+microphone_type,microphone_type,www.pricedekho.com//750//microphone,www.shopmania.in//698//microphone,stereo microphone,yes,1
+picture_angle,picture_angle,www.price-hunt.com//906//picture angle,www.price-hunt.com//9918//picture angle,approx. 1.5x lens focal length,28 mm wide-angle,1
+picture_styles,picture_styles,www.shopmania.in//1019//special effects,www.ilgs.net//7//photo effects,miniature / poster / sepia,"black&white, neutral, positive film, vivid",1
+red_eye_reduction,red_eye_reduction,www.canon-europe.com//109//redeye correction,www.pricedekho.com//762//red eye reduction,"yes, during shooting and playback",yes,1
+screen_size,screen_size,www.ebay.com//43571//screen size,www.wexphotographic.com//618//screen size inches,"3""",3.0,1
+screen_type,screen_type,www.flipkart.com//2236//lcd display,www.pcconnection.com//12439//display technology,tft lcd with anti-reflection coating,tft lcd,1
+self_timer,self_timer,www.price-hunt.com//942//self timer,www.ilgs.net//47//selftimer,2 and 10 sec,"2, 10s",1
+sensor_size,sensor_size,www.eglobalcentral.co.uk//732//sensor size,www.shopmania.in//926//sensor format,aps-c (23.5 x 15.6 mm),aps-c,1
+zoom_optical,zoom_optical,www.ebay.com//60195//optical zoom,www.ilgs.net//43//optical zoom,5x,18 x 18x,1
+sensor_type,sensor_type,buy.net//5857//image sensor,www.shopmania.in//1460//sensor type,cmos,ccd,1
+shutter_speed_max,shutter_speed_max,www.mypriceindia.com//46//maximum shutter speed,www.ilgs.net//7//camera shutter speed max,1/4000 sec,15s,1
+shutter_speed_min,shutter_speed_min,www.eglobalcentral.co.uk//287//shutter speed,www.shopmania.in//1150//min shutter speed,"30-1/4000 sec, bulb",30s (more than 65%),1
+shutter_type,shutter_type,www.camerafarm.com.au//802//shutter type,www.price-hunt.com//891//shutter type,electronic shutter,"focal-plane shutter, electronically-controlled",1
+supported_languages_number,supported_languages_number,www.flipkart.com//2297//supported languages,www.price-hunt.com//929//supported languages,17,30,1
+supported_languages,supported_languages,www.price-hunt.com//749//supported languages,www.cambuy.com.au//56//supported languages,"turkish, english, persian, spanish, thai, bulgarian, indonesian, greek, hungarian, arabic, polish, swedish, dutch, russian, danish, french, czech, bengali, tamil, german, serbian, italian, romanian, ukrainian, telugu, marathi, korean, finnish, simplified chinese, vietnamese, chinese (traditional), portuguese (european and brazilian), hindi, japanese, norwegian","arabic, bengali, bulgarian, chinese (simplified and traditional), czech, danish, dutch, english, finnish, french, german, greek, hindi, hungarian, indonesian, italian, japanese, korean, marathi, norwegian, persian, polish, portuguese (portugal and brazil), romanian, russian, serbian, spanish, swedish, tamil, telugu, thai, turkish, ukrainian, vietnamese",1
+supported_aspect_ratio,supported_aspect_ratio,www.shopmania.in//1438//image ratio,www.shopmania.in//1458//image ratio,1:1 / 3:2 / 4:3 / 5:4,3:2 / 16:9,1
+supported_audio_formats,supported_audio_formats,www.mypriceindia.com//19//audio formats,www.mypriceindia.com//754//audio formats,linear pcm,linear pcm,1
+warranty_duration,warranty_duration,www.pcconnection.com//12404//warranty parts,www.pcconnection.com//4397//warranty labor,,,1
+white_balance,white_balance,cammarkt.com//325//white balance,www.mypriceindia.com//773//white balancing,"auto
+the shutter speed of a camera depends on two variables: the size of the lens and the actual timing of the shutter, opening and closing. these two factors work as a team to control the amount of light that enters the camera. this is measured in fractions on a shutter speed dial which illustrate how long the shutter opens and closes in a set period of time. the term speed refers to how long the lens remains open. for example, a setting of 1/60 on a shutter speed dial means that the shutter opens and closes within one sixtieth of a second. various shutter speeds can be used to manipulate the final result of the picture. usually, a faster shutter speed is used to freeze the scene, for motion shots, while a slower speed is used to create more of an unfocused, abstract result.","white balance presets (6), custom white balance, auto, preset (daylight, shade, cloudy, tungsten light, white fluorescent light, flash), custom, colour temperature setting",1
+battery_duration,battery_duration,www.ilgs.net//104//battery life cipa standard,www.ilgs.net//98//battery life cipa standard,290 shots,240 shots,1
+working_humidity,working_humidity,www.cambuy.com.au//143//humidity,www.cambuy.com.au//56//humidity,85% or less (no condensation),less than 85% (no condensation),1
+zoom_digital,zoom_digital,buy.net//6228//digital zoom,buy.net//6036//digital zoom,4 x,4x,1
+brand,brand,www.ebay.com//52734//brand,www.ebay.com//47994//brand,nikon,canon,1
+camera_depth,camera_depth,www.shopmania.in//1605//depth,www.ilgs.net//47//depth,77 mm,7.79 cm,1
