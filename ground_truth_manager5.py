@@ -2,7 +2,7 @@ import pandas as pd
 from fuzzywuzzy import fuzz
 from ottimizzazioneClusterName import ottimizzazioneGroundTruh
 
-
+#PER MARTINA ---> i print sono commentati, se vuoi decommentali e guarda che esce fuori
 # 1: NON SI CREANO DEI NUOVI CLUSTER - SI USANO SOLO I CLUSTER GIA' CREATI DELLA GROUND TRUTH
 # 2: GLI ATTRIBUTI CHE NON VENGONO ACCOPPIATI VENGONO BUTTATI IN UN NUOVO CLUSTER
 
@@ -92,17 +92,19 @@ for d1 in productCluster:
         if len(str(key1))==1:#mi capitano attributi con solo 1 lettera che fanno un bordello
             listaPossibilita=[]
         # CASO 1: STESSA CHIAVE --> AGGIUNGO
-        if len(listaPossibilita)==1:
-            value2= list(newCluster[listaPossibilita[0]].values())[0]
-            attribute_name = value1[1].union(value2[0])
-            attribute_value = value1[2].union(value2[1])
-            filename = value1[3].union(value2[2])
-            d2[key2] = (attribute_name, attribute_value, filename)
+        if len(listaPossibilita)==1:   # mi mette troppo schifo nei cluster, devo introdurre una soglia minima per l'unione
+            #ci sta qualche problema in questa fase, dei dati spariscono magicamente
+            value= list(newCluster[listaPossibilita[0]].values())[0]
+            attribute_name = value1[1].union(value[0])
+            attribute_value = value1[2].union(value[1])
+            filename = value1[3].union(value[2])
+            key=list(newCluster[listaPossibilita[0]].keys())[0]
+            newCluster[listaPossibilita[0]][key] = (attribute_name, attribute_value, filename)
 
         # HO PIU' POSSIBILITA' E PRENDO QUELLA CON IL PUNTEGGIO PIU' ALTO
         # listaPossibilita E' UNA LISTA DI INDICI
-        elif len(listaPossibilita)>1:
-            print(listaPossibilita)
+        if len(listaPossibilita)>1: #stessa cosa di sopra, devo introdurre una soglia
+            #print(listaPossibilita)
             #print(productCluster.index(d1))
             #print(key1)
 
@@ -113,28 +115,36 @@ for d1 in productCluster:
                 for nameAttribute in value2[0]:
                     i = fuzz.token_set_ratio(str(value1[0][0]), str(nameAttribute))
                     maxName= max(maxName,i)
-                    print(str(value1[0][0]),'----',str(nameAttribute))
+                    #print(str(value1[0][0]),'----',str(nameAttribute))
                 maxValue = 0
                 for valueAttribute in value2[1]:
                     j = fuzz.token_set_ratio(str(value1[0][1]), str(valueAttribute))
                     if len(str(valueAttribute))>4 and len(str(valueAttribute).split(' '))<3:
                         j=j*3
                     maxValue=max(maxValue, j)
-                    print(str(value1[0][1]),'----', str(valueAttribute))
+                    #print(str(value1[0][1]),'----', str(valueAttribute))
                 media=maxName*2+maxValue*3
                 tuplePunteggi.append((index,media))
 
             tuplaMax={"key2":0 }
-            print(tuplePunteggi)
+            #print(tuplePunteggi)
             for tupla in tuplePunteggi:
                 if tupla[1]>list(tuplaMax.values())[0]:
                     tuplaMax={tupla[0]:tupla[1]}
+            #print(tuplaMax)
 
+
+            #da controllare questa parte, sicuramente ho fatto casino con gli indici, devo usare gli indici e non d2 sennò sovrascrivo sempre
+            #e non accumulo mai
             value2=list(newCluster[list(tuplaMax.keys())[0]].values())[0]
             attribute_name = value1[1].union(value2[0])
             attribute_value = value1[2].union(value2[1])
             filename = value1[3].union(value2[2])
-            d2[key2] = (attribute_name, attribute_value, filename)
+            #print(filename)
+            #print(d2[key2])
+
+            newCluster[list(tuplaMax.keys())[0]][key2] = (attribute_name, attribute_value, filename)
+            print(newCluster[list(tuplaMax.keys())[0]])
 
 
 for elem in newCluster:
