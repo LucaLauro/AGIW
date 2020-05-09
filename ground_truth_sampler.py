@@ -40,10 +40,15 @@ import pandas as pd
 f = "ground_truth/instance_attributes_gt.csv"
 data = pd.read_csv(f)
 dati = data[data['label'] == 1]
+all_battery_chemistry = dati.loc[dati['left_target_attribute'] == 'battery_chemistry']
 dati = dati.drop_duplicates(subset=['left_target_attribute', 'left_instance_value'], keep='first')
 dati = dati.drop_duplicates(subset=['left_target_attribute', 'right_instance_value'], keep='first')
 dati['left_instance_value'] = dati['left_instance_value'].astype('str')
 dati['right_instance_value'] = dati['right_instance_value'].astype('str')
 mask = (dati['left_instance_value'].str.len() < 10) & (dati['right_instance_value'].str.len() < 10)
 dati = dati.loc[mask]
-dati.to_csv(r'ground_truth/test_no_duplicates3.csv', index=False, header=True)
+frames = [dati, all_battery_chemistry]
+result = pd.concat(frames)
+result = result.drop_duplicates(subset=['left_target_attribute', 'left_instance_value'], keep='first')
+result = result.drop_duplicates(subset=['left_target_attribute', 'right_instance_value'], keep='first')
+result.to_csv(r'ground_truth/test_no_duplicates3.csv', index=False, header=True)

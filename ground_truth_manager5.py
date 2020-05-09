@@ -88,7 +88,7 @@ for d1 in productCluster:
             newCluster[listaPossibilita[0]][key] = (attribute_name, attribute_value, filename)
 
         #CASO 2
-        if len(listaPossibilita) > 1: #stessa cosa di sopra, devo introdurre una soglia
+        if len(listaPossibilita) > 0: #stessa cosa di sopra, devo introdurre una soglia
           #  print(listaPossibilita)
           #  print(productCluster.index(d1))
           #  print(key1)

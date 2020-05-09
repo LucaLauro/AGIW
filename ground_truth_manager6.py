@@ -38,7 +38,7 @@ cluster = []
 # rappresentano gli attributi di quel prodotto
 with open("miniClusterOttimizzato.txt", "r") as file:
     cluster = eval(file.readline())
-df = pd.read_csv("ground_truth/test_no_duplicates3.csv")
+df = pd.read_csv("ground_truth/ground_truth_random_reducedx2.csv")
 
 for index, row in df.iterrows():
    target_attribute = row['left_target_attribute']
