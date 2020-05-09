@@ -72,10 +72,10 @@ for d1 in productCluster:
             for key2, value2 in d2.items():
                 str1=str(key1)
                 str2=str(key2)
-                data = str1.split('_')
-                data=list(filter(lambda x : len(str(x))>2, data))
-
-                strClear=str2.replace(' ','_')
+                dataPD = str1.split('_')
+                dataPD=list(filter(lambda x : len(str(x))>2, dataPD))
+                dataPD=set(dataPD)
+                dataGT=set(str2.split('_'))
 
                 # CASO 1
                 if str1 == str2:
@@ -86,7 +86,7 @@ for d1 in productCluster:
                     listaPossibilita.append(newCluster.index(d2))
                 elif str2 in str1:
                     listaPossibilita.append(newCluster.index(d2))
-                elif any(parola in strClear for parola in data) :
+                elif len(dataPD.intersection(dataGT)) :
 
                     listaPossibilita.append(newCluster.index(d2))
         if len(str(key1))==1:#mi capitano attributi con solo 1 lettera che fanno un bordello
@@ -131,7 +131,7 @@ for d1 in productCluster:
             for tupla in tuplePunteggi:
                 if tupla[1]>list(tuplaMax.values())[0]:
                     tuplaMax={tupla[0]:tupla[1]}
-            #print(tuplaMax)
+            print(tuplaMax)
 
 
             #da controllare questa parte, sicuramente ho fatto casino con gli indici, devo usare gli indici e non d2 sennò sovrascrivo sempre
@@ -142,9 +142,9 @@ for d1 in productCluster:
             filename = value1[3].union(value2[2])
             #print(filename)
             #print(d2[key2])
-
+            key2=list(newCluster[list(tuplaMax.keys())[0]].keys())[0]
             newCluster[list(tuplaMax.keys())[0]][key2] = (attribute_name, attribute_value, filename)
-            print(newCluster[list(tuplaMax.keys())[0]])
+            #print(newCluster[list(tuplaMax.keys())[0]])
 
 
 for elem in newCluster:
