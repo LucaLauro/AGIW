@@ -68,21 +68,29 @@ for d1 in productCluster:
     for key1, value1 in d1.items():
         listaPossibilita=[]
         for d2 in newCluster:
-            findOne = False
+
             for key2, value2 in d2.items():
+                str1=str(key1)
+                str2=str(key2)
+                data = str1.split('_')
+                data=list(filter(lambda x : len(str(x))>2, data))
+
+                strClear=str2.replace(' ','_')
+
                 # CASO 1
-                if str(key1) == str(key2):
-                    listaPossibilita=[newCluster.index(d2)]
-                    findOne=True
-                    break
-                # CASO 2
-                elif str(key1) in str(key2):
-                    listaPossibilita.append(newCluster.index(d2))
-                elif str(key2) in str(key1):
+                if str1 == str2:
                     listaPossibilita.append(newCluster.index(d2))
 
-            if findOne:
-                break
+                # CASO 2
+                elif str1 in str2:
+                    listaPossibilita.append(newCluster.index(d2))
+                elif str2 in str1:
+                    listaPossibilita.append(newCluster.index(d2))
+                elif any(parola in strClear for parola in data) :
+
+                    listaPossibilita.append(newCluster.index(d2))
+        if len(str(key1))==1:#mi capitano attributi con solo 1 lettera che fanno un bordello
+            listaPossibilita=[]
         # CASO 1: STESSA CHIAVE --> AGGIUNGO
         if len(listaPossibilita)==1:
             value2= list(newCluster[listaPossibilita[0]].values())[0]
@@ -94,6 +102,10 @@ for d1 in productCluster:
         # HO PIU' POSSIBILITA' E PRENDO QUELLA CON IL PUNTEGGIO PIU' ALTO
         # listaPossibilita E' UNA LISTA DI INDICI
         elif len(listaPossibilita)>1:
+            print(listaPossibilita)
+            #print(productCluster.index(d1))
+            #print(key1)
+
             tuplePunteggi=[]
             for index in listaPossibilita:
                 value2 = list(newCluster[index].values())[0]
@@ -101,14 +113,19 @@ for d1 in productCluster:
                 for nameAttribute in value2[0]:
                     i = fuzz.token_set_ratio(str(value1[0][0]), str(nameAttribute))
                     maxName= max(maxName,i)
+                    print(str(value1[0][0]),'----',str(nameAttribute))
                 maxValue = 0
                 for valueAttribute in value2[1]:
                     j = fuzz.token_set_ratio(str(value1[0][1]), str(valueAttribute))
+                    if len(str(valueAttribute))>4 and len(str(valueAttribute).split(' '))<3:
+                        j=j*3
                     maxValue=max(maxValue, j)
-                media=maxName*2+maxValue*5
+                    print(str(value1[0][1]),'----', str(valueAttribute))
+                media=maxName*2+maxValue*3
                 tuplePunteggi.append((index,media))
 
             tuplaMax={"key2":0 }
+            print(tuplePunteggi)
             for tupla in tuplePunteggi:
                 if tupla[1]>list(tuplaMax.values())[0]:
                     tuplaMax={tupla[0]:tupla[1]}
