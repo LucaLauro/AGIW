@@ -36,10 +36,14 @@ import pandas as pd
 #dati = dati.drop_duplicates(subset=['left_target_attribute'], keep='first')
 #dati.to_csv(r'ground_truth/test_no_duplicates.csv', index=False, header=True)
 
-# Elimina i duplicati che hanno stesso left_target_attribute e stesso left_instance_value e right_instance_value
+# Elimina i duplicati che hanno stesso left_target_attribute e stesso left_instance_value e right_instance_value e gli attributi noisy
 f = "ground_truth/instance_attributes_gt.csv"
 data = pd.read_csv(f)
 dati = data[data['label'] == 1]
 dati = dati.drop_duplicates(subset=['left_target_attribute', 'left_instance_value'], keep='first')
 dati = dati.drop_duplicates(subset=['left_target_attribute', 'right_instance_value'], keep='first')
-dati.to_csv(r'ground_truth/test_no_duplicates2.csv', index=False, header=True)
+dati['left_instance_value'] = dati['left_instance_value'].astype('str')
+dati['right_instance_value'] = dati['right_instance_value'].astype('str')
+mask = (dati['left_instance_value'].str.len() < 10) & (dati['right_instance_value'].str.len() < 10)
+dati = dati.loc[mask]
+dati.to_csv(r'ground_truth/test_no_duplicates3.csv', index=False, header=True)

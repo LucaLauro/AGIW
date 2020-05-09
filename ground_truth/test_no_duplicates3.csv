@@ -1,0 +1,288 @@
+left_target_attribute,right_target_attribute,left_instance_attribute,right_instance_attribute,left_instance_value,right_instance_value,label
+auto_focus_beam,auto_focus_beam,www.shopmania.in//1547//af illuminator,www.shopmania.in//1066//af illuminator,yes,yes,1
+auto_focus_points,auto_focus_points,www.shopmania.in//975//number of focus points,www.shopmania.in//1646//number of focus points,23,51,1
+battery_type,battery_type,www.henrys.com//64//battery,www.wexphotographic.com//211//battery model,nb-13l,nb-12l,1
+battery_type,battery_type,www.eglobalcentral.co.uk//390//battery,www.ilgs.net//25//battery type,lp-e6,np-w126,1
+battery_type,battery_type,www.buzzillions.com//2909//compatible battery,www.eglobalcentral.co.uk//147//battery,en-el18,lp-e6,1
+battery_type,battery_type,www.buzzillions.com//2815//compatible battery,www.buzzillions.com//2206//compatible battery,en-el15,np-50,1
+battery_type,battery_type,www.henrys.com//123//battery,www.henrys.com//115//battery,en-el23,nb-6lh,1
+battery_type,battery_type,www.ilgs.net//98//battery type,www.wexphotographic.com//171//battery model,np-48,np-48,1
+battery_chemistry,battery_chemistry,www.shopmania.in//1617//battery,www.pcconnection.com//12360//battery technology,nimh,alkaline,1
+camera_height,camera_height,www.ilgs.net//48//height,www.buzzillions.com//2973//height inches,6.8 cm,2.2,1
+camera_height,camera_height,www.shopmania.in//1646//height,www.shopmania.in//1311//height,123 mm,100 mm,1
+camera_height,camera_height,www.shopmania.in//1117//height,www.ilgs.net//24//height,56 mm,8.05 cm,1
+camera_height,camera_height,www.shopmania.in//1122//height,www.shopmania.in//1569//height,65 mm,93 mm,1
+camera_height,camera_height,www.shopmania.in//1341//height,www.buzzillions.com//1804//height inches,70 mm,2.77,1
+camera_height,camera_height,www.shopmania.in//698//height,www.shopmania.in//906//height,94 mm,94 mm,1
+camera_height,camera_height,www.ilgs.net//104//height,www.buzzillions.com//1835//height inches,6.1 cm,2.4,1
+camera_height,camera_height,www.shopmania.in//1043//height,www.shopmania.in//1140//height,90 mm,113 mm,1
+camera_height,camera_height,www.shopmania.in//1065//height,www.shopmania.in//1167//height,106 mm,96 mm,1
+camera_height,camera_height,www.shopmania.in//1188//height,www.buzzillions.com//1035//height inches,61 mm,3.29,1
+camera_height,camera_height,www.shopmania.in//1066//height,www.buzzillions.com//1957//height inches,97 mm,3.8,1
+camera_height,camera_height,www.shopmania.in//1107//height,www.shopmania.in//1114//height,101 mm,157 mm,1
+camera_height,camera_height,www.shopmania.in//1605//height,www.shopmania.in//655//height,103 mm,76 mm,1
+camera_height,camera_height,www.shopmania.in//1101//height,www.ilgs.net//134//height,51 mm,9.97 cm,1
+camera_height,camera_height,www.shopmania.in//932//height,www.buzzillions.com//2078//height inches,60 mm,2.16,1
+camera_height,camera_height,www.shopmania.in//1686//height,www.shopmania.in//1099//height,105 mm,105 mm,1
+camera_height,camera_height,www.shopmania.in//665//height,www.shopmania.in//1406//height,87 mm,114 mm,1
+camera_height,camera_height,www.shopmania.in//950//height,www.shopmania.in//1460//height,96 mm,61 mm,1
+camera_height,camera_height,www.shopmania.in//872//height,www.ilgs.net//48//height,100 mm,6.8 cm,1
+camera_height,camera_height,www.buzzillions.com//1820//height inches,www.buzzillions.com//2723//height inches,3.8,2.22,1
+camera_height,camera_height,www.shopmania.in//1583//height,www.shopmania.in//932//height,64 mm,60 mm,1
+camera_height,camera_height,www.shopmania.in//1721//height,www.ilgs.net//25//height,98 mm,6.65 cm,1
+camera_height,camera_height,www.buzzillions.com//2078//height inches,www.buzzillions.com//2206//height inches,2.16,2.7,1
+camera_height,camera_height,www.shopmania.in//1454//height,www.shopmania.in//1019//height,73 mm,70 mm,1
+camera_height,camera_height,www.shopmania.in//640//height,www.buzzillions.com//2719//height inches,107 mm,4.5,1
+camera_height,camera_height,www.buzzillions.com//2021//height inches,www.buzzillions.com//2005//height inches,2.42,4.1,1
+camera_height,camera_height,www.buzzillions.com//2206//height inches,www.buzzillions.com//649//height inches,2.7,4.6,1
+camera_height,camera_height,www.shopmania.in//1226//height,www.buzzillions.com//2021//height inches,52 mm,2.42,1
+camera_width,camera_width,cammarkt.com//99//width,www.shopmania.in//1727//width,4.9 in.,104 mm,1
+camera_width,camera_width,buy.net//5966//width,cammarkt.com//300//width,5 in,6 in.,1
+camera_width,camera_width,buy.net//5698//width,www.shopmania.in//1341//width,4.9 in,117 mm,1
+camera_width,camera_width,buy.net//5372//width,buy.net//5904//width,4.8 in,4.9 in,1
+camera_width,camera_width,buy.net//6783//width,buy.net//5891//width,5.13 in,2.5 in,1
+camera_width,camera_width,buy.net//6088//width,www.shopmania.in//1117//width,3.94 in,100 mm,1
+camera_width,camera_width,buy.net//5403//width,cammarkt.com//51//width,3.9 in,5 in.,1
+camera_width,camera_width,buy.net//5970//width,buy.net//6293//width,3.6 in,4.6 in,1
+camera_width,camera_width,www.shopmania.in//1167//width,www.shopmania.in//1101//width,124 mm,77 mm,1
+camera_width,camera_width,buy.net//5473//width,www.shopmania.in//1646//width,4.4 in,146 mm,1
+camera_width,camera_width,www.shopmania.in//1721//width,www.shopmania.in//858//width,125 mm,106 mm,1
+camera_width,camera_width,buy.net//5413//width,www.shopmania.in//1107//width,3.8 in,135 mm,1
+camera_width,camera_width,www.shopmania.in//1460//width,www.ilgs.net//33//width,95 mm,6.24 cm,1
+camera_width,camera_width,buy.net//6502//width,www.shopmania.in//1583//width,6 in,111 mm,1
+camera_width,camera_width,www.buzzillions.com//2973//width inches,www.buzzillions.com//2750//width inches,3.4,3.8,1
+camera_width,camera_width,cammarkt.com//51//width,www.buzzillions.com//2206//width inches,5 in.,4.6,1
+camera_width,camera_width,buy.net//5389//width,www.ilgs.net//98//width,3.4 in,10 cm,1
+camera_width,camera_width,www.shopmania.in//1311//width,www.shopmania.in//665//width,130 mm,123 mm,1
+camera_width,camera_width,www.shopmania.in//1140//width,www.shopmania.in//1226//width,141 mm,92 mm,1
+camera_width,camera_width,www.shopmania.in//1430//width,www.shopmania.in//1043//width,101 mm,121 mm,1
+camera_width,camera_width,www.ilgs.net//134//width,www.buzzillions.com//2723//width inches,12.96 cm,3.72,1
+camera_width,camera_width,www.shopmania.in//1101//width,www.ilgs.net//25//width,77 mm,11.69 cm,1
+camera_width,camera_width,www.buzzillions.com//1804//width inches,www.buzzillions.com//2021//width inches,4.35,4.16,1
+camera_type,camera_type,www.shopbot.com.au//231//camera type,www.ilgs.net//43//camera type,slr,compact,1
+color,color,cammarkt.com//310//color,www.wexphotographic.com//190//colour,black,black,1
+color,color,www.flipkart.com//2323//color,www.wexphotographic.com//611//colour,silver,white,1
+color,color,cammarkt.com//344//color,www.wexphotographic.com//192//colour,none,pink,1
+color,color,www.wexphotographic.com//612//colour,www.wexphotographic.com//160//colour,blue,red,1
+focal_length_max,focal_length_max,www.pcconnection.com//12393//35mm equivalent focal length max,www.wexphotographic.com//207//focal length tele,450 mm,100,1
+focal_length_max,focal_length_max,www.priceme.co.nz//2283//max focal length,www.pcconnection.com//4453//focal length max,448mm,70 mm,1
+focal_length_max,focal_length_max,www.pcconnection.com//12364//35mm equivalent focal length max,www.wexphotographic.com//198//focal length tele,135 mm,87,1
+focal_length_max,focal_length_max,www.wexphotographic.com//585//focal length tele,www.ilgs.net//23//maximum focal length 35mm film equiv,450,120 cm,1
+focal_length_max,focal_length_max,www.priceme.co.nz//1825//max focal length,www.wexphotographic.com//213//focal length tele,112mm,1365,1
+focal_length_max,focal_length_max,www.priceme.co.nz//30//max focal length,www.pcconnection.com//12448//35mm equivalent focal length max,450mm,130 mm,1
+focal_length_max,focal_length_max,www.wexphotographic.com//623//focal length tele,www.wexphotographic.com//605//focal length tele,120,720,1
+focal_length_max,focal_length_max,www.pcconnection.com//4399//35mm equivalent focal length max,www.pcconnection.com//4472//35mm equivalent focal length max,84.00 mm,84.00 mm,1
+focal_length_max,focal_length_max,www.pcconnection.com//12419//focal length max,www.wexphotographic.com//193//focal length tele,81 mm,200,1
+focal_length_max,focal_length_max,www.pcconnection.com//12181//35mm equivalent focal length max,www.wexphotographic.com//611//focal length tele,82.50 mm,250,1
+focal_length_max,focal_length_max,www.pcconnection.com//12360//focal length max,www.wexphotographic.com//152//focal length tele,80 mm,120,1
+focal_length_max,focal_length_max,www.priceme.co.nz//1795//max focal length,www.wexphotographic.com//158//focal length tele,250mm,1440,1
+focal_length_max,focal_length_max,www.priceme.co.nz//2103//max focal length,www.ilgs.net//43//maximum focal length 35mm film equiv,300mm,40 cm,1
+focal_length_max,focal_length_max,www.priceme.co.nz//1935//max focal length,www.pcconnection.com//12364//35mm equivalent focal length max,90mm,135 mm,1
+focal_length_max,focal_length_max,www.priceme.co.nz//2336//max focal length,www.wexphotographic.com//185//focal length tele,200mm,300,1
+focal_length_max,focal_length_max,www.pcconnection.com//12448//35mm equivalent focal length max,www.pcconnection.com//12434//35mm equivalent focal length max,130 mm,82.50 mm,1
+focal_length_max,focal_length_max,www.priceme.co.nz//1881//max focal length,www.priceme.co.nz//80//max focal length,1440mm,140mm,1
+focal_length_max,focal_length_max,www.priceme.co.nz//2346//max focal length,www.pcconnection.com//12360//focal length max,87mm,80 mm,1
+focal_length_max,focal_length_max,www.wexphotographic.com//198//focal length tele,www.wexphotographic.com//619//focal length tele,87,450,1
+focal_length_max,focal_length_max,www.priceme.co.nz//2353//max focal length,www.wexphotographic.com//615//focal length tele,100mm,480,1
+focal_length_max,focal_length_max,www.priceme.co.nz//1692//max focal length,www.wexphotographic.com//591//focal length tele,105mm,75,1
+focal_length_max,focal_length_max,www.wexphotographic.com//586//focal length tele,www.wexphotographic.com//620//focal length tele,90,140,1
+focal_length_max,focal_length_max,www.pcconnection.com//12360//35mm equivalent focal length max,www.ilgs.net//98//maximum focal length 35mm film equiv,448 mm,10 cm,1
+focal_length_max,focal_length_max,www.wexphotographic.com//605//focal length tele,www.wexphotographic.com//208//focal length tele,720,750,1
+focal_length_max,focal_length_max,www.priceme.co.nz//2344//max focal length,www.ilgs.net//48//maximum focal length 35mm film equiv,392mm,14 cm,1
+focal_length_max,focal_length_max,www.pcconnection.com//12399//focal length max,www.wexphotographic.com//601//focal length tele,26 mm,1200,1
+focal_length_max,focal_length_max,www.pricedekho.com//1152//focal length,www.ilgs.net//33//maximum focal length 35mm film equiv,24 mm,25 cm,1
+focal_length_max,focal_length_max,www.pcconnection.com//12399//35mm equivalent focal length max,www.wexphotographic.com//618//focal length tele,120 mm,90,1
+focal_length_max,focal_length_max,www.ilgs.net//48//maximum focal length 35mm film equiv,www.ilgs.net//134//maximum focal length 35mm film equiv,14 cm,8.8 cm,1
+focal_length_min,focal_length_min,www.pcconnection.com//12360//35mm equivalent focal length min,www.pcconnection.com//12399//focal length min,28 mm,5.2 mm,1
+focal_length_min,focal_length_min,www.wexphotographic.com//203//focal length wide,www.wexphotographic.com//211//focal length wide,24,24,1
+focal_length_min,focal_length_min,buy.net//5803//focal length,www.ilgs.net//7//minimum focal length 35mm film equiv,18-55,2.5 cm,1
+focal_length_min,focal_length_min,www.pcconnection.com//12364//35mm equivalent focal length min,www.ilgs.net//102//minimum focal length 35mm film equiv,18 mm,2.4 cm,1
+focal_length_min,focal_length_min,www.pricedekho.com//1133//focal length,www.shopmania.in//1454//focal length,4.6 23 mm,5 - 90 mm,1
+image_resolution,image_resolution,www.priceme.co.nz//2043//max image resolution,www.ebay.com//48736//megapixels,6000x4000,12.3 mp,1
+image_resolution,image_resolution,www.ebay.com//45474//megapixels,www.buzzillions.com//2131//megapixels,14.2 mp,8.0,1
+image_resolution,image_resolution,www.ebay.com//44620//megapixels,www.wexphotographic.com//614//megapixels,24.3,12.8,1
+image_resolution,image_resolution,www.ebay.com//47638//megapixels,www.garricks.com.au//66//resolution,24.3 mp,24.2mp,1
+image_resolution,image_resolution,www.ebay.com//48402//megapixels,www.ebay.com//55542//megapixels,24.2,14.2mp,1
+image_resolution,image_resolution,www.ebay.com//55458//megapixels,www.henrys.com//212//effective pixels,24.2 mp,18mp,1
+image_resolution,image_resolution,www.pricedekho.com//1230//other resolution,www.ebay.com//54662//megapixels,na,14.2 mp,1
+image_resolution,image_resolution,www.ebay.com//55570//megapixels,www.buzzillions.com//2301//megapixels,12.3 mp,14,1
+image_resolution,image_resolution,www.pricedekho.com//1196//optical sensor resolution in megapixel,www.ebay.com//56293//megapixels,16 mp,14.3 mp,1
+image_resolution,image_resolution,www.ebay.com//43688//megapixels,www.shopbot.com.au//1407//sensor resolution,36.3 mp,"22,3 mpx",1
+image_resolution,image_resolution,www.ebay.com//44644//megapixels,www.ebay.com//54653//megapixels,10.2 mp,18.0 mp,1
+image_resolution,image_resolution,www.ebay.com//46982//megapixels,www.shopbot.com.au//1415//sensor resolution,12.2 mp,18 mpx,1
+image_resolution,image_resolution,www.ebay.com//47841//megapixels,www.ebay.com//56404//megapixels,16.1 mp,18.2 mp,1
+image_resolution,image_resolution,www.ebay.com//43863//megapixels,www.shopmania.in//1547//resolution,16.4,10.1 mp,1
+image_resolution,image_resolution,cammarkt.com//29//image resolutions,www.priceme.co.nz//2110//max image resolution,720 x 480,6000x4000,1
+image_resolution,image_resolution,www.ebay.com//24164//megapixels,www.ebay.com//56741//megapixels,14.1 mp,16.1 mp,1
+image_resolution,image_resolution,www.priceme.co.nz//37//max image resolution,www.ebay.com//43428//megapixels,4896x3264,12.1 mp,1
+image_resolution,image_resolution,www.ebay.com//42477//megapixels,www.ebay.com//55341//megapixels,16.3 mp,24.3 mp,1
+image_resolution,image_resolution,www.ebay.com//56293//megapixels,www.ebay.com//47379//megapixels,14.3 mp,10.0 mp,1
+image_resolution,image_resolution,www.ebay.com//56793//megapixels,www.buzzillions.com//2163//effective megapixel count,16.2,12.3,1
+image_resolution,image_resolution,buy.net//6670//total pixels,www.ebay.com//47243//megapixels,24800000,3.2 mp,1
+image_resolution,image_resolution,www.ebay.com//43998//megapixels,www.ebay.com//55644//megapixels,24.0 mp,10.0mp,1
+image_resolution,image_resolution,www.priceme.co.nz//2352//max image resolution,www.ebay.com//48111//megapixels,4608x3072,36.3 mp,1
+image_resolution,image_resolution,www.ebay.com//54983//megapixels,www.ebay.com//44794//megapixels,20.1,22.3 mp,1
+image_resolution,image_resolution,www.priceme.co.nz//2056//max image resolution,www.ebay.com//46462//megapixels,4928x3264,16.0 mp,1
+image_resolution,image_resolution,www.mypriceindia.com//185//camera resolution,www.ebay.com//55516//megapixels,16.9 mp,24.0 mp,1
+image_resolution,image_resolution,www.ebay.com//44100//megapixels,www.ebay.com//47384//megapixels,12.1,12.2 mp,1
+image_resolution,image_resolution,www.ebay.com//60280//megapixels,www.henrys.com//24//effective pixels,5.0 mp,16.0mp,1
+image_resolution,image_resolution,www.priceme.co.nz//2192//max image resolution,www.ebay.com//46081//megapixels,6016x4000,5.0 mp,1
+image_resolution,image_resolution,www.ebay.com//52649//megapixels,www.buzzillions.com//1864//megapixels,16.1mp,16,1
+image_resolution,image_resolution,www.garricks.com.au//83//resolution,www.buzzillions.com//1804//effective megapixel count,22.3mp,10.0,1
+image_resolution,image_resolution,www.mypriceindia.com//18//camera resolution,www.shopbot.com.au//431//sensor resolution,25 mp,"24,2 mpx",1
+image_resolution,image_resolution,www.price-hunt.com//940//total pixelgross pixel,www.priceme.co.nz//1934//max image resolution,16.76,5184x3456,1
+image_resolution,image_resolution,buy.net//6003//total pixels,buy.net//6370//total pixels,12000000,20400000,1
+image_resolution,image_resolution,www.wexphotographic.com//161//resolution,www.garricks.com.au//105//sensor details,1040000,12.1mp,1
+image_resolution,image_resolution,www.shopbot.com.au//372//sensor resolution,www.henrys.com//1//effective pixels,"12,3 mpx",16.4mp,1
+video_resolution,video_resolution,www.flipkart.com//2244//full hd,www.flipkart.com//2282//full hd,videos,recording,1
+video_resolution,video_resolution,www.buzzillions.com//2078//movie mode,www.wexphotographic.com//587//movie mode,yes,720p,1
+internal_memory_capacity,internal_memory_capacity,buy.net//6110//installed memory,www.shopmania.in//634//installed memory,37 mb,23 mb,1
+internal_memory_capacity,internal_memory_capacity,buy.net//6601//installed memory,www.henrys.com//96//builtin memory,25 mb,nan,1
+internal_memory_capacity,internal_memory_capacity,www.henrys.com//160//builtin memory,www.henrys.com//172//builtin memory,25mb,329mb,1
+internal_memory_capacity,internal_memory_capacity,www.pricedekho.com//1255//inbuilt memory,www.shopmania.in//1341//installed memory,86 mb,26 mb,1
+internal_memory_capacity,internal_memory_capacity,buy.net//5842//installed memory,www.shopmania.in//1291//installed memory,329 mb,10 mb,1
+internal_memory_capacity,internal_memory_capacity,www.henrys.com//188//builtin memory,www.henrys.com//40//builtin memory,nan,25mb,1
+internal_memory_capacity,internal_memory_capacity,www.shopmania.in//1122//installed memory,www.ilgs.net//98//internal memory,21 mb,66 mb,1
+internal_memory_capacity,internal_memory_capacity,www.henrys.com//221//builtin memory,www.ilgs.net//23//internal memory,no,38 mb,1
+internal_memory_capacity,internal_memory_capacity,www.buzzillions.com//2913//builtin memory,www.buzzillions.com//2913//internal memory,28mb,27mb,1
+internal_memory_capacity,internal_memory_capacity,www.price-hunt.com//9791//inbuilt memory,www.henrys.com//154//builtin memory,7.3 gb,56mb,1
+internal_memory_capacity,internal_memory_capacity,buy.net//5970//installed memory,www.pricedekho.com//1255//inbuilt memory,44 mb,86 mb,1
+internal_memory_capacity,internal_memory_capacity,www.price-hunt.com//9918//inbuilt memory,www.buzzillions.com//2131//builtin memory,10 mb,32mb,1
+internal_memory_capacity,internal_memory_capacity,www.shopmania.in//1341//installed memory,www.shopmania.in//1101//installed memory,26 mb,7.30 gb,1
+internal_memory_capacity,internal_memory_capacity,buy.net//5466//installed memory,www.henrys.com//32//builtin memory,38 mb,66mb,1
+internal_memory_capacity,internal_memory_capacity,www.shopmania.in//1490//installed memory,www.henrys.com//129//builtin memory,45 mb,no,1
+internal_memory_capacity,internal_memory_capacity,buy.net//5514//installed memory,www.shopmania.in//1547//installed memory,66 mb,70 mb,1
+internal_memory_capacity,internal_memory_capacity,www.buzzillions.com//2078//builtin memory,www.buzzillions.com//2913//builtin memory,32mb,28mb,1
+iso_sensitivity_max,iso_sensitivity_max,buy.net//4293//iso sensitivity,www.wexphotographic.com//193//iso max,iso 3200,6400,1
+iso_sensitivity_max,iso_sensitivity_max,www.ebay.com//52959//highest standard iso sensitivity,www.wexphotographic.com//158//iso max,6400,12800,1
+iso_sensitivity_max,iso_sensitivity_max,www.priceme.co.nz//30//light sensitivity,www.priceme.co.nz//1747//light sensitivity,100 iso,64 iso,1
+iso_sensitivity_max,iso_sensitivity_max,www.priceme.co.nz//1747//light sensitivity,www.ilgs.net//48//iso sensitivity max,64 iso,3200,1
+iso_sensitivity_max,iso_sensitivity_max,www.priceme.co.nz//2181//light sensitivity,www.wexphotographic.com//160//iso max,iso 25600,1600,1
+iso_sensitivity_min,iso_sensitivity_min,www.henrys.com//130//iso sensitivity,www.henrys.com//96//iso sensitivity,80-1600,80-3200,1
+screen_size,screen_size,www.ebay.com//43571//screen size,www.wexphotographic.com//618//screen size inches,"3""",3.0,1
+screen_size,screen_size,buy.net//6117//lcd screen size,www.ebay.com//47402//screen size,3 in,"2.5""",1
+screen_size,screen_size,www.ebay.com//46580//screen size,www.pcconnection.com//12434//display size,"3.2""",3 in,1
+screen_size,screen_size,www.ebay.com//25081//screen size,www.ebay.com//44608//screen size,"2.7""","1.8""",1
+screen_size,screen_size,www.ebay.com//43032//screen size,www.ebay.com//42729//screen size,"2.8""","3.2""",1
+screen_size,screen_size,www.price-hunt.com//942//lcd screen size,www.ebay.com//56370//screen size,3 inch,"2.8""",1
+screen_size,screen_size,www.shopbot.com.au//290//lcd size,www.buzzillions.com//2630//lcd viewer,"3 """,3 inch,1
+screen_size,screen_size,www.buzzillions.com//2973//lcd display size inches,www.buzzillions.com//1985//lcd viewer,2.5,2.4 inch,1
+screen_size,screen_size,www.ebay.com//46081//screen size,www.ebay.com//46947//screen size,"1.8""","2.7""",1
+screen_size,screen_size,www.ukdigitalcameras.co.uk//225//lcd size,www.henrys.com//188//screen size,3.0'',nan,1
+screen_size,screen_size,www.pcconnection.com//12437//display size,www.buzzillions.com//2078//lcd display size inches,3.3 in,2.5,1
+screen_size,screen_size,cammarkt.com//73//lcd screen size,www.shopbot.com.au//1413//lcd size,7.6 in.,"3 """,1
+screen_size,screen_size,www.ebay.com//43260//screen size,www.ukdigitalcameras.co.uk//34//lcd size,2.8in,3.0'',1
+screen_size,screen_size,www.ebay.com//47957//screen size,www.shopbot.com.au//1407//lcd size,"2.5"" x 2""","3,2 """,1
+screen_size,screen_size,www.buzzillions.com//1985//lcd viewer,www.buzzillions.com//2723//lcd viewer,2.4 inch,2.7 inch,1
+screen_size,screen_size,www.ukdigitalcameras.co.uk//133//lcd size,www.buzzillions.com//2294//display screen,"3.0""'","2.4""",1
+screen_type,screen_type,www.price-hunt.com//9649//lcd display,www.shopmania.in//1101//screen type,tft lcd,lcd,1
+screen_type,screen_type,www.shopmania.in//1478//screen type,www.henrys.com//172//display screen type,lcd,oled,1
+sensor_size,sensor_size,www.shopmania.in//950//sensor format,www.pcconnection.com//4453//optical sensor size,aps-c,24 x 36mm,1
+sensor_size,sensor_size,www.garricks.com.au//92//image format,www.garricks.com.au//78//image format,"1/2""",m-43,1
+sensor_size,sensor_size,www.camerafarm.com.au//796//image sensor format,www.pcconnection.com//12360//optical sensor size,fx,"1/2.3""",1
+sensor_size,sensor_size,www.shopmania.in//1341//sensor size,www.shopmania.in//1189//sensor size,2/3,1/2.5,1
+zoom_optical,zoom_optical,www.ebay.com//60195//optical zoom,www.ilgs.net//43//optical zoom,5x,18 x 18x,1
+zoom_optical,zoom_optical,www.ebay.com//59303//optical zoom,www.ebay.com//44510//optical zoom,3x,5x,1
+zoom_optical,zoom_optical,www.ebay.com//54631//optical zoom,www.ukdigitalcameras.co.uk//276//optical zoom,10x,23,1
+zoom_optical,zoom_optical,www.ebay.com//58711//optical zoom,www.walmart.com//671//optical zoom,30x,7.1x,1
+zoom_optical,zoom_optical,www.ebay.com//60280//optical zoom,www.ebay.com//58373//optical zoom,4x,3x,1
+zoom_optical,zoom_optical,www.walmart.com//690//optical zoom,www.wexphotographic.com//585//optical zoom x,18x,18.0,1
+zoom_optical,zoom_optical,buy.net//6036//optical zoom,www.ebay.com//54351//optical zoom,16 x,5.8x,1
+zoom_optical,zoom_optical,www.mypriceindia.com//117//optical zoom,www.ebay.com//55333//optical zoom,46x,16x,1
+zoom_optical,zoom_optical,www.ukdigitalcameras.co.uk//133//optical zoom range,www.wexphotographic.com//198//optical zoom x,4x to 7x,3.0,1
+zoom_optical,zoom_optical,buy.net//5514//optical zoom,www.ebay.com//42547//optical zoom,4 x,3.1x,1
+zoom_optical,zoom_optical,buy.net//6212//optical zoom,www.ebay.com//24229//optical zoom,5 x,none,1
+zoom_optical,zoom_optical,www.mypriceindia.com//99//optical zoom,www.ebay.com//45137//optical zoom,7.1x,7.5x,1
+zoom_optical,zoom_optical,www.ebay.com//44809//optical zoom,www.ebay.com//42371//optical zoom,3.8x,no lens,1
+zoom_optical,zoom_optical,www.ukdigitalcameras.co.uk//284//optical zoom,www.wexphotographic.com//614//optical zoom x,60x,3.1,1
+zoom_optical,zoom_optical,www.ebay.com//44188//optical zoom,www.walmart.com//807//optical zoom,50x,60x,1
+zoom_optical,zoom_optical,cammarkt.com//99//optical zoom,www.mypriceindia.com//27//optical zoom,7.8x,1.5x 10x,1
+zoom_optical,zoom_optical,www.ebay.com//24299//optical zoom,www.ukdigitalcameras.co.uk//221//optical zoom,14x,4,1
+zoom_optical,zoom_optical,www.eglobalcentral.co.uk//46//optical zoom,www.ebay.com//57048//optical zoom,nan,4.2x,1
+zoom_optical,zoom_optical,www.price-hunt.com//9545//optical zoom,www.ukdigitalcameras.co.uk//170//optical zoom,65x,5,1
+zoom_optical,zoom_optical,buy.net//5427//optical zoom,www.ebay.com//47666//optical zoom,63 x,10x,1
+zoom_optical,zoom_optical,buy.net//5891//optical zoom,www.ebay.com//52998//optical zoom,10 x,7.8x,1
+zoom_optical,zoom_optical,buy.net//6110//optical zoom,www.buzzillions.com//2021//optical zoom,50 x,14x 14,1
+zoom_optical,zoom_optical,www.ukdigitalcameras.co.uk//178//optical zoom,www.henrys.com//30//optical zoom,50,18x,1
+zoom_optical,zoom_optical,www.wexphotographic.com//551//optical zoom x,www.buzzillions.com//1957//optical zoom,10.0,yes 3x,1
+zoom_optical,zoom_optical,buy.net//6687//optical zoom,www.ukdigitalcameras.co.uk//291//optical zoom,46 x,42,1
+zoom_optical,zoom_optical,buy.net//6145//optical zoom,www.eglobalcentral.co.uk//710//optical zoom,18 x,no,1
+zoom_optical,zoom_optical,www.ebay.com//57048//optical zoom,www.ebay.com//47935//optical zoom,4.2x,6x,1
+zoom_optical,zoom_optical,www.gosale.com//489//optical zoom,www.ukdigitalcameras.co.uk//220//optical zoom,14 x,50x,1
+zoom_optical,zoom_optical,www.mypriceindia.com//27//optical zoom,www.eglobalcentral.co.uk//46//optical zoom,1.5x 10x,nan,1
+zoom_optical,zoom_optical,www.shopmania.in//975//optical zoom,www.wexphotographic.com//601//optical zoom x,3.2x,50.0,1
+zoom_optical,zoom_optical,www.shopmania.in//1188//optical zoom,www.ukdigitalcameras.co.uk//2//optical zoom,2.7x,65,1
+zoom_optical,zoom_optical,www.ukdigitalcameras.co.uk//2//optical zoom,www.wexphotographic.com//208//optical zoom x,65,30,1
+zoom_optical,zoom_optical,www.wexphotographic.com//193//optical zoom x,www.buzzillions.com//2973//optical zoom,7.0,3 3x,1
+zoom_optical,zoom_optical,www.wexphotographic.com//603//optical zoom x,www.buzzillions.com//2723//optical zoom,60,5 5x,1
+zoom_optical,zoom_optical,www.buzzillions.com//1778//optical zoom,www.buzzillions.com//2750//optical zoom,16x 20x,3.6 3.6x,1
+sensor_type,sensor_type,buy.net//5857//image sensor,www.shopmania.in//1460//sensor type,cmos,ccd,1
+shutter_speed_max,shutter_speed_max,www.shopmania.in//1188//max shutter speed,www.shopmania.in//1478//max shutter speed,1/16000,1/16000,1
+shutter_speed_max,shutter_speed_max,www.shopmania.in//1019//max shutter speed,www.shopmania.in//1291//max shutter speed,1/1600,1/1500,1
+shutter_speed_max,shutter_speed_max,www.ilgs.net//98//camera shutter speed max,www.shopmania.in//1686//max shutter speed,0.25s,1/8000,1
+shutter_speed_max,shutter_speed_max,www.ilgs.net//23//camera shutter speed max,www.ilgs.net//102//camera shutter speed max,8s,8s,1
+shutter_speed_min,shutter_speed_min,www.wexphotographic.com//623//shutter speed min,www.ilgs.net//48//camera shutter speed min,250 sec,15s,1
+supported_languages_number,supported_languages_number,www.flipkart.com//2297//supported languages,www.price-hunt.com//929//supported languages,17,30,1
+supported_languages_number,supported_languages_number,www.mypriceindia.com//79//supported languages,www.mypriceindia.com//83//supported languages,24,35,1
+supported_languages_number,supported_languages_number,www.flipkart.com//2180//supported languages,www.mypriceindia.com//67//supported languages,34,34,1
+supported_languages_number,supported_languages_number,www.mypriceindia.com//703//supported languages,www.mypriceindia.com//79//supported languages,19,24,1
+supported_languages_number,supported_languages_number,www.mypriceindia.com//736//supported languages,www.mypriceindia.com//63//supported languages,20,23,1
+supported_languages_number,supported_languages_number,www.flipkart.com//2300//supported languages,www.price-hunt.com//9548//supported languages,22,29,1
+supported_aspect_ratio,supported_aspect_ratio,www.pricedekho.com//1230//supported aspect ratio,www.eglobalcentral.co.uk//89//aspect ratio,03:02,"3:2, 16:9",1
+supported_audio_formats,supported_audio_formats,www.ilgs.net//25//audio formats supported,www.ilgs.net//43//audio formats supported,pcm,aac,1
+warranty_duration,warranty_duration,www.pcconnection.com//12404//warranty parts,www.pcconnection.com//4397//warranty labor,nan,nan,1
+battery_duration,battery_duration,www.ilgs.net//104//battery life cipa standard,www.ilgs.net//98//battery life cipa standard,290 shots,240 shots,1
+battery_duration,battery_duration,www.ilgs.net//47//battery life cipa standard,www.ilgs.net//25//battery life cipa standard,500 shots,350 shots,1
+battery_duration,battery_duration,www.ilgs.net//33//battery life max,www.ilgs.net//7//battery life cipa standard,1.8h,290 shots,1
+working_humidity,working_humidity,www.flipkart.com//2240//humidity,www.cambuy.com.au//15//operating humidity range,85%,30 - 90%,1
+zoom_digital,zoom_digital,buy.net//6228//digital zoom,buy.net//6036//digital zoom,4 x,4x,1
+zoom_digital,zoom_digital,buy.net//6511//digital zoom,buy.net//5403//digital zoom,no,4 x,1
+zoom_digital,zoom_digital,www.pricedekho.com//1157//digital zoom,www.shopmania.in//1107//digital zoom,5.7x,20x,1
+zoom_digital,zoom_digital,buy.net//5427//digital zoom,buy.net//5889//digital zoom,126x,5.7x,1
+zoom_digital,zoom_digital,www.shopmania.in//1569//digital zoom,www.buzzillions.com//2021//digital zoom,100x,4 4x,1
+zoom_digital,zoom_digital,www.shopmania.in//1107//digital zoom,www.buzzillions.com//2294//digital zoom,20x,3x,1
+brand,brand,www.ebay.com//52734//brand,www.ebay.com//47994//brand,nikon,canon,1
+brand,brand,www.ebay.com//42860//brand,www.ebay.com//44832//brand,canon,nikon,1
+brand,brand,www.ebay.com//53911//brand,www.ebay.com//45265//brand,sony,sony,1
+camera_depth,camera_depth,www.shopmania.in//1605//depth,www.ilgs.net//47//depth,77 mm,7.79 cm,1
+camera_depth,camera_depth,buy.net//6670//depth,www.buzzillions.com//2815//depth inches,3 in,3.0,1
+camera_depth,camera_depth,buy.net//4266//depth,www.shopmania.in//1383//depth,1.1 in,35 mm,1
+camera_depth,camera_depth,buy.net//5889//depth,buy.net//6207//depth,2.7 in,3.2 in,1
+camera_depth,camera_depth,buy.net//5855//depth,buy.net//5966//depth,3.0 in,4.2 in,1
+camera_depth,camera_depth,buy.net//5413//depth,www.shopmania.in//861//depth,0.6 in,79 mm,1
+camera_depth,camera_depth,www.shopmania.in//1617//depth,www.shopmania.in//1189//depth,44 mm,45 mm,1
+camera_depth,camera_depth,www.shopmania.in//1458//depth,www.ilgs.net//25//depth,48 mm,3.9 cm,1
+camera_depth,camera_depth,buy.net//5904//depth,www.shopmania.in//1140//depth,3.9 in,82 mm,1
+camera_depth,camera_depth,buy.net//5514//depth,www.shopmania.in//1167//depth,1.3 in,75 mm,1
+camera_depth,camera_depth,buy.net//6036//depth,www.shopmania.in//634//depth,1.7 in,80 mm,1
+camera_depth,camera_depth,buy.net//5842//depth,www.shopmania.in//1043//depth,1.4 in,42 mm,1
+camera_depth,camera_depth,buy.net//6228//depth,www.ilgs.net//104//depth,4.2 in,2.6 cm,1
+camera_depth,camera_depth,www.shopmania.in//1138//depth,www.buzzillions.com//2078//depth inches,82 mm,0.87,1
+camera_depth,camera_depth,buy.net//6207//depth,www.shopmania.in//640//depth,3.2 in,85 mm,1
+camera_depth,camera_depth,www.shopmania.in//1406//depth,www.ilgs.net//23//depth,74 mm,11.62 cm,1
+camera_depth,camera_depth,buy.net//6545//depth,www.buzzillions.com//2723//depth inches,1.14 in,0.84,1
+camera_depth,camera_depth,buy.net//6204//depth,www.buzzillions.com//2296//depth inches,1.6 in,3,1
+camera_depth,camera_depth,buy.net//5466//depth,www.shopmania.in//974//depth,4.6 in,38 mm,1
+camera_depth,camera_depth,buy.net//5427//depth,www.shopmania.in//665//depth,4.8 in,106 mm,1
+camera_depth,camera_depth,www.shopmania.in//1490//depth,www.shopmania.in//1101//depth,18 mm,17 mm,1
+camera_depth,camera_depth,www.shopmania.in//665//depth,www.shopmania.in//1605//depth,106 mm,77 mm,1
+camera_depth,camera_depth,www.shopmania.in//1454//depth,www.buzzillions.com//1957//depth inches,81 mm,2.9,1
+camera_depth,camera_depth,buy.net//5970//depth,www.shopmania.in//1122//depth,0.8 in,25 mm,1
+camera_depth,camera_depth,buy.net//6003//depth,www.shopmania.in//872//depth,1.2 in,78 mm,1
+camera_depth,camera_depth,buy.net//5891//depth,www.shopmania.in//932//depth,2.5 in,29 mm,1
+camera_depth,camera_depth,buy.net//6687//depth,buy.net//5368//depth,4.5 in,3 in,1
+camera_depth,camera_depth,buy.net//5946//depth,www.shopmania.in//714//depth,0.7 in,30 mm,1
+camera_depth,camera_depth,www.shopmania.in//1019//depth,www.shopmania.in//1458//depth,80 mm,48 mm,1
+camera_depth,camera_depth,www.shopmania.in//1687//depth,www.ilgs.net//24//depth,40 mm,6.47 cm,1
+camera_depth,camera_depth,www.ilgs.net//48//depth,www.buzzillions.com//2750//depth inches,2.75 cm,1.1,1
+camera_depth,camera_depth,www.shopmania.in//974//depth,www.shopmania.in//1438//depth,38 mm,66 mm,1
+camera_depth,camera_depth,buy.net//5641//depth,www.ilgs.net//142//depth,3.6 in,2.57 cm,1
+camera_depth,camera_depth,buy.net//5464//depth,buy.net//6051//depth,1.9 in,1.44 in,1
+camera_depth,camera_depth,www.shopmania.in//1442//depth,www.ilgs.net//33//depth,65 mm,3.33 cm,1
+camera_depth,camera_depth,www.buzzillions.com//2315//depth inches,www.buzzillions.com//2021//depth inches,3.1,1.31,1
+camera_depth,camera_depth,buy.net//6110//depth,www.shopmania.in//655//depth,4.3 in,98 mm,1
+camera_depth,camera_depth,buy.net//6171//depth,www.buzzillions.com//2206//depth inches,1.8 in,2.2,1
+camera_depth,camera_depth,www.shopmania.in//655//depth,www.shopmania.in//1721//depth,98 mm,76 mm,1
+camera_depth,camera_depth,www.shopmania.in//1107//depth,www.buzzillions.com//1835//depth inches,146 mm,1.2,1
+camera_depth,camera_depth,www.shopmania.in//1117//depth,www.shopmania.in//1700//depth,24 mm,50 mm,1
+camera_depth,camera_depth,www.buzzillions.com//1804//depth inches,www.buzzillions.com//2973//depth inches,1.76,.72,1

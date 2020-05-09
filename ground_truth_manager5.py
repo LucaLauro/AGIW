@@ -25,7 +25,7 @@ cluster = []
 # rappresentano gli attributi di quel prodotto
 with open("miniClusterOttimizzato.txt", "r") as file:
     cluster = eval(file.readline())
-df = pd.read_csv("ground_truth/ground_truth_random_reducedx2.csv")
+df = pd.read_csv("ground_truth/test_no_duplicates3.csv")
 
 # Scorro solo le coppie match
 for index, row in df.iterrows():
@@ -70,11 +70,12 @@ for d1 in productCluster:
         for d2 in newCluster:
             findOne = False
             for key2, value2 in d2.items():
-
+                # CASO 1
                 if str(key1) == str(key2):
                     listaPossibilita=[newCluster.index(d2)]
                     findOne=True
                     break
+                # CASO 2
                 elif str(key1) in str(key2):
                     listaPossibilita.append(newCluster.index(d2))
                 elif str(key2) in str(key1):
@@ -82,6 +83,7 @@ for d1 in productCluster:
 
             if findOne:
                 break
+        # CASO 1: STESSA CHIAVE --> AGGIUNGO
         if len(listaPossibilita)==1:
             value2= list(newCluster[listaPossibilita[0]].values())[0]
             attribute_name = value1[1].union(value2[0])
@@ -89,21 +91,22 @@ for d1 in productCluster:
             filename = value1[3].union(value2[2])
             d2[key2] = (attribute_name, attribute_value, filename)
 
+        # HO PIU' POSSIBILITA' E PRENDO QUELLA CON IL PUNTEGGIO PIU' ALTO
+        # listaPossibilita E' UNA LISTA DI INDICI
         elif len(listaPossibilita)>1:
-
             tuplePunteggi=[]
-            for key2 in listaPossibilita:
-                value2 = list(newCluster[key2].values())[0]
+            for index in listaPossibilita:
+                value2 = list(newCluster[index].values())[0]
                 maxName = 0
                 for nameAttribute in value2[0]:
-                    i = fuzz.token_set_ratio(value1[0][0], nameAttribute)
+                    i = fuzz.token_set_ratio(str(value1[0][0]), str(nameAttribute))
                     maxName= max(maxName,i)
                 maxValue = 0
                 for valueAttribute in value2[1]:
-                    j = fuzz.token_set_ratio(value1[0][1], valueAttribute)
+                    j = fuzz.token_set_ratio(str(value1[0][1]), str(valueAttribute))
                     maxValue=max(maxValue, j)
-                media=maxName*5+maxValue*2
-                tuplePunteggi.append((key2,media))
+                media=maxName*2+maxValue*5
+                tuplePunteggi.append((index,media))
 
             tuplaMax={"key2":0 }
             for tupla in tuplePunteggi:
@@ -115,7 +118,6 @@ for d1 in productCluster:
             attribute_value = value1[2].union(value2[1])
             filename = value1[3].union(value2[2])
             d2[key2] = (attribute_name, attribute_value, filename)
-
 
 
 for elem in newCluster:
