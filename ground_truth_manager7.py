@@ -86,7 +86,7 @@ for d1 in productCluster:
                     listaPossibilita.append(newCluster.index(d2))
                 elif str2 in str1:
                     listaPossibilita.append(newCluster.index(d2))
-                elif len(dataPD.intersection(dataGT)) :
+                elif len(dataPD.intersection(dataGT))>0 :
 
                     listaPossibilita.append(newCluster.index(d2))
         if len(str(key1))==1:#mi capitano attributi con solo 1 lettera che fanno un bordello
@@ -119,11 +119,11 @@ for d1 in productCluster:
                 maxValue = 0
                 for valueAttribute in value2[1]:
                     j = fuzz.token_set_ratio(str(value1[0][1]), str(valueAttribute))
-                    if len(str(valueAttribute))>4 and len(str(valueAttribute).split(' '))<3:
-                        j=j*3
+                    if len(str(valueAttribute))>6 and len(str(valueAttribute).split(' '))<3:
+                        j=j*2
                     maxValue=max(maxValue, j)
                     #print(str(value1[0][1]),'----', str(valueAttribute))
-                media=maxName*2+maxValue*3
+                media=maxName*4+maxValue*2
                 tuplePunteggi.append((index,media))
 
             tuplaMax={"key2":0 }
@@ -131,7 +131,12 @@ for d1 in productCluster:
             for tupla in tuplePunteggi:
                 if tupla[1]>list(tuplaMax.values())[0]:
                     tuplaMax={tupla[0]:tupla[1]}
-            print(tuplaMax)
+            if list(tuplaMax.values())[0]<400:
+                print(tuplaMax)
+                print(list(newCluster[list(tuplaMax.keys())[0]].values())[0])
+                print(value1)
+
+
 
 
             #da controllare questa parte, sicuramente ho fatto casino con gli indici, devo usare gli indici e non d2 sennò sovrascrivo sempre
