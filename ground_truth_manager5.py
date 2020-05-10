@@ -138,3 +138,4 @@ with open('ground_truth/final_output5.1.txt', 'w') as file:
 print("FATTO2")
 print(len(newCluster))
 print(newCluster)
+
