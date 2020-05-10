@@ -7,17 +7,6 @@ from ottimizzazioneClusterName import ottimizzazioneGroundTruh
 # 2: GLI ATTRIBUTI CHE NON VENGONO ACCOPPIATI VENGONO BUTTATI IN UN NUOVO CLUSTER
 
 
-# Viene in questa versione utilizzato sia per gli attribute name che per gli attribute value
-def checkSimilarity(attribute_value, lista):
-    for value in lista:
-        limit = 65
-        if len(attribute_value.split()) == 1 or len(attribute_value) < 8 and len(str(value).split()) == 1:
-            limit = 84
-        ratio = fuzz.ratio(str(attribute_value).lower(), str(value).lower())
-        if ratio > limit:
-            return True
-    return False
-
 newCluster = []
 cluster = []
 #Prendo la lista di cluster generata nella fase precedente miniclusterRaggruppato.txt
@@ -70,24 +59,17 @@ for d1 in productCluster:
                 data=list(filter(lambda x : len(str(x))>2, data))
                 strClear=str2.replace(' ','_')
 
-                # CASO 1
+                # CASO 1 si deve introdurre una soglia. In listaPossibilita i vincoli devono essere più stringenti
                 if str1 == str2 or str1 in str2 or str2 in str1:
-                    listaPossibilita.append(newCluster.index(d2))
+                    if fuzz.token_set_ratio(str1, str2) > 80:
+                        listaPossibilita.append(newCluster.index(d2))
                 elif any(parola in strClear for parola in data):
-                    listaPossibilita.append(newCluster.index(d2))
+                    if fuzz.token_set_ratio(str1, str2) > 80:
+                        listaPossibilita.append(newCluster.index(d2))
         if len(str(key1)) == 1:  #SI SCARTANO GLI ATTRIBUTI CON UNA SOLA LETTERA
             listaPossibilita=[]
-        # CASO 1: STESSA CHIAVE
-        if len(listaPossibilita) == 1:   # mi mette troppo schifo nei cluster, devo introdurre una soglia minima per l'unione
-            #ci sta qualche problema in questa fase, dei dati spariscono magicamente
-            value = list(newCluster[listaPossibilita[0]].values())[0]
-            attribute_name = value1[1].union(value[0])
-            attribute_value = value1[2].union(value[1])
-            filename = value1[3].union(value[2])
-            key=list(newCluster[listaPossibilita[0]].keys())[0]
-            newCluster[listaPossibilita[0]][key] = (attribute_name, attribute_value, filename)
 
-        #CASO 2
+        #CASO 1 e CASO 2: stessa chiave o chiave contenuta
         if len(listaPossibilita) > 0: #stessa cosa di sopra, devo introdurre una soglia
           #  print(listaPossibilita)
           #  print(productCluster.index(d1))
