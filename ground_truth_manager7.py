@@ -26,8 +26,6 @@ df = pd.read_csv("ground_truth/test50.csv")
 for index, row in df.iterrows():
    target_attribute = row['left_target_attribute']
    # Filtraggio della ground truth prima dell'esecuzione dell'algoritmo
-   # Si prendono tutte le righe con lo stesso target attribute. Si scartano tutti quelli che hanno left_attribute e right_attribute
-   # 1 SI SCORRE TUTTA LA GROUND TRUTH E SI CREANO DEI CLUSTER CON I SOLI ELEMENTI CHE LA COMPONGONO
    left_attribute = row['left_instance_attribute']
    right_attribute = row['right_instance_attribute']
    left_value = row['left_instance_value']
@@ -63,7 +61,6 @@ for d1 in productCluster:
     for key1, value1 in d1.items():
         listaPossibilita=[]
         for d2 in newCluster:
-
             for key2, value2 in d2.items():
                 str1=str(key1)
                 str2=str(key2)
@@ -72,33 +69,25 @@ for d1 in productCluster:
                 dataPD=set(dataPD)
                 dataGT=set(str2.split('_'))
 
-                # CASO 1
-                if str1 == str2:
-                    listaPossibilita.append(newCluster.index(d2))
+                if str1 == str2 or str1 in str2 or str2 in str1 or len(dataPD.intersection(dataGT))>0:
+                    if fuzz.token_set_ratio(str1, str2) > 80 and checkSimilarity(value1[0][1], value2[1]):
+                        listaPossibilita.append(newCluster.index(d2))
 
-                # CASO 2
-                elif str1 in str2:
-                    listaPossibilita.append(newCluster.index(d2))
-                elif str2 in str1:
-                    listaPossibilita.append(newCluster.index(d2))
-                elif len(dataPD.intersection(dataGT))>0 :
-
-                    listaPossibilita.append(newCluster.index(d2))
-        if len(str(key1))==1:#mi capitano attributi con solo 1 lettera che fanno un bordello
+        if len(str(key1))==1:  #mi capitano attributi con solo 1 lettera che fanno un bordello
             listaPossibilita=[]
         # CASO 1: STESSA CHIAVE --> AGGIUNGO
-        if len(listaPossibilita)==1:   # mi mette troppo schifo nei cluster, devo introdurre una soglia minima per l'unione
-            #ci sta qualche problema in questa fase, dei dati spariscono magicamente
-            value= list(newCluster[listaPossibilita[0]].values())[0]
-            attribute_name = value1[1].union(value[0])
-            attribute_value = value1[2].union(value[1])
-            filename = value1[3].union(value[2])
-            key=list(newCluster[listaPossibilita[0]].keys())[0]
-            newCluster[listaPossibilita[0]][key] = (attribute_name, attribute_value, filename)
+        #if len(listaPossibilita)==1:   # mi mette troppo schifo nei cluster, devo introdurre una soglia minima per l'unione
+         #   #ci sta qualche problema in questa fase, dei dati spariscono magicamente
+         #   value= list(newCluster[listaPossibilita[0]].values())[0]
+         #   attribute_name = value1[1].union(value[0])
+         #   attribute_value = value1[2].union(value[1])
+         #   filename = value1[3].union(value[2])
+         #   key=list(newCluster[listaPossibilita[0]].keys())[0]
+         #   newCluster[listaPossibilita[0]][key] = (attribute_name, attribute_value, filename)
 
         # HO PIU' POSSIBILITA' E PRENDO QUELLA CON IL PUNTEGGIO PIU' ALTO
         # listaPossibilita E' UNA LISTA DI INDICI
-        if len(listaPossibilita)>1: #stessa cosa di sopra, devo introdurre una soglia
+        if len(listaPossibilita)> 0: #stessa cosa di sopra, devo introdurre una soglia
             #print(listaPossibilita)
             #print(productCluster.index(d1))
             #print(key1)
