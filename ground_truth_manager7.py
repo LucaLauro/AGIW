@@ -2,6 +2,12 @@ import pandas as pd
 from fuzzywuzzy import fuzz
 from ottimizzazioneClusterName import ottimizzazioneGroundTruh
 
+#PER MARTINA ---> i print sono commentati, se vuoi decommentali e guarda che esce fuori
+# 1: NON SI CREANO DEI NUOVI CLUSTER - SI USANO SOLO I CLUSTER GIA' CREATI DELLA GROUND TRUTH
+# 2: GLI ATTRIBUTI CHE NON VENGONO ACCOPPIATI VENGONO BUTTATI IN UN NUOVO CLUSTER
+
+
+# Viene in questa versione utilizzato sia per gli attribute name che per gli attribute value
 def checkSimilarity(attribute_value, lista):
     for value in lista:
         limit = 65
@@ -12,22 +18,21 @@ def checkSimilarity(attribute_value, lista):
             return True
     return False
 
-# 1: NON SI CREANO DEI NUOVI CLUSTER - SI USANO SOLO I CLUSTER GIA' CREATI DELLA GROUND TRUTH
-# 2: GLI ATTRIBUTI CHE NON VENGONO ACCOPPIATI VENGONO BUTTATI IN UN NUOVO CLUSTER
-
-
-newCluster = []
+newCluster = [] #Nuovo cluster
 cluster = []
 #Prendo la lista di cluster generata nella fase precedente miniclusterRaggruppato.txt
-# Ogni lista in miniclusterRaggruppato rappresenta un prodotto. All'interno di quel prodotto ha una lista di tuple che
+# Ogni lista in miniclusterraggruppato rappresenta un prodotto. All'interno di quel prodotto ha una lista di tuple che
 # rappresentano gli attributi di quel prodotto
 with open("miniClusterOttimizzato.txt", "r") as file:
     cluster = eval(file.readline())
 df = pd.read_csv("ground_truth/test_no_duplicates3.csv")
 
-# 1 SI SCORRE TUTTA LA GROUND TRUTH E SI CREANO DEI CLUSTER CON I SOLI ELEMENTI CHE LA COMPONGONO
+# Scorro solo le coppie match
 for index, row in df.iterrows():
    target_attribute = row['left_target_attribute']
+   # Filtraggio della ground truth prima dell'esecuzione dell'algoritmo
+   # Si prendono tutte le righe con lo stesso target attribute. Si scartano tutti quelli che hanno left_attribute e right_attribute
+   # 1 SI SCORRE TUTTA LA GROUND TRUTH E SI CREANO DEI CLUSTER CON I SOLI ELEMENTI CHE LA COMPONGONO
    left_attribute = row['left_instance_attribute']
    right_attribute = row['right_instance_attribute']
    left_value = row['left_instance_value']
@@ -56,34 +61,52 @@ productCluster = ottimizzazioneGroundTruh(cluster)
 
 pozzo = [] #Cluster in cui vengono depositati tutti gli attributi che non si riesce ad accoppiare
 
-# PRIMA PASSATA: valuto solo le chiavi uguali o uguali parzialmente
+#prima passata, valuto solo le chiavi uguali o uguali parzialmente
+
+
 for d1 in productCluster:
     for key1, value1 in d1.items():
         listaPossibilita=[]
         for d2 in newCluster:
+
             for key2, value2 in d2.items():
                 str1=str(key1)
                 str2=str(key2)
-                data = str1.split('_')
-                data=list(filter(lambda x : len(str(x))>2, data))
-                strClear=str2.replace(' ','_')
+                dataPD = str1.split('_')
+                dataPD=list(filter(lambda x : len(str(x))>2, dataPD))
+                dataPD=set(dataPD)
+                dataGT=set(str2.split('_'))
 
-                # CASO 1 si deve introdurre una soglia. In listaPossibilita i vincoli devono essere più stringenti
-                if str1 == str2 or str1 in str2 or str2 in str1:
-                    # Si reintroduce il checkSimilarity?? che succede?
-                    if fuzz.token_set_ratio(str1, str2) > 80 or checkSimilarity(value1[0][1],value2[1]):
-                        listaPossibilita.append(newCluster.index(d2))
-                elif any(parola in strClear for parola in data):
-                    if fuzz.token_set_ratio(str1, str2) > 80 or checkSimilarity(value1[0][1],value2[1]):
-                        listaPossibilita.append(newCluster.index(d2))
-        if len(str(key1)) == 1:  #SI SCARTANO GLI ATTRIBUTI CON UNA SOLA LETTERA
+                # CASO 1
+                if str1 == str2:
+                    listaPossibilita.append(newCluster.index(d2))
+
+                # CASO 2
+                elif str1 in str2:
+                    listaPossibilita.append(newCluster.index(d2))
+                elif str2 in str1:
+                    listaPossibilita.append(newCluster.index(d2))
+                elif len(dataPD.intersection(dataGT))>0 :
+
+                    listaPossibilita.append(newCluster.index(d2))
+        if len(str(key1))==1:#mi capitano attributi con solo 1 lettera che fanno un bordello
             listaPossibilita=[]
+        # CASO 1: STESSA CHIAVE --> AGGIUNGO
+        if len(listaPossibilita)==1:   # mi mette troppo schifo nei cluster, devo introdurre una soglia minima per l'unione
+            #ci sta qualche problema in questa fase, dei dati spariscono magicamente
+            value= list(newCluster[listaPossibilita[0]].values())[0]
+            attribute_name = value1[1].union(value[0])
+            attribute_value = value1[2].union(value[1])
+            filename = value1[3].union(value[2])
+            key=list(newCluster[listaPossibilita[0]].keys())[0]
+            newCluster[listaPossibilita[0]][key] = (attribute_name, attribute_value, filename)
 
-        #CASO 1 e CASO 2: stessa chiave o chiave contenuta
-        if len(listaPossibilita) > 0: #stessa cosa di sopra, devo introdurre una soglia
-          #  print(listaPossibilita)
-          #  print(productCluster.index(d1))
-          #  print(key1)
+        # HO PIU' POSSIBILITA' E PRENDO QUELLA CON IL PUNTEGGIO PIU' ALTO
+        # listaPossibilita E' UNA LISTA DI INDICI
+        if len(listaPossibilita)>1: #stessa cosa di sopra, devo introdurre una soglia
+            #print(listaPossibilita)
+            #print(productCluster.index(d1))
+            #print(key1)
 
             tuplePunteggi=[]
             for index in listaPossibilita:
@@ -96,11 +119,11 @@ for d1 in productCluster:
                 maxValue = 0
                 for valueAttribute in value2[1]:
                     j = fuzz.token_set_ratio(str(value1[0][1]), str(valueAttribute))
-                    if len(str(valueAttribute))>4 and len(str(valueAttribute).split(' '))<3:
-                        j=j*3
+                    if len(str(valueAttribute))>6 and len(str(valueAttribute).split(' '))<3:
+                        j=j*2
                     maxValue=max(maxValue, j)
                     #print(str(value1[0][1]),'----', str(valueAttribute))
-                media=maxName*2+maxValue*3
+                media=maxName*4+maxValue*2
                 tuplePunteggi.append((index,media))
 
             tuplaMax={"key2":0 }
@@ -108,7 +131,12 @@ for d1 in productCluster:
             for tupla in tuplePunteggi:
                 if tupla[1]>list(tuplaMax.values())[0]:
                     tuplaMax={tupla[0]:tupla[1]}
-            #print(tuplaMax)
+            if list(tuplaMax.values())[0]<400:
+                print(tuplaMax)
+                print(list(newCluster[list(tuplaMax.keys())[0]].values())[0])
+                print(value1)
+
+
 
 
             #da controllare questa parte, sicuramente ho fatto casino con gli indici, devo usare gli indici e non d2 sennò sovrascrivo sempre
@@ -119,23 +147,10 @@ for d1 in productCluster:
             filename = value1[3].union(value2[2])
             #print(filename)
             #print(d2[key2])
-
-            #KEY2 DA DOVE SI PRENDE???
-            dizionarioDaModificare = newCluster[list(tuplaMax.keys())[0]]
-            listaChiavi = list(dizionarioDaModificare.keys())
-            chiave = listaChiavi[0]
-            newCluster[list(tuplaMax.keys())[0]][chiave] = (attribute_name, attribute_value, filename)
-            # print(newCluster[list(tuplaMax.keys())[0]])
+            key2=list(newCluster[list(tuplaMax.keys())[0]].keys())[0]
+            newCluster[list(tuplaMax.keys())[0]][key2] = (attribute_name, attribute_value, filename)
+            #print(newCluster[list(tuplaMax.keys())[0]])
 
 
 for elem in newCluster:
     print(elem)
-
-#crea file di output
-with open('ground_truth/final_output5.1.txt', 'w') as file:
-    for dictionary in newCluster:
-        print(dictionary, file=file)
-print("FATTO2")
-print(len(newCluster))
-print(newCluster)
-
