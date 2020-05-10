@@ -40,7 +40,7 @@ cluster = []
 # rappresentano gli attributi di quel prodotto
 with open("miniClusterOttimizzato.txt", "r") as file:
     cluster = eval(file.readline())
-df = pd.read_csv("ground_truth/test_no_duplicates2.csv")
+df = pd.read_csv("ground_truth.csv/test_no_duplicates2.csv")
 
 # Scorro solo le coppie match
 for index, row in df.iterrows():
@@ -157,7 +157,7 @@ for d1 in productCluster:
 
 
 #crea file di output
-with open('ground_truth/final_output4.1.txt', 'w') as file:
+with open('ground_truth.csv/final_output4.1.txt', 'w') as file:
     for dictionary in newCluster:
         print(dictionary, file=file)
 print("FATTO2")
@@ -166,7 +166,7 @@ print(newCluster)
 
 
 #crea file per il pozzo
-with open('ground_truth/pozzo4.1.txt', 'w') as file:
+with open('ground_truth.csv/pozzo4.1.txt', 'w') as file:
     for dictionary in pozzo:
         print(dictionary, file=file)
 print("FATTO3")

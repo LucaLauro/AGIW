@@ -26,7 +26,7 @@ cluster = []
 # rappresentano gli attributi di quel prodotto
 with open("miniClusterPassata4.txt", "r") as file:
     cluster = eval(file.readline())
-df = pd.read_csv("ground_truth/ground_truth_random_reducedx2.csv")
+df = pd.read_csv("ground_truth.csv/ground_truth_random_reducedx2.csv")
 
 # Scorro solo le coppie match
 for index, row in df.iterrows():
@@ -112,7 +112,7 @@ for d1 in productCluster:
 
 
 #crea file di output
-with open('ground_truth/final_output.txt', 'w') as file:
+with open('ground_truth.csv/final_output.txt', 'w') as file:
     for dictionary in newCluster:
         print(dictionary, file=file)
 print("FATTO2")

@@ -2,7 +2,16 @@ import pandas as pd
 from fuzzywuzzy import fuzz
 from ottimizzazioneClusterName import ottimizzazioneGroundTruh
 
-#PER MARTINA ---> i print sono commentati, se vuoi decommentali e guarda che esce fuori
+def checkSimilarity(attribute_value, lista):
+    for value in lista:
+        limit = 65
+        if len(attribute_value.split()) == 1 or len(attribute_value) < 8 and len(str(value).split()) == 1:
+            limit = 84
+        ratio = fuzz.ratio(str(attribute_value).lower(), str(value).lower())
+        if ratio > limit:
+            return True
+    return False
+
 # 1: NON SI CREANO DEI NUOVI CLUSTER - SI USANO SOLO I CLUSTER GIA' CREATI DELLA GROUND TRUTH
 # 2: GLI ATTRIBUTI CHE NON VENGONO ACCOPPIATI VENGONO BUTTATI IN UN NUOVO CLUSTER
 
@@ -14,7 +23,7 @@ cluster = []
 # rappresentano gli attributi di quel prodotto
 with open("miniClusterOttimizzato.txt", "r") as file:
     cluster = eval(file.readline())
-df = pd.read_csv("ground_truth/test_no_duplicates3.csv")
+df = pd.read_csv("battery_test/ground_truth.csv")
 
 # 1 SI SCORRE TUTTA LA GROUND TRUTH E SI CREANO DEI CLUSTER CON I SOLI ELEMENTI CHE LA COMPONGONO
 for index, row in df.iterrows():
@@ -61,10 +70,11 @@ for d1 in productCluster:
 
                 # CASO 1 si deve introdurre una soglia. In listaPossibilita i vincoli devono essere più stringenti
                 if str1 == str2 or str1 in str2 or str2 in str1:
-                    if fuzz.token_set_ratio(str1, str2) > 80:
+                    # Si reintroduce il checkSimilarity?? che succede?
+                    if fuzz.token_set_ratio(str1, str2) > 80 or checkSimilarity(value1[0][1],value2[1]):
                         listaPossibilita.append(newCluster.index(d2))
                 elif any(parola in strClear for parola in data):
-                    if fuzz.token_set_ratio(str1, str2) > 80:
+                    if fuzz.token_set_ratio(str1, str2) > 80 or checkSimilarity(value1[0][1],value2[1]):
                         listaPossibilita.append(newCluster.index(d2))
         if len(str(key1)) == 1:  #SI SCARTANO GLI ATTRIBUTI CON UNA SOLA LETTERA
             listaPossibilita=[]
@@ -122,7 +132,7 @@ for elem in newCluster:
     print(elem)
 
 #crea file di output
-with open('ground_truth/final_output5.txt', 'w') as file:
+with open('ground_truth/final_outputB.txt', 'w') as file:
     for dictionary in newCluster:
         print(dictionary, file=file)
 print("FATTO2")
