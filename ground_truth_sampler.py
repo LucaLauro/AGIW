@@ -7,16 +7,16 @@ import pandas as pd
 
 # TODO: Trovare un criterio per cui estrarre gli esempi più importanti
 # SOLUZIONE TEMPORANEA: Sample random dei dati per velocizzare la computazione
-#df = pd.read_csv("ground_truth/instance_attributes_gt.csv")
+#df = pd.read_csv("ground_truth.csv/instance_attributes_gt.csv")
 #dati = df[df['label'] == 1]
 #dati.sample(n=5)
-#dati.to_csv(r'ground_truth/ground_truth_random_5.csv', index=False, header=True)
+#dati.to_csv(r'ground_truth.csv/ground_truth_random_5.csv', index=False, header=True)
 
 
 
 #Secondo approccio più veloce
 # The data to load
-#f = "ground_truth/instance_attributes_gt.csv"
+#f = "ground_truth.csv/instance_attributes_gt.csv"
 # Considero ogni 20000 righe
 #n = 20000
 #num_lines = sum(1 for l in open(f))
@@ -25,25 +25,30 @@ import pandas as pd
 # Leggo i dati e prendo solo quelli con label=1
 #data = pd.read_csv(f, skiprows=skip_idx)
 #dati = data[data['label'] == 1]
-#dati.to_csv(r'ground_truth/ground_truth_random_reducedx2.csv', index=False, header=True)
+#dati.to_csv(r'ground_truth.csv/ground_truth_random_reducedx2.csv', index=False, header=True)
 #print("FATTO")
 
 
 #Test che prende tutte le colonne e ne elimina i duplicati
-#f = "ground_truth/instance_attributes_gt.csv"
+#f = "ground_truth.csv/instance_attributes_gt.csv"
 #data = pd.read_csv(f)
 #dati = data[data['label'] == 1]
 #dati = dati.drop_duplicates(subset=['left_target_attribute'], keep='first')
-#dati.to_csv(r'ground_truth/test_no_duplicates.csv', index=False, header=True)
+#dati.to_csv(r'ground_truth.csv/test_no_duplicates.csv', index=False, header=True)
 
 # Elimina i duplicati che hanno stesso left_target_attribute e stesso left_instance_value e right_instance_value e gli attributi noisy
-f = "ground_truth/instance_attributes_gt.csv"
+f = "ground_truth.csv/instance_attributes_gt.csv"
 data = pd.read_csv(f)
 dati = data[data['label'] == 1]
+all_battery_chemistry = dati.loc[dati['left_target_attribute'] == 'battery_chemistry']
 dati = dati.drop_duplicates(subset=['left_target_attribute', 'left_instance_value'], keep='first')
 dati = dati.drop_duplicates(subset=['left_target_attribute', 'right_instance_value'], keep='first')
 dati['left_instance_value'] = dati['left_instance_value'].astype('str')
 dati['right_instance_value'] = dati['right_instance_value'].astype('str')
 mask = (dati['left_instance_value'].str.len() < 10) & (dati['right_instance_value'].str.len() < 10)
 dati = dati.loc[mask]
-dati.to_csv(r'ground_truth/test_no_duplicates3.csv', index=False, header=True)
+frames = [dati, all_battery_chemistry]
+result = pd.concat(frames)
+result = result.drop_duplicates(subset=['left_target_attribute', 'left_instance_value'], keep='first')
+result = result.drop_duplicates(subset=['left_target_attribute', 'right_instance_value'], keep='first')
+result.to_csv(r'ground_truth.csv/test_no_duplicates3.csv', index=False, header=True)

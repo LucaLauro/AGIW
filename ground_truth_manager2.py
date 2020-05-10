@@ -32,7 +32,7 @@ cluster = []
 with open("test_files/product_cluster_for_ground_truth", "r") as file:
     cluster = eval(file.readline())
 
-df = pd.read_csv("ground_truth/ground_truth_random_reducedx2.csv")
+df = pd.read_csv("ground_truth.csv/ground_truth_random_reducedx2.csv")
 
 # Scorro solo le coppie match
 for index, row in df.iterrows():
@@ -63,14 +63,14 @@ for index, row in df.iterrows():
    else:
        newCluster.append({target_attribute: (attributeNameList, attributeValueList, fileNameList)})
        # crea file di output
-   with open('ground_truth/ground_truth_cluster.txt', 'w') as file:
+   with open('ground_truth.csv/ground_truth_cluster.txt', 'w') as file:
        for dictionary in newCluster:
            print(dictionary, file=file)
 
 
 productCluster = []
 # TRASFORMO IL CLUSTER DEI PRODOTTI IN UN DIZIONARIO
-# Sono stati creati dei cluster con la ground_truth. Adesso possiamo unire questi cluster con quelli creati nella fase precedente
+# Sono stati creati dei cluster con la ground_truth.csv. Adesso possiamo unire questi cluster con quelli creati nella fase precedente
 for product in cluster:
     # product è una lista di tuple con gli attributi del prodotto
     for tupla in product:
@@ -78,7 +78,7 @@ for product in cluster:
 print("FATTO")
 print(len(newCluster))
 #crea file di output
-with open('ground_truth/product_cluster.txt', 'w') as file:
+with open('ground_truth.csv/product_cluster.txt', 'w') as file:
     for dictionary in productCluster:
         print(dictionary, file=file)
 
@@ -146,6 +146,6 @@ print(len(newCluster))
 print(newCluster)
 
 #crea file di output
-with open('ground_truth/output.txt', 'w') as file:
+with open('ground_truth.csv/output.txt', 'w') as file:
     for dictionary in newCluster:
         print(dictionary, file=file)

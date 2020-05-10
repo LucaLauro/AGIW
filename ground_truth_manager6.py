@@ -1,39 +1,47 @@
 import pandas as pd
 from fuzzywuzzy import fuzz
 from ottimizzazioneClusterName import ottimizzazioneGroundTruh
+from nltk.corpus import wordnet
 
-# IN QUESTA VERSIONE SI LAVORA CON LE CHIAVI DEL DIZIONARIO E SI PRESENTANO TRE CASISTICHE:
-#1. SE LE CHIAVI SONO UGUALI UNISCO I CLUSTER
-#2. SE UNA CHIAVE E' CONTENUTA NELL'ALTRO CLUSTER —> CONTROLLO GLI ATTRIBUTE VALUE
-#3. SE NON C'E' LA CHIAVE FACCIO QUELLO CHE FACEVO PRIMA —
 
-def checkSimilarity(attribute_value, lista):
-    # CONTROLLARE ADESSO CON LE NUOVE MODIFICHE CHE TIPO SI RICEVE E MODIFICARE LA FUNZIONE
-    for value in lista:
-        limit = 65
-        if len(attribute_value.split()) == 1 or len(attribute_value) < 8 and len(str(value).split()) == 1:
-            limit = 84
-        ratio = fuzz.ratio(str(attribute_value).lower(), str(value).lower())
-        if ratio > limit:
-            return True
+# QUESTA NUOVA VERSIONE CERCA DI UNIRE IL MANAGER 4 E 5
+# 1: NON SI CREANO DEI NUOVI CLUSTER - SI USANO SOLO I CLUSTER GIA' CREATI DELLA GROUND TRUTH
+# 2: GLI ATTRIBUTI CHE NON VENGONO ACCOPPIATI VENGONO BUTTATI IN UN NUOVO CLUSTER
+
+
+def checkSimilarity(attribute_value, attribute_name,valueList, nameList):
+    maxName = 0
+    for nameAttribute in nameList:
+        i = fuzz.token_set_ratio(attribute_name, str(nameAttribute))
+        maxName = max(maxName, i)
+        # print(str(value1[0][0]),'----',str(nameAttribute))
+    maxValue = 0
+    for valueAttribute in valueList:
+        j = fuzz.token_set_ratio( attribute_value, str(valueAttribute))
+        if len(str(valueAttribute)) > 4 and len(str(valueAttribute).split(' ')) < 3:
+            j = j * 3
+        maxValue = max(maxValue, j)
+        # print(str(value1[0][1]),'----', str(valueAttribute))
+    media = maxName * 2 + maxValue * 3
+    # Considero che il nome abbia un valore superiore al 75 e lo stesso l'attributeValue: 75*2+75*3 = 375
+    if media > 450:
+        return True
     return False
 
 
-newCluster = [] #Nuovo cluster da costruire e riempire. E' un lista di tuple
+
+
+newCluster = [] #Nuovo cluster
 cluster = []
 #Prendo la lista di cluster generata nella fase precedente miniclusterRaggruppato.txt
 # Ogni lista in miniclusterraggruppato rappresenta un prodotto. All'interno di quel prodotto ha una lista di tuple che
 # rappresentano gli attributi di quel prodotto
-with open("miniClusterPassata4.txt", "r") as file:
+with open("miniClusterOttimizzato.txt", "r") as file:
     cluster = eval(file.readline())
 df = pd.read_csv("ground_truth.csv/ground_truth_random_reducedx2.csv")
 
-# Scorro solo le coppie match
 for index, row in df.iterrows():
    target_attribute = row['left_target_attribute']
-   # Filtraggio della ground truth prima dell'esecuzione dell'algoritmo
-   # Si prendono tutte le righe con lo stesso target attribute. Si scartano tutti quelli che hanno left_attribute e right_attribute
-   # 1 SI SCORRE TUTTA LA GROUND TRUTH E SI CREANO DEI CLUSTER CON I SOLI ELEMENTI CHE LA COMPONGONO
    left_attribute = row['left_instance_attribute']
    right_attribute = row['right_instance_attribute']
    left_value = row['left_instance_value']
@@ -60,6 +68,8 @@ productCluster = ottimizzazioneGroundTruh(cluster)
 #[{brand:((brand,canon),{brand,manufacturer,...},{canon,...},{www.ebay.com/4274/brand,www.ebay.com/93785/brand...})}]
 
 
+pozzo = [] #Cluster in cui vengono depositati tutti gli attributi che non si riesce ad accoppiare
+
 #ADESSO SI PROCEDE AL CONFRONTO FRA DIZIONARI: IL DIZIONARIO DELLA GROUND TRUTH E QUELLO DEI PRODOTTI
 for d1 in productCluster:
     #SCORRO TUTTO IL CLUSTER DEI PRODOTTI
@@ -67,20 +77,11 @@ for d1 in productCluster:
         for d2 in newCluster:
             findOne = False
             for key2, value2 in d2.items():
-            # CASO 1: Esiste già nel cluster della ground truth la chiave. Unisco subito i cluster
-                if key1 == key2:
-                    for tupla in value1:
-                        attribute_name = value1[1].union(value2[0])
-                        attribute_value = value1[2].union(value2[1])
-                        filename = value1[3].union(value2[2])
-                    d2[key2] = (attribute_name,attribute_value,filename)
-                    findOne = True
-                    break
-                # CASO 2: La chiave è contenuta nella chiave es (Battery è contenuta in battery type)
-                elif key1 in key2:
+            # CASO 1 E CASO 2 SONO STATI UNIFICATI IN QUESTO MODO:r
+                if key1 == key2 or key1 in key2 or key2 in key1:
                     most_comment_values = value1[0]
-                    common_name = most_comment_values[1]
-                    if checkSimilarity(common_name,value2[1]):
+                    common_value = most_comment_values[1]
+                    if checkSimilarity(key1,common_value,value2[1],value2[0]):
                         # unisci cluster
                         for tupla in value1:
                             attribute_name = value1[1].union(value2[0])
@@ -88,33 +89,29 @@ for d1 in productCluster:
                             filename = value1[3].union(value2[2])
                         d2[key2] = (attribute_name, attribute_value, filename)
                         findOne = True
-                        break
-
-                else:
-                    #CASO 3: Cerco tra i valori del dizionario
-                    most_comment_values = value1[0]
-                    common_name = most_comment_values[1]
-                    if checkSimilarity(common_name, value2[1]):
-                        # unisci cluster
-                        for tupla in value1:
-                            attribute_name = value1[1].union(value2[0])
-                            attribute_value = value1[2].union(value2[1])
-                            filename = value1[3].union(value2[2])
-                        findOne = True
-                        d2[key2] = (attribute_name, attribute_value, filename)
                         break
             else:
                 continue
             break
-        # CASO 4 NON HO TROVATO CIO' CHE VERCATO
+
+        # NON HO TROVATO CIO' CHE VERCATO. Adesso aggiungo nel dizionario pozzo
         if not findOne:
-            newCluster.append({key1: (value1[1], value1[2], value1[3])})
+            pozzo.append({key1: (value1[1], value1[2], value1[3])})
 
 
 #crea file di output
-with open('ground_truth.csv/final_output.txt', 'w') as file:
+with open('ground_truth.csv/final_output6.txt', 'w') as file:
     for dictionary in newCluster:
         print(dictionary, file=file)
 print("FATTO2")
 print(len(newCluster))
 print(newCluster)
+
+
+#crea file per il pozzo
+with open('ground_truth.csv/pozzo6.txt', 'w') as file:
+    for dictionary in pozzo:
+        print(dictionary, file=file)
+print("FATTO3")
+print(len(pozzo))
+print(pozzo)
