@@ -23,7 +23,7 @@ cluster = []
 # rappresentano gli attributi di quel prodotto
 with open("miniClusterOttimizzato.txt", "r") as file:
     cluster = eval(file.readline())
-df = pd.read_csv("battery_test/ground_truth.csv")
+df = pd.read_csv("ground_truth/test_no_duplicates3.csv")
 
 # 1 SI SCORRE TUTTA LA GROUND TRUTH E SI CREANO DEI CLUSTER CON I SOLI ELEMENTI CHE LA COMPONGONO
 for index, row in df.iterrows():
@@ -132,7 +132,7 @@ for elem in newCluster:
     print(elem)
 
 #crea file di output
-with open('ground_truth/final_outputB.txt', 'w') as file:
+with open('ground_truth/final_output5.1.txt', 'w') as file:
     for dictionary in newCluster:
         print(dictionary, file=file)
 print("FATTO2")
