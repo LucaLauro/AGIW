@@ -37,18 +37,26 @@ import pandas as pd
 #dati.to_csv(r'ground_truth.csv/test_no_duplicates.csv', index=False, header=True)
 
 # Elimina i duplicati che hanno stesso left_target_attribute e stesso left_instance_value e right_instance_value e gli attributi noisy
-f = "ground_truth.csv/instance_attributes_gt.csv"
+#f = "ground_truth.csv/instance_attributes_gt.csv"
+#data = pd.read_csv(f)
+#dati = data[data['label'] == 1]
+#all_battery_chemistry = dati.loc[dati['left_target_attribute'] == 'battery_chemistry']
+#dati = dati.drop_duplicates(subset=['left_target_attribute', 'left_instance_value'], keep='first')
+#dati = dati.drop_duplicates(subset=['left_target_attribute', 'right_instance_value'], keep='first')
+#dati['left_instance_value'] = dati['left_instance_value'].astype('str')
+#dati['right_instance_value'] = dati['right_instance_value'].astype('str')
+#mask = (dati['left_instance_value'].str.len() < 10) & (dati['right_instance_value'].str.len() < 10)
+#dati = dati.loc[mask]
+#frames = [dati, all_battery_chemistry]
+#result = pd.concat(frames)
+#result = result.drop_duplicates(subset=['left_target_attribute', 'left_instance_value'], keep='first')
+#result = result.drop_duplicates(subset=['left_target_attribute', 'right_instance_value'], keep='first')
+#result.to_csv(r'ground_truth.csv/test_no_duplicates3.csv', index=False, header=True)
+
+
+#Nuova versione: 100 righe per ogni attributo
+f = "ground_truth/instance_attributes_gt.csv"
 data = pd.read_csv(f)
 dati = data[data['label'] == 1]
-all_battery_chemistry = dati.loc[dati['left_target_attribute'] == 'battery_chemistry']
-dati = dati.drop_duplicates(subset=['left_target_attribute', 'left_instance_value'], keep='first')
-dati = dati.drop_duplicates(subset=['left_target_attribute', 'right_instance_value'], keep='first')
-dati['left_instance_value'] = dati['left_instance_value'].astype('str')
-dati['right_instance_value'] = dati['right_instance_value'].astype('str')
-mask = (dati['left_instance_value'].str.len() < 10) & (dati['right_instance_value'].str.len() < 10)
-dati = dati.loc[mask]
-frames = [dati, all_battery_chemistry]
-result = pd.concat(frames)
-result = result.drop_duplicates(subset=['left_target_attribute', 'left_instance_value'], keep='first')
-result = result.drop_duplicates(subset=['left_target_attribute', 'right_instance_value'], keep='first')
-result.to_csv(r'ground_truth.csv/test_no_duplicates3.csv', index=False, header=True)
+dati = dati.groupby("left_target_attribute").head(50)
+dati.to_csv(r'ground_truth/test50.csv', index=False, header=True)

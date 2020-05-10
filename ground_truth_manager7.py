@@ -2,12 +2,7 @@ import pandas as pd
 from fuzzywuzzy import fuzz
 from ottimizzazioneClusterName import ottimizzazioneGroundTruh
 
-#PER MARTINA ---> i print sono commentati, se vuoi decommentali e guarda che esce fuori
-# 1: NON SI CREANO DEI NUOVI CLUSTER - SI USANO SOLO I CLUSTER GIA' CREATI DELLA GROUND TRUTH
-# 2: GLI ATTRIBUTI CHE NON VENGONO ACCOPPIATI VENGONO BUTTATI IN UN NUOVO CLUSTER
 
-
-# Viene in questa versione utilizzato sia per gli attribute name che per gli attribute value
 def checkSimilarity(attribute_value, lista):
     for value in lista:
         limit = 65
@@ -25,7 +20,7 @@ cluster = []
 # rappresentano gli attributi di quel prodotto
 with open("miniClusterOttimizzato.txt", "r") as file:
     cluster = eval(file.readline())
-df = pd.read_csv("ground_truth/test_no_duplicates3.csv")
+df = pd.read_csv("ground_truth/test50.csv")
 
 # Scorro solo le coppie match
 for index, row in df.iterrows():
@@ -154,3 +149,11 @@ for d1 in productCluster:
 
 for elem in newCluster:
     print(elem)
+
+#crea file di output
+with open('ground_truth/manager7_output.txt', 'w') as file:
+    for dictionary in newCluster:
+        print(dictionary, file=file)
+print("FATTO2")
+print(len(newCluster))
+print(newCluster)
