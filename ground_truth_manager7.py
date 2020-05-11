@@ -70,15 +70,15 @@ for d1 in productCluster:
                 dataGT=set(str2.split('_'))
 
                 if str1 == str2 or str1 in str2 or str2 in str1 or len(dataPD.intersection(dataGT))>0:
-                    if fuzz.token_set_ratio(str1, str2) > 80 and checkSimilarity(value1[0][1], value2[1]):
+                    if fuzz.token_set_ratio(str1.replace("_"," "), str2.replace("_"," ")) > 65 and checkSimilarity(value1[0][1], value2[1]):
                         listaPossibilita.append(newCluster.index(d2))
 
         if len(str(key1))==1:  #mi capitano attributi con solo 1 lettera che fanno un bordello
             listaPossibilita=[]
         # CASO 1: STESSA CHIAVE --> AGGIUNGO
         #if len(listaPossibilita)==1:   # mi mette troppo schifo nei cluster, devo introdurre una soglia minima per l'unione
-         #   #ci sta qualche problema in questa fase, dei dati spariscono magicamente
-         #   value= list(newCluster[listaPossibilita[0]].values())[0]
+         # #ci sta qualche problema in questa fase, dei dati spariscono magicamente
+         #  value= list(newCluster[listaPossibilita[0]].values())[0]
          #   attribute_name = value1[1].union(value[0])
          #   attribute_value = value1[2].union(value[1])
          #   filename = value1[3].union(value[2])
@@ -121,8 +121,6 @@ for d1 in productCluster:
                 print(value1)
 
 
-
-
             #da controllare questa parte, sicuramente ho fatto casino con gli indici, devo usare gli indici e non d2 sennò sovrascrivo sempre
             #e non accumulo mai
             value2=list(newCluster[list(tuplaMax.keys())[0]].values())[0]
@@ -135,6 +133,9 @@ for d1 in productCluster:
             newCluster[list(tuplaMax.keys())[0]][key2] = (attribute_name, attribute_value, filename)
             #print(newCluster[list(tuplaMax.keys())[0]])
 
+            if not listaPossibilita :
+                pozzo.append({key1: (value1[1], value1[2], value1[3])})
+
 
 for elem in newCluster:
     print(elem)
@@ -146,3 +147,12 @@ with open('ground_truth/manager7_output.txt', 'w') as file:
 print("FATTO2")
 print(len(newCluster))
 print(newCluster)
+
+
+#crea file per il pozzo
+with open('ground_truth/pozzo7.txt', 'w') as file:
+    for dictionary in pozzo:
+        print(dictionary, file=file)
+print("FATTO3")
+print(len(pozzo))
+print(pozzo)
