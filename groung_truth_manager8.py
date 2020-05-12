@@ -58,10 +58,10 @@ productCluster = ottimizzazioneGroundTruh(cluster)
 pozzo = [] #Cluster in cui vengono depositati tutti gli attributi che non si riesce ad accoppiare
 #prima passata, valuto solo le chiavi uguali o uguali parzialmente
 
-i = 0
+#i = 0
 for d1 in productCluster:
-    print(i,"/24500")
-    i = i+1
+    #print(i,"/24500")
+    #i = i+1
     for key1, value1 in d1.items():
         listaPossibilita=[]
         for d2 in newCluster:
@@ -147,6 +147,11 @@ for d1 in productCluster:
                                         f = open(path)
                                         data = json.load(f)
                                         for (k, v) in data.items():
+                                            if '(more than' in v:  # elimino i (more than xx%) che danno fastidio
+                                                i = v.index('(')
+                                                v = v[:i]
+                                            if type(v) == list:
+                                                v = str(v).strip('[]')
                                             if k == score[0]:
                                                 # ho trovato il valore da rimuovere
                                                 if v in value1[2]:
@@ -190,9 +195,14 @@ for d1 in productCluster:
                                                 f = open(path)
                                                 data = json.load(f)
                                                 for (k, v) in data.items():
+                                                    if '(more than' in v:  # elimino i (more than xx%) che danno fastidio
+                                                        i = v.index('(')
+                                                        v = v[:i]
+                                                    if type(v) == list:
+                                                        v = str(v).strip('[]')
                                                     if k == score[0]:
                                                         # ho trovato il valore da rimuovere
-
+                                                        #print(v)
                                                         if v in value1[2]:
                                                             value1[2].remove(v)
                                                         if score[0] in value1[1]:
