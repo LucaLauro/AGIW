@@ -51,7 +51,7 @@ for index, row in df.iterrows():
        newCluster.append({target_attribute: (attributeNameList, attributeValueList, fileNameList)})
 
 productCluster = ottimizzazioneGroundTruh(cluster)
-productCluster = [productCluster[10682],productCluster[1993]]
+#productCluster = [productCluster[10682],productCluster[1993]]
 #[{brand:((brand,canon),{brand,manufacturer,...},{canon,...},{www.ebay.com/4274/brand,www.ebay.com/93785/brand...})}]
 
 
