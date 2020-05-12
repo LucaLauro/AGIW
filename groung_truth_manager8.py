@@ -226,7 +226,7 @@ for d1 in productCluster:
             #print(newCluster[list(tuplaMax.keys())[0]])
 
         if not listaPossibilita :
-            pozzo.append({key1: (value1[1], value1[2], value1[3])})
+            pozzo.append({key1: (value[0],value1[1], value1[2], value1[3])})
 
 
 #crea file di output
