@@ -51,7 +51,7 @@ for index, row in df.iterrows():
        newCluster.append({target_attribute: (attributeNameList, attributeValueList, fileNameList)})
 
 productCluster = ottimizzazioneGroundTruh(cluster)
-#productCluster = [productCluster[10682],productCluster[1993]]
+productCluster = [productCluster[10682],productCluster[1993]]
 #[{brand:((brand,canon),{brand,manufacturer,...},{canon,...},{www.ebay.com/4274/brand,www.ebay.com/93785/brand...})}]
 
 
@@ -167,7 +167,8 @@ for d1 in productCluster:
                                                 newCluster[newCluster.index(d)][key] = (attribute_name, attribute_value, filename)
                                                 findOne = True
                                                 break
-                                value1[3].difference(fileList)
+                                for el in fileList:
+                                    value1[3].remove(el)
                         if not findOne:
                             for name in list(d.values())[0][0]:
                                 if fuzz.ratio(name, score[0]) > 80:
@@ -215,7 +216,8 @@ for d1 in productCluster:
                                                         newCluster[newCluster.index(d)][key] = (
                                                         attribute_name, attribute_value, filename)
                                                         break
-                                        value1[3].difference(fileList)
+                                        for el in fileList:
+                                            value1[3].remove(el)
             value2 = list(newCluster[list(tuplaMax.keys())[0]].values())[0]
             attribute_name = value1[1].union(value2[0])
             attribute_value = value1[2].union(value2[1])
@@ -226,7 +228,7 @@ for d1 in productCluster:
             #print(newCluster[list(tuplaMax.keys())[0]])
 
         if not listaPossibilita :
-            pozzo.append({key1: (value[0],value1[1], value1[2], value1[3])})
+            pozzo.append({key1: (value1[0], value1[1], value1[2], value1[3])})
 
 
 #crea file di output
