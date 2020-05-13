@@ -153,22 +153,47 @@ for d1 in productCluster:
                                             if type(v) == list:
                                                 v = str(v).strip('[]')
                                             if k == score[0]:
-                                                # ho trovato il valore da rimuovere
-                                                if v in value1[2]:
-                                                    value1[2].remove(v)
-                                                if score[0] in value1[1]:
-                                                    value1[1].remove(score[0])
-                                                # value1[3].remove(file)
-                                                # modifico il cluster aggiungendo il nuovo valore appena recuperato
-                                                value_to_modify = list(d.values())[0]
-                                                attribute_name = value_to_modify[0].union({score[0]})
-                                                attribute_value = value_to_modify[1].union({v})
-                                                filename = value_to_modify[2].union({file})
-                                                newCluster[newCluster.index(d)][key] = (attribute_name, attribute_value, filename)
-                                                findOne = True
-                                                break
+                                                # ho trovato la chiave corrispondente. Controllo il valore. 1 controllo sulle parole
+                                                if len(v.split(" ")) < 4:
+                                                    for v2 in list(d.values())[0][1]:
+                                                        if fuzz.token_sort_ratio(v,v2) > 80:
+                                                            if v in value1[2]:
+                                                                value1[2].remove(v)
+                                                            if score[0] in value1[1]:
+                                                                value1[1].remove(score[0])
+                                                            # value1[3].remove(file)
+                                                            # modifico il cluster aggiungendo il nuovo valore appena recuperato
+                                                            value_to_modify = list(d.values())[0]
+                                                            attribute_name = value_to_modify[0].union({score[0]})
+                                                            attribute_value = value_to_modify[1].union({v})
+                                                            filename = value_to_modify[2].union({file})
+                                                            newCluster[newCluster.index(d)][key] = (attribute_name, attribute_value, filename)
+                                                            findOne = True
+                                                            break
+                                                        if findOne:
+                                                            break
+                                                else:
+
+                                                    for v2 in list(d.values())[0][1]:
+                                                        if fuzz.token_sort_ratio(v,v2) > 65:
+                                                            if v in value1[2]:
+                                                                value1[2].remove(v)
+                                                            if score[0] in value1[1]:
+                                                                value1[1].remove(score[0])
+                                                            # value1[3].remove(file)
+                                                            # modifico il cluster aggiungendo il nuovo valore appena recuperato
+                                                            value_to_modify = list(d.values())[0]
+                                                            attribute_name = value_to_modify[0].union({score[0]})
+                                                            attribute_value = value_to_modify[1].union({v})
+                                                            filename = value_to_modify[2].union({file})
+                                                            newCluster[newCluster.index(d)][key] = (attribute_name, attribute_value, filename)
+                                                            findOne = True
+                                                            break
+                                                        if findOne:
+                                                            break
                                 for el in fileList:
                                     value1[3].remove(el)
+
                         if not findOne:
                             for name in list(d.values())[0][0]:
                                 if fuzz.ratio(name, score[0]) > 80:
@@ -202,22 +227,51 @@ for d1 in productCluster:
                                                     if type(v) == list:
                                                         v = str(v).strip('[]')
                                                     if k == score[0]:
-                                                        # ho trovato il valore da rimuovere
-                                                        #print(v)
-                                                        if v in value1[2]:
-                                                            value1[2].remove(v)
-                                                        if score[0] in value1[1]:
-                                                            value1[1].remove(score[0])
-                                                        # modifico il cluster aggiungendo il nuovo valore appena recuperato
-                                                        value_to_modify = list(d.values())[0]
-                                                        attribute_name = value_to_modify[0].union({score[0]})
-                                                        attribute_value = value_to_modify[1].union({v})
-                                                        filename = value_to_modify[2].union({file})
-                                                        newCluster[newCluster.index(d)][key] = (
-                                                        attribute_name, attribute_value, filename)
-                                                        break
+                                                        # ho trovato la chiave corrispondente. Controllo il valore. 1 controllo sulle parole
+                                                        if len(v.split(" ")) < 4:
+                                                            for v2 in list(d.values())[0][1]:
+                                                                v2 = str(v2)
+                                                                if fuzz.token_sort_ratio(v, v2) > 80:
+                                                                    if v in value1[2]:
+                                                                        value1[2].remove(v)
+                                                                    if score[0] in value1[1]:
+                                                                        value1[1].remove(score[0])
+                                                                    # value1[3].remove(file)
+                                                                    # modifico il cluster aggiungendo il nuovo valore appena recuperato
+                                                                    value_to_modify = list(d.values())[0]
+                                                                    attribute_name = value_to_modify[0].union(
+                                                                        {score[0]})
+                                                                    attribute_value = value_to_modify[1].union({v})
+                                                                    filename = value_to_modify[2].union({file})
+                                                                    newCluster[newCluster.index(d)][key] = (
+                                                                    attribute_name, attribute_value, filename)
+                                                                    findOne = True
+                                                                    break
+                                                                if findOne:
+                                                                    break
+                                                        else:
+                                                            for v2 in list(d.values())[0][1]:
+                                                                if fuzz.token_sort_ratio(v, v2) > 65:
+                                                                    if v in value1[2]:
+                                                                        value1[2].remove(v)
+                                                                    if score[0] in value1[1]:
+                                                                        value1[1].remove(score[0])
+                                                                    # value1[3].remove(file)
+                                                                    # modifico il cluster aggiungendo il nuovo valore appena recuperato
+                                                                    value_to_modify = list(d.values())[0]
+                                                                    attribute_name = value_to_modify[0].union(
+                                                                        {score[0]})
+                                                                    attribute_value = value_to_modify[1].union({v})
+                                                                    filename = value_to_modify[2].union({file})
+                                                                    newCluster[newCluster.index(d)][key] = (
+                                                                    attribute_name, attribute_value, filename)
+                                                                    findOne = True
+                                                                    break
+                                                                if findOne:
+                                                                    break
                                         for el in fileList:
                                             value1[3].remove(el)
+
             value2 = list(newCluster[list(tuplaMax.keys())[0]].values())[0]
             attribute_name = value1[1].union(value2[0])
             attribute_value = value1[2].union(value2[1])
@@ -233,16 +287,14 @@ for d1 in productCluster:
 
 #crea file di output
 with open('ground_truth/manager8_output.txt', 'w') as file:
-    for dictionary in newCluster:
-        print(dictionary, file=file)
+    file.write(str(newCluster))
 print("FATTO2")
 
 
 
 #crea file per il pozzo
-with open('ground_truth/pozzo8.txt', 'w') as file:
-    for dictionary in pozzo:
-        print(dictionary, file=file)
+with open("ground_truth/pozzo8.txt", "w") as file:
+    file.write(str(pozzo))
 print("FATTO3")
 print(len(pozzo))
 print(pozzo)
