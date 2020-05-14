@@ -9,8 +9,8 @@ for indexElem in range((len(pozzo)-1)):
     scritto=False
 
     for indexSuccessivo in range(indexElem+1,(len(pozzo))):
-        tupla1=list(pozzo[indexElem].values())[0]
-        tupla2=list(pozzo[indexSuccessivo].values())[0]
+        tupla1=list(pozzo[indexElem].values())[0][0]
+        tupla2=list(pozzo[indexSuccessivo].values())[0][0]
         if tupla1[0]==tupla2[0] and indexElem not in indexUsati and indexSuccessivo not in indexUsati:
             if fuzz.token_sort_ratio(tupla1[1],tupla2[1])>75:
 
@@ -30,9 +30,10 @@ for indexElem in range((len(pozzo)-1)):
                     pozzoCompatto.append({list(pozzo[indexElem].keys())[0]:(tupla1,attribute_name,attribute_value,filename)})
                     scritto=True
                 indexUsati.append(indexSuccessivo)
-
+    if not scritto and indexElem not in indexUsati:
+        pozzoCompatto.append(pozzo[indexElem])
 print(len(pozzo))
 print(len(pozzoCompatto))
 
-with open("pozzoCompatto.txt", "w") as file:
+with open("pozzoCompatto1.txt", "w") as file:
     file.write(str(pozzoCompatto))

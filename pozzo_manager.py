@@ -1,7 +1,7 @@
 from fuzzywuzzy import fuzz
 from numpy import nan
 
-with open("ground_truth/pozzo8.txt", "r") as file:
+with open("pozzoCompatto1.txt", "r") as file:
     pozzo = eval(file.readline())
 
 with open("ground_truth/manager8_output.txt", "r") as file:
