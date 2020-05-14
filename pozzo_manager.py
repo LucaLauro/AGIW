@@ -8,8 +8,8 @@ with open("ground_truth/manager8_output.txt", "r") as file:
     cluster = eval(file.readline())
 
 pozzo2 = []
-
 for line in pozzo:
+    print(pozzo.index(line))
     for key, value in line.items():
         listaPossibilita = []
         for row in cluster:
