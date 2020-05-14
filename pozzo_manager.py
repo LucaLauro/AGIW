@@ -54,16 +54,14 @@ for line in pozzo:
 
 #crea file di output
 with open('ground_truth/pozzo_manager_output.txt', 'w') as file:
-    for dictionary in cluster:
-        print(dictionary, file=file)
+    file.write(str(cluster))
 print("FATTO")
 
 
 
 #crea file per il pozzo
 with open('ground_truth/pozzo_manager_pozzo.txt', 'w') as file:
-    for dictionary in pozzo2:
-        print(dictionary, file=file)
+    file.write(str(pozzo2))
 print("FATTO2")
 print(len(pozzo2))
 print(pozzo2)
