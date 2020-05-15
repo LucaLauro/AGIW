@@ -7,6 +7,7 @@ indexUsati=[]
 
 for indexElem in range((len(pozzo)-1)):
     scritto=False
+    print(inde)
 
     for indexSuccessivo in range(indexElem+1,(len(pozzo))):
         tupla1=list(pozzo[indexElem].values())[0][0]

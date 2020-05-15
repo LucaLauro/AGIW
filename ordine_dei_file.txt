@@ -9,3 +9,9 @@ in questo file viene riportato l'ordine di esecuzione di tutti i file presenti
 7) provaClusterDict.py
 8) mergeByName.py
 9) miniClusterPassata4.py
+10) ottimizzazioneClusterName.py
+11) ground_truth_manager8.py
+12) compattatorePozzo.py
+13) pozzoManager.py
+14) preparoDatiPerUltimaFase.py
+15) compattatoreDatiCompleti.py
