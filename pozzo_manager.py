@@ -15,10 +15,18 @@ for line in pozzo:
         for row in cluster:
             for key2,value2 in row.items():
                 for attribute_name in value2[1]:
-                    if fuzz.token_set_ratio(value[0][0], attribute_name) > 75:
+                    if fuzz.ratio(str(value[0][0]), str(attribute_name)) > 90:
                         listaPossibilita.append(cluster.index(row))
                         break
-        if len(listaPossibilita) > 0:
+        if len(listaPossibilita) == 1:
+            key2 = list(cluster[listaPossibilita[0]].keys())[0]
+            value2 = list(cluster[listaPossibilita[0]].values())[0]
+            attribute_name = value[1].union(value2[0])
+            attribute_value = value[2].union(value2[1])
+            filename = value[3].union(value2[2])
+            cluster[listaPossibilita[0]][key2] = (attribute_name, attribute_value, filename)
+
+        if len(listaPossibilita) > 1:
             print(listaPossibilita)
             tuplePunteggi=[]
             for index in listaPossibilita:
