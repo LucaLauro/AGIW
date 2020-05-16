@@ -60,3 +60,5 @@ data = pd.read_csv(f)
 dati = data[data['label'] == 1]
 dati = dati.groupby("left_target_attribute").head(50)
 dati.to_csv(r'ground_truth/test50.csv', index=False, header=True)
+
+
