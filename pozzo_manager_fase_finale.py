@@ -1,12 +1,12 @@
 from fuzzywuzzy import fuzz
 from numpy import nan
 
-with open("ground_truth/pozzo_manager_output.txt", "r") as file:
+with open("ground_truth/prova_output.txt", "r") as file:
     cluster = eval(file.readline())
 
-with open("ground_truth/pozzo_manager_pozzo.txt", "r") as file:
+with open("ground_truth/prova_pozzo.txt", "r") as file:
     pozzo = eval(file.readline())
-
+print(len)
 pozzo2 = []
 for line in pozzo:
     print(pozzo.index(line))
@@ -14,7 +14,7 @@ for line in pozzo:
         listaPossibilita = []
         for row in cluster:
             for key2,value2 in row.items():
-                for attribute_name in value2[1]:
+                for attribute_name in value2[0]:
                     if fuzz.ratio(str(value[0][0]), str(attribute_name)) > 90:
                         listaPossibilita.append(cluster.index(row))
                         break
@@ -27,7 +27,6 @@ for line in pozzo:
             cluster[listaPossibilita[0]][key2] = (attribute_name, attribute_value, filename)
 
         if len(listaPossibilita) > 1:
-            print(listaPossibilita)
             tuplePunteggi=[]
             for index in listaPossibilita:
                 value2 = list(cluster[index].values())[0]
@@ -75,4 +74,3 @@ with open('pozzo_finale.txt', 'w') as file:
     file.write(str(pozzo2))
 print("FATTO2")
 print(len(pozzo2))
-print(pozzo2)

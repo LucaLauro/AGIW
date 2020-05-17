@@ -14,7 +14,7 @@ for line in pozzo:
         listaPossibilita = []
         for row in cluster:
             for key2,value2 in row.items():
-                for attribute_name in value2[1]:
+                for attribute_name in value2[0]:
                     if fuzz.ratio(str(value[0][0]), str(attribute_name)) > 90:
                         listaPossibilita.append(cluster.index(row))
                         break
