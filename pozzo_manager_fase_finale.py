@@ -33,8 +33,14 @@ for line in pozzo:
                 maxName = 0
                 for nameAttribute in value2[0]:
                     i = fuzz.token_set_ratio(str(value[0][0]), str(nameAttribute))
+                    key_GT=list(cluster[index].keys())[0]
+                    words_GT=set(key_GT.split('_'))
+                    words_GT = set(filter(lambda x: len(x) == 3 and x!='iso', words_GT))
+                    if any(parole in nameAttribute for parole in words_GT):
+                        i=i*2
                     maxName= max(maxName,i)
                     #print(str(value1[0][0]),'----',str(nameAttribute))
+
                 maxValue = 0
                 for valueAttribute in value2[1]:
                     j = fuzz.token_set_ratio(str(value[0][1]), str(valueAttribute))
